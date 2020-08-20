@@ -8,10 +8,18 @@
                     $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);                
                     $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
                 }
-            public function query($query, $parametres)
+            public function query($query, $parametres = false)
                 {
-                    $requete = $this->pdo->prepare($query);
-                    $requete->execute($parametres);
+                    if($parametres)
+                        {
+                            $requete = $this->pdo->prepare($query);
+                            $requete->execute($parametres);
+                        }
+                    else
+                        {
+                            $requete = $this->pdo->query($query);
+                        }
+                    
                     return $requete;
                 }
         }

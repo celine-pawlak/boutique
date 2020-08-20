@@ -40,6 +40,10 @@
                     <input type="text" class="form-control" name="prenom" id="prenom">
                 </section>
                 <section class="form-group">
+                    <label for="telephone">Téléphone: </label>
+                    <input type="text" class="form-control" name="telephone" id="telephone">
+                </section>
+                <section class="form-group">
                     <label for="adresse">Adresse: </label>
                     <input type="text" class="form-control" name="adresse" id="adresse">
                 </section>
