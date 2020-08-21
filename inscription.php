@@ -18,8 +18,8 @@
         <form action="" method="POST">
             <section>
                 <section class="form-group">
-                    <label for="login">Login: </label>
-                    <input type="text" class="form-control" name="login" id="login">
+                    <label for="username">Login: </label>
+                    <input type="text" class="form-control" name="username" id="username">
                 </section>
                 <section class="form-group">
                     <label for="email">Email: </label>

@@ -20,7 +20,10 @@
 
     if($validation->isValid())
         {
-
+            $auth = new Auth($bdd);
+            $auth->register($_POST["username"], $_POST["password"], $_POST["email"]);
+            $session = new Session();           
+            App::redirect('connexion.php');            
         }
     else
         {
