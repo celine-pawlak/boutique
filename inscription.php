@@ -15,7 +15,7 @@
     <header></header>
     <main>
         <h2></h2>
-        <form action="">
+        <form action="" method="POST">
             <section>
                 <section class="form-group">
                     <label for="login">Login: </label>
@@ -28,7 +28,11 @@
                 <section class="form-group">
                     <label for="password">Mot de passe: </label>
                     <input type="password" class="form-control" name="password" id="password">
-                </section>               
+                </section>  
+                <section class="form-group">
+                    <label for="password_confirm">Confirmer mot de passe: </label>
+                    <input type="password" class="form-control" name="password_confirm" id="password_confirm">
+                </section>              
             </section>
             <section>
                 <section class="form-group">
