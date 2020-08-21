@@ -7,9 +7,9 @@
                 {
                     $this->date = $data;
                 }
-            public function isAlpha($champ, $errorMsg)
+            public function isPseudo($champ, $errorMsg)
                 {
-                    if(!preg_match("/^[a-zA-Z0-9_]+$/", $this->getChamp($champ)))
+                    if(!preg_match("/^[a-zA-Z0-9_]{3,20}$/", $this->getChamp($champ)))
                         {
                             $this->error[$champ] = $errorMsg;
                         }

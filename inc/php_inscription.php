@@ -4,15 +4,17 @@
     
     $validation = new Validation($_POST);
 
-    $validation->isAlpha('martin', "Votre pseudo n'est pas valide");
+    $validation->isPseudo('martin', "Votre pseudo n'est pas valide");
     if($validation->isValid())
         {
+            echo 'toto';
             $validation->isUniq('username', $bdd, 'utilisateurs', 'Ce pseudo est déjà prit');
         }
     
     $validation->isEmail('email', "Votre email n'est pas valide");
     if($validation->isValid())
         {
+            echo 'tata';
             $validation->isUniq('email', $bdd, 'utilisateurs', 'Cet email est déjà prit');
         }
     
@@ -20,14 +22,16 @@
 
     if($validation->isValid())
         {
+            echo 'tutu';
             $auth = new Auth($bdd);
-            $auth->register($_POST["username"], $_POST["password"], $_POST["email"]);
+            $auth->register($_POST["username"], $_POST["password"], $_POST["email"], $_POST["nom"], $_POST["prenom"], $_POST["adresse"], $_POST["ville"], $_POST["cp"]);
             $session = new Session();           
             App::redirect('connexion.php');            
         }
     else
         {
             $error = $validation->getError();
+            var_dump($error);
         }
-    var_dump($validation);
+    var_dump($validation->isValid);
 ?>
