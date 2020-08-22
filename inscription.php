@@ -12,35 +12,37 @@
     <title>Inscription</title>
 </head>
 <body>
-    <header></header>
+    <header>
+        <?php include 'inc/header.php'; ?>
+    </header>
     <main>
-        <h2></h2>
+        <h2>Forulaire d'inscription</h2>
         <form action="" method="POST">
             <section>
                 <section class="form-group">
-                    <label for="username">Login: </label>
+                    <label for="username">Login: <span class="oblig">*</span></label>
                     <input type="text" class="form-control" name="username" id="username">
                 </section>
                 <section class="form-group">
-                    <label for="email">Email: </label>
+                    <label for="email">Email: <span class="oblig">*</span></label>
                     <input type="text" class="form-control" name="email" id="email">
                 </section>
                 <section class="form-group">
-                    <label for="password">Mot de passe: </label>
+                    <label for="password">Mot de passe: <span class="oblig">*</span></label>
                     <input type="password" class="form-control" name="password" id="password">
                 </section>  
                 <section class="form-group">
-                    <label for="password_confirm">Confirmer mot de passe: </label>
+                    <label for="password_confirm">Confirmer mot de passe: <span class="oblig">*</span></label>
                     <input type="password" class="form-control" name="password_confirm" id="password_confirm">
                 </section>              
             </section>
             <section>
                 <section class="form-group">
-                    <label for="nom">Nom: </label>
+                    <label for="nom">Nom: <span class="oblig">*</span></label>
                     <input type="text" class="form-control" name="nom" id="nom">
                 </section>
                 <section class="form-group">
-                    <label for="prenom">Prénom: </label>
+                    <label for="prenom">Prénom: <span class="oblig">*</span></label>
                     <input type="text" class="form-control" name="prenom" id="prenom">
                 </section>
                 <section class="form-group">
@@ -48,20 +50,21 @@
                     <input type="text" class="form-control" name="telephone" id="telephone">
                 </section>
                 <section class="form-group">
-                    <label for="adresse">Adresse: </label>
+                    <label for="adresse">Adresse: <span class="oblig">*</span></label>
                     <input type="text" class="form-control" name="adresse" id="adresse">
                 </section>
                 <section class="form-group">
-                    <label for="ville">Ville: </label>
+                    <label for="ville">Ville: <span class="oblig">*</span></label>
                     <input type="text" class="form-control" name="ville" id="ville">
                 </section>
                 <section class="form-group">
-                    <label for="cp">Code postal: </label>
+                    <label for="cp">Code postal: <span class="oblig">*</span></label>
                     <input type="text" class="form-control" name="cp" id="cp">
                 </section>                
             </section>
             <input type="submit" class="btn btn-primary" name="valid_insc" value="Inscription">
         </form>
+        <small><span class="oblig">*</span>Champs obligatoires</small>
     </main>
     <footer></footer>
 </body>

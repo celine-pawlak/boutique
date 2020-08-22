@@ -10,7 +10,7 @@
                 {
                     $password = password_hash($password, PASSWORD_BCRYPT);
                     $token = Str::random(60);
-                    $this->bdd->query("INSERT INTO utilisateurs SET username = ?, password = ?, email = ?, remember_token = ?, nom = ?, prenom = ?, adresse_facturation = ?, ville_factuation = ?, code_postal_faturation = ?", 
+                    $this->bdd->query("INSERT INTO utilisateurs SET username = ?, password = ?, email = ?, remember_token = ?, nom = ?, prenom = ?, adresse_facturation = ?, ville_facturation = ?, code_postal_facturation = ?", 
                     [
                         $username,
                         $password,
