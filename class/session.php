@@ -18,6 +18,10 @@
                 {
                     $_SESSION['flash'][$cle] = $message;
                 }
+            public function setSession($cle, $valeur)
+                {   
+                    $_SESSION["$cle"] = $valeur;
+                }
             public function hasFlashes()
                 {
                     return isset($_SESSION['flash']);
@@ -27,6 +31,10 @@
                     $flash =  $_SESSION['flash'];
                     unset($_SESSION['flash']);
                     return $flash;
+                }
+            public function hasCurrentUser()
+                {
+                    return $_SESSION['current_user'];
                 }
         }
 ?>
