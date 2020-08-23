@@ -16,10 +16,7 @@
         <?php include 'inc/header.php';?>
     </header>
     <main>
-
-    </main>
-    <footer>
-        <h2>Forulaire de Conenxion</h2>
+        <h2>Formulaire de Conenxion</h2>
             <form action="" method="POST">                
                 <section class="form-group">
                     <label for="login">Login ou Email: <span class="oblig">*</span></label>
@@ -31,7 +28,8 @@
                 </section>                    
                 <input type="submit" class="btn btn-primary" name="valid_con" value="Connexion">
             </form>
-    </footer>
-    <small>Si vous n'avez pas encore de compte => <a href="inscription.php">inscription</a></small>
+            <small>Si vous n'avez pas encore de compte => <a href="inscription.php">inscription</a></small>
+    </main>
+   <?php include 'inc/footer.php';?>
 </body>
 </html>

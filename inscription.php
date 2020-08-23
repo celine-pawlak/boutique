@@ -21,51 +21,51 @@
             <section>
                 <section class="form-group">
                     <label for="username">Login: <span class="oblig">*</span></label>
-                    <input type="text" class="form-control" name="username" id="username">
+                    <input type="text" class="form-control" name="username" id="username" value="<?php echo $username = (isset($_POST['username']))? $_POST['username'] : '' ?>">
                 </section>
                 <section class="form-group">
                     <label for="email">Email: <span class="oblig">*</span></label>
-                    <input type="text" class="form-control" name="email" id="email">
+                    <input type="text" class="form-control" name="email" id="email" value="<?php echo $email = (isset($_POST['email']))? $_POST['email'] : '' ?>">
                 </section>
                 <section class="form-group">
                     <label for="password">Mot de passe: <span class="oblig">*</span></label>
-                    <input type="password" class="form-control" name="password" id="password">
+                    <input type="password" class="form-control" name="password" id="password" value="<?php echo $password = (isset($_POST['password']))? $_POST['password'] : '' ?>">
                 </section>  
                 <section class="form-group">
                     <label for="password_confirm">Confirmer mot de passe: <span class="oblig">*</span></label>
-                    <input type="password" class="form-control" name="password_confirm" id="password_confirm">
+                    <input type="password" class="form-control" name="password_confirm" id="password_confirm" value="<?php echo $password_confirm = (isset($_POST['password_confirm']))? $_POST['password_confirm'] : '' ?>">
                 </section>              
             </section>
             <section>
                 <section class="form-group">
                     <label for="nom">Nom: <span class="oblig">*</span></label>
-                    <input type="text" class="form-control" name="nom" id="nom">
+                    <input type="text" class="form-control" name="nom" id="nom" value="<?php echo $nom = (isset($_POST['nom']))? $_POST['nom'] : '' ?>">
                 </section>
                 <section class="form-group">
                     <label for="prenom">Prénom: <span class="oblig">*</span></label>
-                    <input type="text" class="form-control" name="prenom" id="prenom">
+                    <input type="text" class="form-control" name="prenom" id="prenom" value="<?php echo $prenom = (isset($_POST['prenom']))? $_POST['prenom'] : '' ?>">
                 </section>
                 <section class="form-group">
                     <label for="telephone">Téléphone: </label>
-                    <input type="text" class="form-control" name="telephone" id="telephone">
+                    <input type="text" class="form-control" name="telephone" id="telephone" value="<?php echo $telephone = (isset($_POST['telephone']))? $_POST['telephone'] : '' ?>">
                 </section>
                 <section class="form-group">
                     <label for="adresse">Adresse: <span class="oblig">*</span></label>
-                    <input type="text" class="form-control" name="adresse" id="adresse">
+                    <input type="text" class="form-control" name="adresse" id="adresse" value="<?php echo $adresse = (isset($_POST['adresse']))? $_POST['adresse'] : '' ?>">
                 </section>
                 <section class="form-group">
                     <label for="ville">Ville: <span class="oblig">*</span></label>
-                    <input type="text" class="form-control" name="ville" id="ville">
+                    <input type="text" class="form-control" name="ville" id="ville" value="<?php echo $ville = (isset($_POST['ville']))? $_POST['ville'] : '' ?>">
                 </section>
                 <section class="form-group">
                     <label for="cp">Code postal: <span class="oblig">*</span></label>
-                    <input type="text" class="form-control" name="cp" id="cp">
+                    <input type="text" class="form-control" name="cp" id="cp" value="<?php echo $cp = (isset($_POST['cp']))? $_POST['cp'] : '' ?>">
                 </section>                
             </section>
             <input type="submit" class="btn btn-primary" name="valid_insc" value="Inscription">
         </form>
         <small><span class="oblig">*</span>Champs obligatoires</small>
     </main>
-    <footer></footer>
+    <?php include 'inc/footer.php';?>
 </body>
 </html>

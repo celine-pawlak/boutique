@@ -34,7 +34,11 @@
                 }
             public function hasCurrentUser()
                 {
-                    return $_SESSION['current_user'];
+                    if(isset($_SESSION['current_user']))
+                        {
+                            return $_SESSION['current_user'];
+                        }
+                    
                 }
         }
 ?>

@@ -1,7 +1,7 @@
 <?php
     require_once 'inc/initialisation.php'; //permet de require tous les fichiers class nécessaires
 
-    if(isset($_SESSION['current_user']))
+    if(Session::getInstance()->hasCurrentUser())
         {
             App::redirect('index.php');
         }
