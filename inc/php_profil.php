@@ -1,5 +1,6 @@
 <?php
     require_once 'inc/initialisation.php';
+    require_once 'inc/fonction_pagination.php';
 
     if(Session::getInstance()->hasCurrentUser())
         {           
@@ -88,8 +89,9 @@
                 
             // Partie Historique des achats
                 // Récupère les commandes de l'utilisateur
-                $commande_user = $bdd->query('SELECT * FROM commandes WHERE id_utilisateurs = ?', [$id])->fetchAll(PDO::FETCH_ASSOC);
-                
+                $commande_user = $bdd->query('SELECT * FROM commandes WHERE id_utilisateurs = ? LIMIT 5', [$id])->fetchAll(PDO::FETCH_ASSOC);
+                $get_page = (isset($_GET["commande"])? $_GET["commande"] : 1);
+                $infos_commandes = prepaPagination(5, 'commandes', $get_page, 'date_commande', $bdd, 'id_utilisateurs', $id);                
         }
     else
         {

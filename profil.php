@@ -76,34 +76,36 @@
                     </section>                          
                 </form>                
         </section>
-        <section>
+        <section id="historique">
             <h2>Historique des achats</h2>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Numéro de commande</th>
-                        <th scope="col">Nombre de produits</th>
-                        <th scope="col">Prix</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            foreach($commande_user as $nb => $commande)
-                                {
-                                    $count_produit = $bdd->query('SELECT COUNT(id) as nb_produit_com FROM produits_commandes WHERE id_commandes = ?' , [$commande['id']])->fetch(PDO::FETCH_ASSOC);                                    
-                                    ?>
-                                    <tr>
-                                        <td><?= $commande['date_commande'] = date('d-m-Y') ?></td>
-                                        <td><a href="detail.php?id=<?= $commande['id'] ?>"><?= $commande['numero'] ?></a></td>
-                                        <td><?= $count_produit['nb_produit_com'] ?></td>
-                                        <td><?= $commande['prix_commande'] ?></td>
-                                    </tr>
-                                    <?php
-                                }
-                        ?>
-                    </tbody>
-                </table>
+                <section id="tableau_historique">
+                    <table class="table table-striped histo">
+                        <thead>
+                            <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Numéro de commande</th>
+                            <th scope="col">Nombre de produits</th>
+                            <th scope="col">Prix</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                for($i = 0; $i< $infos_commandes['compte'] ; $i++)
+                                    {
+                                        $count_produit = $bdd->query('SELECT COUNT(id) as nb_produit_com FROM produits_commandes WHERE id_commandes = ?' , [$infos_commandes['recup'][$i]['id']])->fetch(PDO::FETCH_ASSOC);                                    
+                                        ?>
+                                        <tr>
+                                            <td><?= $infos_commandes['recup'][$i]['date_commande'] = date('d-m-Y') ?></td>
+                                            <td><a href="detail.php?id=<?= $infos_commandes['recup'][$i]['id'] ?>"><?= $infos_commandes['recup'][$i]['numero'] ?></a></td>
+                                            <td><?= $count_produit['nb_produit_com'] ?></td>
+                                            <td><?= $infos_commandes['recup'][$i]['prix_commande'] ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                            ?>
+                        </tbody>
+                    </table>
+                </section>
         </section>
     </main>
     <?php include 'inc/footer.php'; ?>
