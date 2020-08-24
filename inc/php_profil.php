@@ -80,7 +80,7 @@
                                         }
                                     else
                                         Session::getInstance()->setFlash('danger', "Les mot de passe ne correspondent pas");
-                                }
+                                }                            
                         }
                     else
                         Session::getInstance()->setFlash('danger', "Le mot de passe actuel n'est pas bon");
@@ -88,7 +88,8 @@
                 
             // Partie Historique des achats
                 // Récupère les commandes de l'utilisateur
-                $commande_user = $bdd->query('SELECT * FROM commandes INNER JOIN produits_commandes ON commandes.id = produits_commandes.id_commande')
+                $commande_user = $bdd->query('SELECT * FROM commandes WHERE id_utilisateurs = ?', [$id])->fetchAll(PDO::FETCH_ASSOC);
+                
         }
     else
         {

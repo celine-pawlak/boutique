@@ -88,24 +88,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
+                        <?php
+                            foreach($commande_user as $nb => $commande)
+                                {
+                                    $count_produit = $bdd->query('SELECT COUNT(id) as nb_produit_com FROM produits_commandes WHERE id_commandes = ?' , [$commande['id']])->fetch(PDO::FETCH_ASSOC);                                    
+                                    ?>
+                                    <tr>
+                                        <td><?= $commande['date_commande'] = date('d-m-Y') ?></td>
+                                        <td><a href="detail.php?id=<?= $commande['id'] ?>"><?= $commande['numero'] ?></a></td>
+                                        <td><?= $count_produit['nb_produit_com'] ?></td>
+                                        <td><?= $commande['prix_commande'] ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                        ?>
                     </tbody>
                 </table>
         </section>
