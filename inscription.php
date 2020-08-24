@@ -19,7 +19,7 @@
     <main id="main_inscription">
         <h2>Forulaire d'inscription</h2>
             <form action="" method="POST">
-                <section id="formulaire">
+                <section class="formulaire">
                     <section id="info_log">
                         <section class="form-group">
                             <label for="username">Login: <span class="oblig">*</span></label>

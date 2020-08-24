@@ -35,6 +35,14 @@ input
         justify-content: center;
         align-items: center;
     }
+.formulaire
+    {
+        margin-top: 5vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+    }
 /* FIN STYLE GENERIQUE */
 /* DEBUT INSCRIPTION */
 #main_inscription
@@ -48,14 +56,6 @@ input
         display: flex;
         flex-direction: column;        
         width: 80vw;        
-    }
-#formulaire
-    {
-        margin-top: 5vh;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        text-align: center;
     }
 .oblig
     {
@@ -78,3 +78,28 @@ input
         margin-top: 5vh;
     }
 /* FIN CONNEXION */
+/* DEBUT PROFIL */
+#main_profil
+    {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+#formulaire_profil
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10vh;
+    }
+#main_profil form
+    {
+        display: flex;
+        flex-direction: column;
+        width: 60vw;
+    }
+.input_oblig
+    {
+        background-color: #d0a75c5d;
+    }
+/* FIN PROFIL */

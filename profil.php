@@ -16,12 +16,12 @@
     <header>
         <?php include 'inc/header.php'; ?>
     </header>
-    <main>
-        <section>
+    <main id="main_profil">
+        <section id="formulaire_profil">
             <h2>Modifier votre profil</h2>
                 <form action="" method="POST">
-                    <section id="formulaire_profil">
-                        <section id="info_profil">
+                    <section class="formulaire">
+                        <section id="info_login">                       
                             <section class="form-group">
                                 <label for="username">Login<span class="oblig">*</span>: </label>
                                 <input type="text" class="form-control" name="username" id="username" value="<?= $_SESSION['current_user']['username']?>" required>
@@ -32,7 +32,7 @@
                             </section>
                             <section class="form-group">
                                 <label for="now_password">Mot de passe actuel<span class="oblig">*</span>: </label>
-                                <input type="password" class="form-control" name="now_password" id="now_password" required>
+                                <input type="password" class="form-control input_oblig" name="now_password" id="now_password" required>
                             </section>  
                             <section class="form-group">
                                 <label for="password">Mot de passe: </label>
@@ -41,9 +41,9 @@
                             <section class="form-group">
                                 <label for="password_confirm">Confirmer mot de passe: </label>
                                 <input type="password" class="form-control" name="password_confirm" id="password_confirm">
-                            </section>              
+                            </section>         
                         </section>
-                        <section id="info_perso">
+                        <section id="info_profil">                            
                             <section class="form-group">
                                 <label for="nom">Nom<span class="oblig">*</span>: </label>
                                 <input type="text" class="form-control" name="nom" id="nom" value="<?= $_SESSION['current_user']['nom'] ?>" required>
@@ -67,17 +67,47 @@
                             <section class="form-group">
                                 <label for="cp">Code postal<span class="oblig">*</span>: </label>
                                 <input type="text" class="form-control" name="cp" id="cp" value="<?= $_SESSION['current_user']['code_postal_facturation'] ?>" required>
-                            </section>                
-                        </section>
-                    </section>    
+                            </section>                                        
+                        </section>    
+                    </section>
                     <section class="valid_form">
                         <input type="submit" class="btn bouton" name="valid_modif" value="Inscription">
                         <small><span class="oblig">*</span> Champs obligatoires</small>
                     </section>                          
-                </form>
+                </form>                
         </section>
         <section>
-
+            <h2>Historique des achats</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
         </section>
     </main>
     <?php include 'inc/footer.php'; ?>
