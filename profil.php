@@ -76,6 +76,7 @@
                     </section>                          
                 </form>                
         </section>
+        <!-- Rajouter visibilité du panier -->
         <section id="historique">
             <h2>Historique des achats</h2>
                 <section id="tableau_historique">
