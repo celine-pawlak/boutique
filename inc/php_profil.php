@@ -22,14 +22,17 @@
                                     if(empty($isLoginFree) || $username = $_SESSION['current_user']['email'])
                                         {
                                             $new_email = $_POST['email'];
-                                            if(!empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['cp']))
+                                            if(!empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['cp']) && !empty($_POST['nom']) && !empty($_POST['prenom']))
                                                 {
                                                     $new_adresse = $_POST['adresse'];
-                                                    $new_ville = $_POST['ville'];
+                                                    $new_ville = $_POST['ville'];                                                    
+                                                    $new_nom = $_POST['nom'];
+                                                    $new_prenom = $_POST['prenom'];
                                                     $new_cp = $_POST['cp'];
-                                                    $new_telephone = (!empty($_POST['telephone'])?$_POST['telephone'] : null);
-                                                   
-                                                    $insert_info = $bdd->query('UPDATE utilisateurs SET username = ?, email = ?, adresse_facturation = ?, ville_facturation = ?, code_postal_facturation = ?, telephone = ? WHERE id = ?', 
+                                                    $new_telephone = (!empty($_POST['telephone'] && (is_int($_POST['telephone']) == true))?$_POST['telephone'] : null);                                                   
+                                                    
+                                                    //Met à jour les info de l'utilisateur dans la bdd et les info de la session en cours
+                                                    $insert_info = $bdd->query('UPDATE utilisateurs SET username = ?, email = ?, adresse_facturation = ?, ville_facturation = ?, code_postal_facturation = ?, telephone = ?, nom = ?, prenom = ? WHERE id = ?', 
                                                     [
                                                         $new_username,
                                                         $new_email,
@@ -37,6 +40,8 @@
                                                         $new_ville,
                                                         $new_cp,
                                                         $new_telephone,
+                                                        $new_nom,
+                                                        $new_prenom,
                                                         $id
                                                     ]);
                                                     $_SESSION['current_user']['username'] = $new_username;
@@ -45,7 +50,12 @@
                                                     $_SESSION['current_user']['ville_facturation'] = $new_ville;
                                                     $_SESSION['current_user']['code_postal_facturation'] = $new_cp;
                                                     $_SESSION['current_user']['telephone'] = $new_telephone;
+                                                    $_SESSION['current_user']['nom'] = $new_nom;
+                                                    $_SESSION['current_user']['prenom'] = $new_prenom;
+                                                    Session::getInstance()->setFlash('success', "Modification des informations prise en compte");
                                                 }
+                                                    else                                                        
+                                                            Session::getInstance()->setFlash('danger', "Code postal: mauvais format");                                                                                                                                                                                                                                                              
                                         }
                                     else
                                         Session::getInstance()->setFlash('danger', "Cet email correspond à un autre compte");
@@ -57,7 +67,14 @@
                                 {
                                     if($_POST['password'] == $_POST['password_confirm'])
                                         {                                    
-                                            $new_password = $_POST['password'];
+                                            $new_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                                            $update_password = $bdd->query('UPDATE utilisateurs SET password = ? WHERE id = ?' ,
+                                            [
+                                                $new_password,
+                                                $id
+                                            ]);
+                                            $_SESSION['current_user']['password'] = $new_password;
+                                            Session::getInstance()->setFlash('success', "Modification de mot de passe prise en compte");
                                         }
                                     else
                                         Session::getInstance()->setFlash('danger', "Les mot de passe ne correspondent pas");
@@ -65,8 +82,7 @@
                         }
                     else
                         Session::getInstance()->setFlash('danger', "Le mot de passe actuel n'est pas bon");
-                }
-            
+                }            
         }
     else
         {
