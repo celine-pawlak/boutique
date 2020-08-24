@@ -81,10 +81,10 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Numéro de commande</th>
+                        <th scope="col">Nombre de produits</th>
+                        <th scope="col">Prix</th>
                         </tr>
                     </thead>
                     <tbody>

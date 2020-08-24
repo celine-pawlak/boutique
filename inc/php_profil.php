@@ -4,6 +4,8 @@
     if(Session::getInstance()->hasCurrentUser())
         {           
             $bdd = App::getDatabase();
+
+            // Partie modification de profil
             $id = $_SESSION['current_user']['id'];
             $now_password = $_SESSION['current_user']['password'];
             $info_user = $bdd->query('SELECT * FROM utilisateurs WHERE id=?', [$id])->fetch(PDO::FETCH_ASSOC);
@@ -82,7 +84,11 @@
                         }
                     else
                         Session::getInstance()->setFlash('danger', "Le mot de passe actuel n'est pas bon");
-                }            
+                }      
+                
+            // Partie Historique des achats
+                // Récupère les commandes de l'utilisateur
+                $commande_user = $bdd->query('SELECT * FROM commandes INNER JOIN produits_commandes ON commandes.id = produits_commandes.id_commande')
         }
     else
         {

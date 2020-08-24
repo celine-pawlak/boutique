@@ -98,6 +98,10 @@ input
         flex-direction: column;
         width: 60vw;
     }
+#main_profil input:focus
+    {
+        background-color: #5cd0885d;
+    }
 .input_oblig
     {
         background-color: #d0a75c5d;
