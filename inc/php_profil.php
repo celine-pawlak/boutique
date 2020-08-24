@@ -1,0 +1,75 @@
+<?php
+    require_once 'inc/initialisation.php';
+
+    if(Session::getInstance()->hasCurrentUser())
+        {           
+            $bdd = App::getDatabase();
+            $id = $_SESSION['current_user']['id'];
+            $now_password = $_SESSION['current_user']['password'];
+            $info_user = $bdd->query('SELECT * FROM utilisateurs WHERE id=?', [$id])->fetch(PDO::FETCH_ASSOC);
+            if(isset($_POST['valid_modif']) && !empty($_POST['now_password']) && !empty($_POST['username']) && !empty($_POST['email']))
+                {
+                    if(password_verify($_POST['now_password'], $now_password))
+                        {
+                            $username = $_POST['username'];
+                            $email = $_POST['email'];                            
+                            $isLoginFree = $bdd->query('SELECT * FROM utilisateurs WHERE username = ? OR email = ?', [$username, $email]);
+                            //Vérifie que l'username n'est pas déjà prit ou qu'il est le même que celui de la session en cours et l'insère dans la bdd
+                            if(empty($isLoginFree) || $username = $_SESSION['current_user']['username'])
+                                {
+                                    $new_username = $_POST['username'];
+                                    //Vérifie que le email n'est pas déjà prit ou qu'il est le même que celui de la session en cours et l'insère dans la bdd
+                                    if(empty($isLoginFree) || $username = $_SESSION['current_user']['email'])
+                                        {
+                                            $new_email = $_POST['email'];
+                                            if(!empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['cp']))
+                                                {
+                                                    $new_adresse = $_POST['adresse'];
+                                                    $new_ville = $_POST['ville'];
+                                                    $new_cp = $_POST['cp'];
+                                                    $new_telephone = (!empty($_POST['telephone'])?$_POST['telephone'] : null);
+                                                   
+                                                    $insert_info = $bdd->query('UPDATE utilisateurs SET username = ?, email = ?, adresse_facturation = ?, ville_facturation = ?, code_postal_facturation = ?, telephone = ? WHERE id = ?', 
+                                                    [
+                                                        $new_username,
+                                                        $new_email,
+                                                        $new_adresse,
+                                                        $new_ville,
+                                                        $new_cp,
+                                                        $new_telephone,
+                                                        $id
+                                                    ]);
+                                                    $_SESSION['current_user']['username'] = $new_username;
+                                                    $_SESSION['current_user']['email'] = $new_email;
+                                                    $_SESSION['current_user']['adresse_facturation'] = $new_adresse;
+                                                    $_SESSION['current_user']['ville_facturation'] = $new_ville;
+                                                    $_SESSION['current_user']['code_postal_facturation'] = $new_cp;
+                                                    $_SESSION['current_user']['telephone'] = $new_telephone;
+                                                }
+                                        }
+                                    else
+                                        Session::getInstance()->setFlash('danger', "Cet email correspond à un autre compte");
+                                }
+                            else
+                                Session::getInstance()->setFlash('danger', "Ce Pseudo est déjà prit");
+                            //Vérifie le nouveau mot de passe et l'insère dans la bdd
+                            if(!empty($_POST['password']) && !empty($_POST['password_confirm']))
+                                {
+                                    if($_POST['password'] == $_POST['password_confirm'])
+                                        {                                    
+                                            $new_password = $_POST['password'];
+                                        }
+                                    else
+                                        Session::getInstance()->setFlash('danger', "Les mot de passe ne correspondent pas");
+                                }
+                        }
+                    else
+                        Session::getInstance()->setFlash('danger', "Le mot de passe actuel n'est pas bon");
+                }
+            
+        }
+    else
+        {
+            App::redirect('index.php');
+        }
+?>
