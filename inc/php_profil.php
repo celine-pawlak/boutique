@@ -88,10 +88,14 @@
                 }      
                 
             // Partie Historique des achats
-                // Récupère les commandes de l'utilisateur
+                // Récupère les commandes de l'utilisateur et prépare pour la pagination
                 $commande_user = $bdd->query('SELECT * FROM commandes WHERE id_utilisateurs = ? LIMIT 5', [$id])->fetchAll(PDO::FETCH_ASSOC);
                 $get_page = (isset($_GET["commande"])? $_GET["commande"] : 1);
                 $infos_commandes = prepaPagination(5, 'commandes', $get_page, 'date_commande', $bdd, 'id_utilisateurs', $id);                
+                $pp = $infos_commandes['par_page'];
+                $nb_total = $infos_commandes['nb_total'];
+                $nb_page = $infos_commandes['nb_page'];
+                $page = $infos_commandes['page'];   
         }
     else
         {

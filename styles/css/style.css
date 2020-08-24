@@ -84,6 +84,7 @@ input
         display: flex;
         flex-direction: column;
         text-align: center;
+        height: auto;
     }
 #formulaire_profil
     {
@@ -119,8 +120,15 @@ input
         align-items: center;
     }
 .histo
-    {
+    {        
         margin-top: 5vh;
+        width: 60vw;
+    }
+#affiche_pagi 
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         width: 60vw;
     }
 /* FIN PROFIL */

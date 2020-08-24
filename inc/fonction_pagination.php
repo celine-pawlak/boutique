@@ -29,7 +29,7 @@
             $infos['page'] = $page;            
             return $infos;
         }
-    function pagination($pp ,$nt, $n, $p, $s, $a='')
+    function pagination($pp ,$nt, $n, $p, $get, $redirect, $a='')//Par page, nombre total, nombre de page, page, get dans l'url, page vers laquelle revenir, ancrage si besoin
         {            
             if($nt>$pp)
                 {                  
@@ -40,7 +40,7 @@
                             if($p>1)
                                 {                                                               
                                     ?>
-                                    <a class="button" href="admin.php?<?= $s ?>=<?=$p-1 ?><?= $a ?>">Précédent</a>
+                                    <a class="btn bouton" href="<?= $redirect ?>?<?= $get ?>=<?=$p-1 ?><?= $a ?>">Précédent</a>
                                     <?php
                                 }
                             else
@@ -56,7 +56,7 @@
                             if($p < $n)
                                 {                               
                                     ?>
-                                    <a class="button" href="admin.php?<?= $s ?>=<?= $p+1 ?><?= $a ?>">Suivant</a>
+                                    <a class="btn bouton" href="<?= $redirect ?>?<?= $get ?>=<?= $p+1 ?><?= $a ?>">Suivant</a>
                                     <?php
                                 }                       
                         ?>

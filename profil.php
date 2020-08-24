@@ -105,6 +105,7 @@
                             ?>
                         </tbody>
                     </table>
+                    <?php pagination($pp, $nb_total, $nb_page, $page, 'commande', 'profil.php', '#tableau_historique') ?>                        
                 </section>
         </section>
     </main>
