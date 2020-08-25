@@ -19,7 +19,7 @@
     <main id="main_panier">
         <?php                      
         var_dump($_SESSION);
-            // affichagePanier(getPanier(), $bdd); 
+            $panier->affichagePanier($panier->getPanier(), $bdd); 
         ?>
     </main>
     <?php include 'inc/footer.php';?>

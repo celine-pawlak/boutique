@@ -22,6 +22,10 @@
                 {   
                     $_SESSION["$cle"] = $valeur;
                 }
+            public function addSession($cle, $champ, $valeur)
+                {
+                    $_SESSION["$cle"][$champ] = $valeur;
+                }
             public function hasFlashes()
                 {
                     return isset($_SESSION['flash']);

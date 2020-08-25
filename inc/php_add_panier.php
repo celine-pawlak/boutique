@@ -1,29 +1,15 @@
 <?php
-    require 'inc/initialisation.php';
-    require_once 'class/class_panier.php';
+    require 'inc/initialisation.php';    
     $bdd = App::getDatabase();
-    // $panier = new class_panier;
+    $panier = new class_panier;
 
-    // if(!isset($_SESSION['panier']))
-        // {
-            Session::getInstance()->setSession('panier', []);            
-        // }
-    // else
-        // {
-            // $_SESSION['panier'] = [1];
-        // }
-   add(1, 1);
-   add(1, 1);
-   add(1, 3);
-   add(2, 2);
-   add(2, 2);
-   add(3, 1);
-   add(3, 5);
-   
+    if(isset($_GET['id_produit'], $_GET['quantite_produit']))
+        {
+            $id_prodduit = $_GET['id_produit'];
+            $quantite_produit = $_GET['quantite_produit'];
 
-    // if(!empty($_SESSION['panier']))
-    //     {            
-    //         $vuPanier = $panier->getPanier();    
-    //     }    
+            $session_panier = $panier->add($id_prodduit, $quantite_produit, $bdd);
+        }    
+        // $panier->add(1,1, $bdd);        
 
 ?>

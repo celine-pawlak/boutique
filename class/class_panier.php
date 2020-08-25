@@ -1,33 +1,33 @@
 <?php
-    // class class_panier
-        
-            function __construct()
+    class class_panier
+        {
+            public function __construct()
                 {
                     if(!isset($_SESSION['panier']))
                         {
-                            $_SESSION['panier'] = [];                            
+                            Session::getInstance()->setSession('panier', []);                            
                         }
+                    return $_SESSION['panier'];
                 }           
-            function add($produit_id, $quantite)
-                {                                  
-                    echo 'toto';
-                    if(isset( $_SESSION['panier'][$produit_id]))
-                        {
-                            echo 'tata';
+            public function add($produit_id, $quantite, $bdd)
+                {                                                     
+                    if(isset($_SESSION['panier'][$produit_id]))
+                        {                            
                             $quantite_conf = $_SESSION['panier'][$produit_id]['quantite'];
-                            $_SESSION['panier'][$produit_id] = ['id'=>$produit_id, 'quantite' =>($quantite_conf + $quantite)];
+                            Session::getInstance()->addSession('panier', $produit_id, ['id'=>$produit_id, 'quantite' =>($quantite_conf + $quantite)]);
+                            // $_SESSION['panier'][$produit_id] = ['id'=>$produit_id, 'quantite' =>($quantite_conf + $quantite)];
                         }
                         else        
-                        {
-                            echo 'tutu';
-                            $_SESSION['panier'][$produit_id] = ['id'=>$produit_id, 'quantite' =>$quantite];                
+                        {                           
+                            Session::getInstance()->addSession('panier', $produit_id, ['id'=>$produit_id, 'quantite' =>$quantite]);
+                            // $_SESSION['panier'][$produit_id] = ['id'=>$produit_id, 'quantite' =>$quantite];                                                                  
                         }                                       
                 }
-            function getPanier()
+            public function getPanier()
                 {                    
                     return $_SESSION['panier'];                        
                 }
-            function affichagePanier($getpanier, $bdd)
+            public function affichagePanier($getpanier, $bdd)
                 {
                     if(!empty($getpanier))
                         {                            
@@ -45,12 +45,12 @@
                                     <?php
                                         foreach($getpanier as $nombre => $produit)
                                             {            
-                                                $info_produit = $bdd->query('SELECT * FROM produits')                             
+                                                $info_produit = $bdd->query('SELECT * FROM produits WHERE id=?', [$produit['id']])->fetch();
                                                 ?>
                                                 <tr>
-                                                    <td></td>
+                                                    <td><?= $info_produit->nom ?></td>
                                                     <td><?= $produit['quantite'] ?></td>
-                                                    <td></td>                                        
+                                                    <td><?= ($info_produit->prix * $produit['quantite']) ?></td>                                        
                                                     <td></td>                                        
                                                 </tr>
                                                 <?php
@@ -96,5 +96,5 @@
                             <?php
                         }
                 }
-        
+            }
 ?>
