@@ -2,17 +2,21 @@
     require 'inc/initialisation.php';
     $bdd = App::getDatabase();
     $panier = new class_panier;
+    $panier->add(1, 1);
+    $panier->add(1, 1);
+    $panier->add(1, 3);
+    $panier->add(2, 2);
+    $panier->add(2, 2);
+    $panier->add(3, 1);
+    $panier->add(3, 1);
 
-    if(isset($_GET['id_produit']))
-        {
-            $produit_ajoute = $bdd->query('SELECT * FROM produits WHERE id=?', [$_GET['id_produit']])->fetch();                        
-            if(empty($produit_ajoute))
-                {
-                    Session::getInstance()->setFlash('danger', "Ce produit n'existe pas");                    
-                }
-            $panier->add($produit_ajoute->id);
-            Session::getInstance()->setFlash('success', "Produit bien ajouté au panier");                    
+    if(!empty($_SESSION['panier']))
+        {            
+            var_dump($panier->getPanier());
         }
     else
-        die('pas encore de produits');
+        {
+
+        }
+
 ?>
