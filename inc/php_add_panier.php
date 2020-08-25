@@ -16,7 +16,9 @@
                 {
                     Session::getInstance()->setFlash('danger', "Ce produit n'existe pas");                    
                 }
-            $panier->add($produit_ajoute->id, $quantite);//ajoute le porduit dans le panier avec la quantité sélectionnée
+            $panier->add($produit_ajoute->id, $quantite);//ajoute le porduit dans le panier avec la quantité sélectionnée            
+            
+    
         }        
     else
         die('pas encore de produits');  

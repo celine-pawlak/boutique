@@ -38,17 +38,17 @@
                         else
                             {
                                 $produits = $bdd->query('SELECT * FROM produits WHERE id IN ('.implode(',', $ids).')')->fetchAll();
-                            }
+                            }          
+                            var_dump($_SESSION['panier']);
                         
                         foreach($produits as $produit)
-                            {                                  
-                                $quantite = $_SESSION['panier'][$produit->id];                                               
+                            {                                                                                                                                                             
                                 ?>
                                 <tr>
                                     <td><?= $produit->image_path ?></td>
                                     <td><?= $produit->nom ?></td>
                                     <td><?= number_format($produit->prix, 2, ',', '') ?> €</td>
-                                    <td><input type="submit" value="-" class="btn" name="moins[<?= $produit->id ?>]"><?= $quantite ?><input type="submit" value="+" class="btn" name="plus[<?= $produit->id ?>]"></td>
+                                    <td><input type="submit" value="-" class="btn" name="moins"><?= $_SESSION['panier'][$produit->id] ?><input type="submit" value="+" class="btn" name="plus"><input type="hidden" name="id_produit" value="<?= $produit->id ?>"></td>
                                     <td><?= number_format(($produit->prix * $quantite), 2, ',', '')?> €</td>
                                     <td><a href="panier.php?delPanier=<?= $produit->id ?>">supprimer</a></td>
                                 </tr>
