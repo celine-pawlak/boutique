@@ -11,6 +11,10 @@ main
     {
         height: 100%;
     }
+.max_width_1400{
+    max-width: 1400px;
+    margin:  0 auto;
+}
 /* DEBUT STYLE GENERIQUE */
 .bouton
     {
@@ -78,3 +82,18 @@ input
         margin-top: 5vh;
     }
 /* FIN CONNEXION */
+
+/* DEBUT CATEGORIES */
+.button{
+    background-color: transparent;
+}
+.button_selected{
+    background-color: #449D66;
+}
+/* FIN CATEGORIES */
+
+/* DEBUT ADMIN */
+.gestion_selected{
+    background-color: #449D66;
+}
+/* FIN ADMIN */
