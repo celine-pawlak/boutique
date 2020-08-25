@@ -83,10 +83,10 @@
                     <table class="table table-striped histo">
                         <thead>
                             <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Numéro de commande</th>
-                            <th scope="col">Nombre de produits</th>
-                            <th scope="col">Prix</th>
+                                <th>Date</th>
+                                <th>Numéro de commande</th>
+                                <th>Nombre de produits</th>
+                                <th>Prix</th>
                             </tr>
                         </thead>
                         <tbody>

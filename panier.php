@@ -16,8 +16,11 @@
     <header>
         <?php include 'inc/header.php'; ?>
     </header>
-    <main>
-
+    <main id="main_panier">
+        <?php                      
+        var_dump($_SESSION);
+            // affichagePanier(getPanier(), $bdd); 
+        ?>
     </main>
     <?php include 'inc/footer.php';?>
 </body>
