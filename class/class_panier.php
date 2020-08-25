@@ -1,100 +1,54 @@
 <?php
     class class_panier
         {
-            public function __construct()
+            private $bdd;
+            public function __construct($bdd)
                 {
                     if(!isset($_SESSION['panier']))
                         {
-                            Session::getInstance()->setSession('panier', []);                            
+                            Session::getInstance()->setSession('panier', []); 
+                            // lien vers l'ajout au panier :panier.php?id=id_produit
                         }
-                    return $_SESSION['panier'];
+                    $this->bdd= $bdd;
+                    
+                    if(isset($_GET['delPanier']))
+                        {                            
+                            $this->del($_GET['delPanier']);
+                        }                     
                 }           
-            public function add($produit_id, $quantite, $bdd)
-                {                                                     
-                    if(isset($_SESSION['panier'][$produit_id]))
-                        {                            
-                            $quantite_conf = $_SESSION['panier'][$produit_id]['quantite'];
-                            Session::getInstance()->addSession('panier', $produit_id, ['id'=>$produit_id, 'quantite' =>($quantite_conf + $quantite)]);
-                            // $_SESSION['panier'][$produit_id] = ['id'=>$produit_id, 'quantite' =>($quantite_conf + $quantite)];
-                        }
-                        else        
-                        {                           
-                            Session::getInstance()->addSession('panier', $produit_id, ['id'=>$produit_id, 'quantite' =>$quantite]);
-                            // $_SESSION['panier'][$produit_id] = ['id'=>$produit_id, 'quantite' =>$quantite];                                                                  
-                        }                                       
-                }
-            public function getPanier()
-                {                    
-                    return $_SESSION['panier'];                        
-                }
-            public function affichagePanier($getpanier, $bdd)
+            public function add($produit_id, $quantite)
                 {
-                    if(!empty($getpanier))
-                        {                            
-                            ?>
-                            <table class="table">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th>Produit</th>
-                                        <th>Quantité</th>
-                                        <th>Prix</th>
-                                        <th>Supprimer</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        foreach($getpanier as $nombre => $produit)
-                                            {            
-                                                $info_produit = $bdd->query('SELECT * FROM produits WHERE id=?', [$produit['id']])->fetch();
-                                                ?>
-                                                <tr>
-                                                    <td><?= $info_produit->nom ?></td>
-                                                    <td><?= $produit['quantite'] ?></td>
-                                                    <td><?= ($info_produit->prix * $produit['quantite']) ?></td>                                        
-                                                    <td></td>                                        
-                                                </tr>
-                                                <?php
-                                            }
-                                    ?>
-                                </tbody>
-                            </table>
-                            <?php
+                    if(isset($_SESSION['panier'][$produit_id]))
+                        {
+                            $quantite_panier = $_SESSION['panier'][$produit_id] = $quantite;
+                            $_SESSION['panier'][$produit_id] = ($quantite_panier + $quantite);
                         }
                     else
                         {
-                            ?>
-                             <table class="table">
-                                <thead class="thead-light">
-                                    <tr>
-                                    <th>#</th>
-                                    <th>First</th>
-                                    <th>Last</th>
-                                    <th>Handle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <?php
+                            $_SESSION['panier'][$produit_id] = $quantite;                
                         }
+                }                       
+            public function total()
+                {                    
+                    $total = 0;
+                    $ids = array_keys($_SESSION['panier']);   
+                    if(empty($ids))             
+                        {
+                            $produits = [];
+                        }
+                    else
+                        {
+                            $produits = $this->bdd->query('SELECT id,prix FROM produits WHERE id IN ('.implode(',', $ids).')')->fetchAll();
+                        }
+                    foreach($produits as $produit)
+                        {
+                            $total += $produit->prix*$_SESSION['panier'][$produit->id];
+                        }
+                    return $total;
                 }
-            }
-?>
+            public function del($produit_id)
+                {
+                    unset($_SESSION['panier'][$produit_id]);
+                }
+        }
+?> 

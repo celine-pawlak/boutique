@@ -1,15 +1,25 @@
 <?php
-    require 'inc/initialisation.php';    
+    require 'inc/initialisation.php';   
     $bdd = App::getDatabase();
-    $panier = new class_panier;
+    $panier = new class_panier($bdd);   
+    
+    $_GET['id_produit'] = 1;
+    $_GET['quantite']= 2;
 
-    if(isset($_GET['id_produit'], $_GET['quantite_produit']))
+    if(isset($_GET['id_produit'], $_GET['quantite']))
         {
-            $id_prodduit = $_GET['id_produit'];
-            $quantite_produit = $_GET['quantite_produit'];
+            $id_produit = $_GET['id_produit'];   
+            $quantite = $_GET['quantite'];
 
-            $session_panier = $panier->add($id_prodduit, $quantite_produit, $bdd);
-        }    
-        // $panier->add(1,1, $bdd);        
-
-?>
+            $produit_ajoute = $bdd->query('SELECT * FROM produits WHERE id=?', [$id_produit])->fetch();                        
+            if(empty($produit_ajoute))
+                {
+                    Session::getInstance()->setFlash('danger', "Ce produit n'existe pas");                    
+                }
+            $panier->add($produit_ajoute->id, $quantite);//ajoute le porduit dans le panier avec la quantité sélectionnée
+        }        
+    else
+        die('pas encore de produits');  
+        
+    
+?> 

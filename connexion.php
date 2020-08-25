@@ -25,7 +25,7 @@
                 </section>
                 <section class="form-group">
                     <label for="password">password: <span class="oblig">*</span></label>
-                    <input type="text" class="form-control" name="password" id="password" required>
+                    <input type="password" class="form-control" name="password" id="password" required>
                 </section>      
                 <section class="valid_form">
                     <input type="submit" class="btn bouton" name="valid_con" value="Connexion">

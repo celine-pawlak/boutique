@@ -1,5 +1,5 @@
 <?php    
-    include 'inc/php_add_panier.php';
+    include 'inc/php_add_panier.php';       
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,11 +16,51 @@
     <header>
         <?php include 'inc/header.php'; ?>
     </header>
-    <main id="main_panier">
-        <?php                      
-        var_dump($_SESSION);
-            $panier->affichagePanier($panier->getPanier(), $bdd); 
-        ?>
+    <main id="main_panier">                                 
+        <form action="" method="POST">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="2">Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Prix total</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $ids = array_keys($_SESSION['panier']);   
+                        if(empty($ids))             
+                            {
+                                $produits = [];
+                            }
+                        else
+                            {
+                                $produits = $bdd->query('SELECT * FROM produits WHERE id IN ('.implode(',', $ids).')')->fetchAll();
+                            }
+                        
+                        foreach($produits as $produit)
+                            {                                  
+                                $quantite = $_SESSION['panier'][$produit->id];                                               
+                                ?>
+                                <tr>
+                                    <td><?= $produit->image_path ?></td>
+                                    <td><?= $produit->nom ?></td>
+                                    <td><?= number_format($produit->prix, 2, ',', '') ?> €</td>
+                                    <td><input type="submit" value="-" class="btn" name="moins[<?= $produit->id ?>]"><?= $quantite ?><input type="submit" value="+" class="btn" name="plus[<?= $produit->id ?>]"></td>
+                                    <td><?= number_format(($produit->prix * $quantite), 2, ',', '')?> €</td>
+                                    <td><a href="panier.php?delPanier=<?= $produit->id ?>">supprimer</a></td>
+                                </tr>
+                                <?php
+                            }
+                    ?>
+                                <tr>
+                                    <td>Prix total : <?= number_format($panier->total(), 2, ',', '') ?></td>
+                                </tr>
+                </tbody>
+            </table>        
+        </form>
     </main>
     <?php include 'inc/footer.php';?>
 </body>
