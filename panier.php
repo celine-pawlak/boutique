@@ -30,6 +30,7 @@
                 </thead>
                 <tbody>
                     <?php
+                    var_dump($_SESSION['panier']);
                         $ids = array_keys($_SESSION['panier']);   
                         if(empty($ids))             
                             {
@@ -38,21 +39,20 @@
                         else
                             {
                                 $produits = $bdd->query('SELECT * FROM produits WHERE id IN ('.implode(',', $ids).')')->fetchAll();
-                            }          
-                            var_dump($_SESSION['panier']);
-                        
-                        foreach($produits as $produit)
-                            {                                                                                                                                                             
+                            }                                                                                                                    
+                            // var_dump($_SESSION['panier']);
+                            foreach($produits as $produit)
+                            {                                                                                  
                                 ?>
                                 <tr>
                                     <td><?= $produit->image_path ?></td>
                                     <td><?= $produit->nom ?></td>
                                     <td><?= number_format($produit->prix, 2, ',', '') ?> €</td>
-                                    <td><input type="submit" value="-" class="btn" name="moins"><?= $_SESSION['panier'][$produit->id] ?><input type="submit" value="+" class="btn" name="plus"><input type="hidden" name="id_produit" value="<?= $produit->id ?>"></td>
-                                    <td><?= number_format(($produit->prix * $quantite), 2, ',', '')?> €</td>
+                                    <td><input type="text" value="<?=$_SESSION['panier'][$produit->id] ?>" name="panier[quantite][<?= $produit->id ?>]"><input type="submit" value="Recalculer"></td>
+                                    <td><?= number_format(($produit->prix * $_SESSION['panier'][$produit->id]), 2, ',', '')?> €</td>
                                     <td><a href="panier.php?delPanier=<?= $produit->id ?>">supprimer</a></td>
                                 </tr>
-                                <?php
+                                <?php 
                             }
                     ?>
                                 <tr>

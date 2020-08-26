@@ -14,20 +14,30 @@
                     if(isset($_GET['delPanier']))
                         {                            
                             $this->del($_GET['delPanier']);
-                        }                     
+                        }                           
                 }           
             public function add($produit_id, $quantite)
                 {
                     if(isset($_SESSION['panier'][$produit_id]))
                         {
-                            $quantite_panier = $_SESSION['panier'][$produit_id] = $quantite;
-                            $_SESSION['panier'][$produit_id] = ($quantite_panier + $quantite);
+                            $quantite_panier = $_SESSION['panier'][$produit_id];
+                            Session::getInstance()->addSession('panier',$produit_id, ($quantite_panier + $quantite));
                         }
                     else
                         {
-                            $_SESSION['panier'][$produit_id] = $quantite;                
+                            Session::getInstance()->addSession('panier',$produit_id, $quantite);
+                            // $_SESSION['panier'][$produit_id] = $quantite;                
                         }
-                }                       
+                }          
+            public function recalcul()  
+                {                                        
+                    foreach($_SESSION['panier'] as $produit_id => $quantite)
+                        {                           
+                            var_dump($_SESSION)['panier'];
+                            Session::getInstance()->addSession('panier',$produit_id, $_POST['panier']['quantite'][$produit_id]);                           
+                            var_dump($_SESSION)['panier'];
+                        }
+                }
             public function total()
                 {                    
                     $total = 0;
