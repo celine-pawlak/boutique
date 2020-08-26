@@ -1,5 +1,5 @@
 <?php    
-    include 'inc/php_add_panier.php';       
+    include 'inc/initialisation.php';       
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,13 @@
     <header>
         <?php include 'inc/header.php'; ?>
     </header>
-    <main id="main_panier">                                 
+    <main id="main_panier">  
+    <form action="inc/php_addpanier.php" method="GET">
+            <input type="text" name="id_utilisateur">
+            <input type="text" name="id_produit">
+            <input type="text" name="quantite">
+            <input type="submit">
+        </form>                               
         <form action="" method="POST">
             <table class="table">
                 <thead class="thead-light">
@@ -29,34 +35,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    var_dump($_SESSION['panier']);
-                        $ids = array_keys($_SESSION['panier']);   
-                        if(empty($ids))             
-                            {
-                                $produits = [];
-                            }
-                        else
-                            {
-                                $produits = $bdd->query('SELECT * FROM produits WHERE id IN ('.implode(',', $ids).')')->fetchAll();
-                            }                                                                                                                    
-                            // var_dump($_SESSION['panier']);
-                            foreach($produits as $produit)
+                    <?php                                                                                                                                                                           
+                            // foreach($produits as $produit)
                             {                                                                                  
                                 ?>
                                 <tr>
-                                    <td><?= $produit->image_path ?></td>
-                                    <td><?= $produit->nom ?></td>
-                                    <td><?= number_format($produit->prix, 2, ',', '') ?> €</td>
-                                    <td><input type="text" value="<?=$_SESSION['panier'][$produit->id] ?>" name="panier[quantite][<?= $produit->id ?>]"><input type="submit" value="Recalculer"></td>
-                                    <td><?= number_format(($produit->prix * $_SESSION['panier'][$produit->id]), 2, ',', '')?> €</td>
-                                    <td><a href="panier.php?delPanier=<?= $produit->id ?>">supprimer</a></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <!-- <td><a href="panier.php?delPanier=">supprimer</a></td> -->
                                 </tr>
                                 <?php 
                             }
                     ?>
                                 <tr>
-                                    <td>Prix total : <?= number_format($panier->total(), 2, ',', '') ?></td>
+                                    <td></td>
                                 </tr>
                 </tbody>
             </table>        
