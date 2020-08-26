@@ -1,5 +1,6 @@
 <?php    
-    include 'inc/initialisation.php';       
+    include 'inc/initialisation.php';   
+    include 'inc/php_panier.php';  
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@
             <input type="text" name="quantite">
             <input type="submit">
         </form>                               
-        <form action="" method="POST">
+        <form action="" method="GET">
             <table class="table">
                 <thead class="thead-light">
                     <tr>
@@ -36,16 +37,17 @@
                 </thead>
                 <tbody>
                     <?php                                                                                                                                                                           
-                            // foreach($produits as $produit)
-                            {                                                                                  
+                            foreach($produitPanier as $nombre => $produit)
+                            {             
+                                var_dump($produit);
                                 ?>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <!-- <td><a href="panier.php?delPanier=">supprimer</a></td> -->
+                                    <td><?= $produit->image_path ?></td>
+                                    <td><?= $produit->nom ?></td>
+                                    <td><?= $produit->prix ?></td>
+                                    <td><?= $produit->quantite ?></td>
+                                    <td><?= ($produit->prix * $produit->quantite) ?></td>
+                                    <td><a href="inc/suppression.php?delPanier=<?= $produit->id ?>">supprimer</a></td>                                    
                                 </tr>
                                 <?php 
                             }

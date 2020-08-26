@@ -1,6 +1,5 @@
 <?php 
 require_once 'inc/initialisation.php';
-include 'inc/header.php'; 
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,6 +17,6 @@ include 'inc/header.php';
     <main>
         <h1>Coq Etique</h1>
     </main>
-    <?php include 'inc/footer.php'; ?>
+    <?php include 'inc/footer.php';var_dump($_SESSION); ?>
 </body>
 </html>
