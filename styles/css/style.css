@@ -28,6 +28,10 @@ input
     {
         text-align: center;        
     }
+h2  
+    {
+        margin-top: 5vh;
+    }
 .valid_form
     {
         display: flex;
@@ -43,7 +47,7 @@ input
         justify-content: space-around;
         text-align: center;
     }
-.etape
+.suivant
     {
         display: flex;
         justify-content: space-between;
@@ -169,4 +173,25 @@ input
         margin-bottom: 10vh;
         width: 80vw;
     }
+.nav_etape
+    {
+        width: 100%;
+    }
+.etape
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100% !important;
+    }
 /* FIN VERIFICATION */
+/* DEBUT COMPTE */
+#main_compte
+    {
+
+    }
+#main_compte p  
+    {
+        margin: 0 !important;
+    }
+/* FIN COMPTE */

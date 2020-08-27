@@ -13,6 +13,6 @@
         }
     else
         {
-
+            App::redirect('index.php');
         }
 ?>

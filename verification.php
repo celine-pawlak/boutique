@@ -17,6 +17,26 @@ include 'inc/php_verification.php';
         <? include 'inc/header.php';?>
     </header>
     <main id="main_verification">
+        <section class="nav_etape">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="etape navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link">1 - Vérification du Panier<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">2 - Adresse livraison</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">3 - Paiement</a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="nav-link">4 - Confirmation</a>
+                        </li>                        
+                    </ul>
+                </div>
+            </nav>
+        </section>
         <h2>Récapitulatif du panier</h2>
         <table class="table table_verification">
             <thead class="thead-light">
@@ -47,7 +67,7 @@ include 'inc/php_verification.php';
                         </tr>                                                                                                       
             </tbody>
         </table>     
-        <section class="etape">           
+        <section class="suivant">           
             <form action="panier.php" method="POST">                       
                 <input type="submit" name="valid_panier" value="Retour" class="btn bouton">
             </form>               
