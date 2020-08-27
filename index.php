@@ -17,6 +17,6 @@ require_once 'inc/initialisation.php';
     <main>
         <h1>Coq Etique</h1>
     </main>
-    <?php include 'inc/footer.php';var_dump($_SESSION); ?>
+    <?php include 'inc/footer.php';?>
 </body>
 </html>

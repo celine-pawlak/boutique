@@ -24,7 +24,7 @@
             <input type="text" name="quantite">
             <input type="submit">
         </form>                               
-        <form action="" method="GET">
+        <form action="" method="POST">
             <table class="table">
                 <thead class="thead-light">
                     <tr>
@@ -36,20 +36,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php                                                                                                                                                                           
-                            foreach($produitPanier as $nombre => $produit)
-                            {             
-                                var_dump($produit);
+                    <?php
+                        if(empty($produitPanier))
+                            {
                                 ?>
                                 <tr>
-                                    <td><?= $produit->image_path ?></td>
-                                    <td><?= $produit->nom ?></td>
-                                    <td><?= $produit->prix ?></td>
-                                    <td><?= $produit->quantite ?></td>
-                                    <td><?= ($produit->prix * $produit->quantite) ?></td>
-                                    <td><a href="inc/suppression.php?delPanier=<?= $produit->id ?>">supprimer</a></td>                                    
+                                    <td colspan="6">Vous n'avez pas encore de produit dans votre panier</td>
                                 </tr>
-                                <?php 
+                                <?php
+                            }
+                        else    
+                            {
+                                foreach($produitPanier as $nombre => $produit)
+                                    {           
+                                        var_dump($produitPanier);
+                                        ?>
+                                        <tr>
+                                            <td><?= $produit->image_path ?></td>
+                                            <td><?= $produit->nom ?></td>
+                                            <td><?= number_format($produit->prix, 2, ',', '') ?>€</td>
+                                            <td><a href="inc/php_addpanier.php?moins&id_produit_panier=<?= $produit->id?>&produit_id=<?= $produit->id_produit ?>" class="btn">-</a><?= $produit->quantite ?>
+                                            <a href="inc/php_addpanier.php?plus&id_produit_panier=<?= $produit->id?>&produit_id=<?= $produit->id_produit ?>" class="btn">+</a></td>                                   
+                                            <td><?= number_format(($produit->prix * $produit->quantite), 2, ',', '') ?>€</td>
+                                            <td><a href="inc/suppression.php?delPanier=<?= $produit->id ?>">supprimer</a></td>                                    
+                                        </tr>                                
+                                        <?php 
+                                        $grandtotal = array_sum($produitPanier->prix);
+                                    }   
+                                ?> 
+                                <tr>
+                                    <td>Grand total : <?= number_format($grandtotal, 2, ',', '') ?>€</td>
+                                </tr>  
+                                <?php                      
                             }
                     ?>
                                 <tr>
