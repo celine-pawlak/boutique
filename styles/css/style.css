@@ -43,6 +43,12 @@ input
         justify-content: space-around;
         text-align: center;
     }
+.etape
+    {
+        display: flex;
+        justify-content: space-between;
+        width: 60vw;
+    }
 /* FIN STYLE GENERIQUE */
 /* DEBUT INSCRIPTION */
 #main_inscription
@@ -132,3 +138,35 @@ input
         width: 60vw;
     }
 /* FIN PROFIL */
+/* DEBUT PANIER */
+#main_panier
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: auto;
+    }
+#table_panier
+    {
+        width: 80vw;
+        margin-top: 10vh;
+        margin-bottom: 5vh;
+    }
+/* FIN PANIER */
+/* DEBUT VEIRIFCATION */
+#main_verification
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: auto;
+    }
+.table_verification
+    {
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+        width: 80vw;
+    }
+/* FIN VERIFICATION */

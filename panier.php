@@ -18,13 +18,16 @@
         <?php include 'inc/header.php'; ?>
     </header>
     <main id="main_panier">  
-    <form action="inc/php_addpanier.php" method="GET">
+        <!-- A supprimer -->
+        <form action="inc/php_addpanier.php" method="GET">
             <input type="text" name="id_utilisateur">
             <input type="text" name="id_produit">
             <input type="text" name="quantite">
             <input type="submit">
-        </form>                               
-        <form action="" method="POST">
+        </form>      
+        <!-- ------- -->
+        <h2>Votre panier</h2>                         
+        <form action="" method="POST" id="table_panier">
             <table class="table">
                 <thead class="thead-light">
                     <tr>
@@ -63,7 +66,7 @@
                                     }                                   
                                 ?> 
                                     <tr>
-                                        <td>Grand total :<?= $totalPanier ?>€</td>
+                                        <td colspan="6">Grand total : <b><?= $totalPanier ?>€</b></td>
                                     </tr>                                 
                                 <?php                      
                             }
@@ -72,8 +75,18 @@
                                     <td></td>
                                 </tr>
                 </tbody>
-            </table>        
+            </table>                    
         </form>
+        <form action="verification.php" method="POST">
+            <?php
+                if(!empty($produitPanier))
+                    {
+                        ?>
+                            <input type="submit" name="valid_panier" value="Valider" class="btn bouton">                            
+                        <?php
+                    }
+            ?>
+        </form>        
     </main>
     <?php include 'inc/footer.php';?>
 </body>
