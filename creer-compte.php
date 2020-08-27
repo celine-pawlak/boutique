@@ -35,6 +35,92 @@
                 </div>
             </nav>
         </section>
+        <?php 
+            if(isset($_SESSION['current_user']['id']))
+                {
+                    ?>
+                    <form action="" method="POST">
+                        <section class="formulaire">                            
+                            <section id="info_user">                                
+                                <section class="form-group">
+                                    <label for="adresse">Adresse (livraison / facturation): <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="adresse" id="adresse" required>
+                                </section>
+                                <section class="form-group">
+                                    <label for="ville">Ville (livraison / facturation): <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="ville" id="ville" required>
+                                </section>
+                                <section class="form-group">
+                                    <label for="cp">Code postal (livraison / facturation): <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="cp" id="cp" required>
+                                </section>                
+                            </section>
+                        </section>    
+                        <section class="valid_form">
+                            <input type="submit" class="btn bouton" name="valid_adresse" value="Valider adresse">
+                            <small><span class="oblig">*</span>Champs obligatoires</small>
+                        </section>                          
+                    </form>
+                    <?php
+                }
+            else
+                {
+                    ?>
+                    <form action="" method="POST">
+                        <section class="formulaire">
+                            <section id="info_log">
+                                <section class="form-group">
+                                    <label for="username">Login: <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="username" id="username" required>
+                                </section>
+                                <section class="form-group">
+                                    <label for="email">Email: <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="email" id="email" required>
+                                </section>
+                                <section class="form-group">
+                                    <label for="password">Mot de passe: <span class="oblig">*</span></label>
+                                    <input type="password" class="form-control" name="password" id="password" required>
+                                </section>  
+                                <section class="form-group">
+                                    <label for="password_confirm">Confirmer mot de passe: <span class="oblig">*</span></label>
+                                    <input type="password" class="form-control" name="password_confirm" id="password_confirm" required>
+                                </section>              
+                            </section>
+                            <section id="info_user">
+                                <section class="form-group">
+                                    <label for="nom">Nom: <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="nom" id="nom" required>
+                                </section>
+                                <section class="form-group">
+                                    <label for="prenom">Prénom: <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="prenom" id="prenom"  required>
+                                </section>
+                                <section class="form-group">
+                                    <label for="telephone">Téléphone: <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="telephone" id="telephone" required>
+                                </section>
+                                <section class="form-group">
+                                    <label for="adresse">Adresse (livraison / facturation): <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="adresse" id="adresse" required>
+                                </section>
+                                <section class="form-group">
+                                    <label for="ville">Ville (livraison / facturation): <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="ville" id="ville" required>
+                                </section>
+                                <section class="form-group">
+                                    <label for="cp">Code postal (livraison / facturation): <span class="oblig">*</span></label>
+                                    <input type="text" class="form-control" name="cp" id="cp" required>
+                                </section>                
+                            </section>
+                        </section>    
+                        <section class="valid_form">
+                            <input type="submit" class="btn bouton" name="valid_compte" value="Créer un compte">
+                            <small><span class="oblig">*</span>Champs obligatoires</small>
+                        </section>                          
+                    </form>
+                    <?php
+                }
+        ?>
     </main>
     <?php include 'inc/footer.php'; ?>
 </body>
