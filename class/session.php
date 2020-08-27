@@ -43,14 +43,7 @@
                             return $_SESSION['current_user'];
                         }
                     
-                }
-            public function hasPanier()
-                {
-                    if(isset($_SESSION['panier']))
-                        {
-                            return $_SESSION['panier'];
-                        }
-                }
+                }            
                 
         }
 ?>

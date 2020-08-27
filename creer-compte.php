@@ -39,28 +39,54 @@
             if(isset($_SESSION['current_user']['id']))
                 {
                     ?>
-                    <form action="" method="POST">
-                        <section class="formulaire">                            
-                            <section id="info_user">                                
-                                <section class="form-group">
-                                    <label for="adresse">Adresse (livraison / facturation): <span class="oblig">*</span></label>
-                                    <input type="text" class="form-control" name="adresse" id="adresse" required>
-                                </section>
-                                <section class="form-group">
-                                    <label for="ville">Ville (livraison / facturation): <span class="oblig">*</span></label>
-                                    <input type="text" class="form-control" name="ville" id="ville" required>
-                                </section>
-                                <section class="form-group">
-                                    <label for="cp">Code postal (livraison / facturation): <span class="oblig">*</span></label>
-                                    <input type="text" class="form-control" name="cp" id="cp" required>
-                                </section>                
+                    <section>
+                        <section>
+                            <form action="" method="POST">
+                                </form>
                             </section>
-                        </section>    
-                        <section class="valid_form">
-                            <input type="submit" class="btn bouton" name="valid_adresse" value="Valider adresse">
-                            <small><span class="oblig">*</span>Champs obligatoires</small>
-                        </section>                          
-                    </form>
+                            <form action="" method="POST">
+                                <section class="formulaire">     
+                                    <section>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Adresse</th>
+                                                    <th>Ville</th>
+                                                    <th>Code Postal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><?= $_SESSION['current_user']['adresse_facturation'] ?></td>                                        
+                                                    <td><?= $_SESSION['current_user']['ville_facturation'] ?></td>                                        
+                                                    <td><?= $_SESSION['current_user']['code_postal_facturation'] ?></td>                                        
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <input type="checkbox" id="meme_adresse" name="meme_adresse">
+                                        <label for="meme_adresse">Choisir cette adresse</label>
+                                    </section>                       
+                                    <section id="info_user">                                
+                                        <section class="form-group">
+                                            <label for="adresse">Adresse (livraison / facturation): <span class="oblig">*</span></label>
+                                            <input type="text" class="form-control" name="adresse" id="adresse" >
+                                        </section>
+                                        <section class="form-group">
+                                            <label for="ville">Ville (livraison / facturation): <span class="oblig">*</span></label>
+                                            <input type="text" class="form-control" name="ville" id="ville" >
+                                        </section>
+                                        <section class="form-group">
+                                            <label for="cp">Code postal (livraison / facturation): <span class="oblig">*</span></label>
+                                            <input type="text" class="form-control" name="cp" id="cp" >
+                                        </section>                
+                                    </section>
+                            </section>    
+                            <section class="valid_form">
+                                <input type="submit" class="btn bouton" name="valid_adresse" value="Valider">
+                                <small><span class="oblig">*</span>Champs obligatoires</small>
+                            </section>                          
+                        </form>
+                    </section>
                     <?php
                 }
             else
