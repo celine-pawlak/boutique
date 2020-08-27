@@ -48,8 +48,7 @@
                         else    
                             {
                                 foreach($produitPanier as $nombre => $produit)
-                                    {           
-                                        var_dump($produitPanier);
+                                    {                                                                                         
                                         ?>
                                         <tr>
                                             <td><?= $produit->image_path ?></td>
@@ -57,16 +56,15 @@
                                             <td><?= number_format($produit->prix, 2, ',', '') ?>€</td>
                                             <td><a href="inc/php_addpanier.php?moins&id_produit_panier=<?= $produit->id?>&produit_id=<?= $produit->id_produit ?>" class="btn">-</a><?= $produit->quantite ?>
                                             <a href="inc/php_addpanier.php?plus&id_produit_panier=<?= $produit->id?>&produit_id=<?= $produit->id_produit ?>" class="btn">+</a></td>                                   
-                                            <td><?= number_format(($produit->prix * $produit->quantite), 2, ',', '') ?>€</td>
+                                            <td><?= $prixtotal = number_format(($produit->prix * $produit->quantite), 2, ',', '') ?>€</td>
                                             <td><a href="inc/suppression.php?delPanier=<?= $produit->id ?>">supprimer</a></td>                                    
                                         </tr>                                
-                                        <?php 
-                                        $grandtotal = array_sum($produitPanier->prix);
-                                    }   
+                                        <?php                                         
+                                    }                                   
                                 ?> 
-                                <tr>
-                                    <td>Grand total : <?= number_format($grandtotal, 2, ',', '') ?>€</td>
-                                </tr>  
+                                    <tr>
+                                        <td>Grand total :<?= $totalPanier ?>€</td>
+                                    </tr>                                 
                                 <?php                      
                             }
                     ?>
