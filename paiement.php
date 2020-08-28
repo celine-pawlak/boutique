@@ -44,7 +44,7 @@ $destock = $bdd->query('UPDATE produits SET quantite=? WHERE id=?', [$moinsStock
             </section>
             <section class="form-group">
                 <label for="date_p">Date d'expiration: <span class="oblig">*</span></label>
-                <input type="month" class="form-control" name="date_p" id="date_p" value="<?= $carte = (isset($_POST['date_p'])?$_POST['date_p']: $date_a) ?>">
+                <input type="month" class="form-control" name="date_p" id="date_p" value="<?= $carte = (isset($_POST['date_p'])?$_POST['date_p']: $date_min) ?>" min="<?= $date_min ?>">
             </section>
             <section class="form-group">
                 <label for="crypto">Cryptogramme de sécurité: <span class="oblig">*</span></label>
