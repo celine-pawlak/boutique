@@ -1,7 +1,7 @@
 <?php
     require_once 'inc/initialisation.php';    
     $bdd = App::getDatabase();
-    if(Session::getInstance()->hasCurrentUser())
+    if(Session::getInstance()->hasSession('current_user'))
         {            
             App::redirect('index.php');
         }

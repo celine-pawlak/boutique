@@ -36,14 +36,15 @@
                     unset($_SESSION['flash']);
                     return $flash;
                 }
-            public function hasCurrentUser()
+            public function hasSession($cle)
                 {
-                    if(isset($_SESSION['current_user']))
+                    if(isset($_SESSION[$cle]))
                         {
-                            return $_SESSION['current_user'];
+                            return $_SESSION[$cle];
                         }
                     
-                }            
+                }
+                        
                 
         }
 ?>

@@ -1,5 +1,5 @@
 <?php include 'inc/php_compte.php'; ?>
-<!DOCTYPE html><html">
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -82,7 +82,7 @@
                                     </section>
                             </section>    
                             <section class="valid_form">
-                                <input type="submit" class="btn bouton" name="valid_adresse" value="Valider">
+                                <input type="submit" class="btn bouton" name="valid_adresse" value="Valider">                              
                                 <small><span class="oblig">*</span>Champs obligatoires</small>
                             </section>                          
                         </form>

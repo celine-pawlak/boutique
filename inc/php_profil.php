@@ -2,7 +2,7 @@
     require_once 'inc/initialisation.php';
     require_once 'inc/fonction_pagination.php';
 
-    if(Session::getInstance()->hasCurrentUser())
+    if(Session::getInstance()->hasSession('current_user'))
         {           
             $bdd = App::getDatabase();
 

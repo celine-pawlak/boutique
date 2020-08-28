@@ -13,7 +13,8 @@
             $id =$_SESSION['current_user']['id'];
 
             $adresseLivraison = new Auth($bdd);
-            $adresseLivraison->update_livraison($adresse, $ville, $cp, $id);            
+            $adresseLivraison->update_livraison($adresse, $ville, $cp, $id);   
+            Session::getInstance()->setSession('accesPaiement', true);
             Session::getInstance()->setFlash('success', "Adresse de livraison enregistrée"); 
             App::redirect('paiement.php');
         }
@@ -25,7 +26,8 @@
             $cp = $_POST['cp'];
             $id =$_SESSION['current_user']['id'];
             $adresseLivraison = new Auth($bdd);
-            $adresseLivraison->update_livraison($adresse, $ville, $cp, $id);            
+            $adresseLivraison->update_livraison($adresse, $ville, $cp, $id); 
+            Session::getInstance()->setSession('accesPaiement', true);           
             Session::getInstance()->setFlash('success', "Adresse de livraison enregistrée"); 
             App::redirect('paiement.php');
         }
@@ -51,6 +53,7 @@
                                     $cp = $_POST['cp'];
                                     $register = new Auth($bdd);
                                     $register->register_compte($login, $password, $email, $nom, $prenom, $adresse, $ville, $cp, $telephone, $adresse, $ville, $cp);
+                                    Session::getInstance()->setSession('accesPaiement', true);
                                     Session::getInstance()->setFlash('success', "Compte créer"); 
                                     App::redirect('paiement.php');
                                 }
