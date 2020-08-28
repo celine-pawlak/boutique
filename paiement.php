@@ -40,15 +40,15 @@ $destock = $bdd->query('UPDATE produits SET quantite=? WHERE id=?', [$moinsStock
         <form action="" method="POST">
             <section class="form-group">
                 <label for="carte">Numero de carte: <span class="oblig">*</span></label>
-                <input type="text" class="form-control" name="carte" id="carte" >
+                <input type="text" class="form-control" name="carte" id="carte" value="<?= $carte = (isset($_POST['carte'])?$_POST['carte']: '') ?>">
             </section>
             <section class="form-group">
                 <label for="date_p">Date d'expiration: <span class="oblig">*</span></label>
-                <input type="text" class="form-control" name="date_p" id="date_p" >
+                <input type="month" class="form-control" name="date_p" id="date_p" value="<?= $carte = (isset($_POST['date_p'])?$_POST['date_p']: $date_a) ?>">
             </section>
             <section class="form-group">
                 <label for="crypto">Cryptogramme de sécurité: <span class="oblig">*</span></label>
-                <input type="text" class="form-control" name="crypto" id="crypto" >
+                <input type="text" class="form-control" name="crypto" id="crypto" value="<?= $carte = (isset($_POST['crypto'])?$_POST['crypto']: '') ?>">
             </section>
             <section class="valid_form">
                 <input type="submit" class="btn bouton" name="valid_pay" value="Payer">                              
