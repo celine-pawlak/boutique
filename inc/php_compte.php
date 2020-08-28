@@ -6,12 +6,14 @@
     // Si l'utilisateur choisi la même adresse que celle de facturation
     if(isset($_POST['valid_adresse'], $_POST['meme_adresse']) && empty($_POST['adresse']) && empty($_POST['ville']) && empty($_POST['cp']))
         {            
+            
             $adresse = $_SESSION['current_user']['adresse_facturation'];
             $ville = $_SESSION['current_user']['ville_facturation'];
             $cp = $_SESSION['current_user']['code_postal_facturation'];
             $id =$_SESSION['current_user']['id'];
 
-            $adresseLivraison = $bdd->query('INSERT INTO utilisateurs (adresse_livraison, ville_livraison, code_postal_livraison) VALUES (?,?,?) WHERE id=?', [$adresse, $ville, $cp, $id]);
+            $adresseLivraison = new Auth($bdd);
+            $adresseLivraison->update_livraison($adresse, $ville, $cp, $id);            
             Session::getInstance()->setFlash('success', "Adresse de livraison enregistrée"); 
             App::redirect('paiement.php');
         }
@@ -22,8 +24,8 @@
             $ville = $_POST['ville'];
             $cp = $_POST['cp'];
             $id =$_SESSION['current_user']['id'];
-
-            $adresseLivraison = $bdd->query('INSERT INTO utilisateurs (adresse_livraison, ville_livraison, code_postal_livraison) VALUES (?,?,?) WHERE id=?', [$adresse, $ville, $cp, $id]);
+            $adresseLivraison = new Auth($bdd);
+            $adresseLivraison->update_livraison($adresse, $ville, $cp, $id);            
             Session::getInstance()->setFlash('success', "Adresse de livraison enregistrée"); 
             App::redirect('paiement.php');
         }
