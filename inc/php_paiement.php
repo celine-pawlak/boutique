@@ -20,6 +20,7 @@
                                 {
                                     if(preg_match("#^[0-9]{3}?$#", $crypto))
                                         {
+                                            $n_commande = mt_rand();                                            
                                             $panier_user = $bdd->query('SELECT * FROM panier WHERE id_utilisateur=?', [$id_user])->fetchAll();
                                             var_dump($panier_user);
                                             foreach($panier_user as $nombre => $produit)
