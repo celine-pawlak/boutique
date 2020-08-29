@@ -39,7 +39,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+                    <?php 
                         if(empty($produitPanier))
                             {
                                 ?>

@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="etape navbar-nav">
                         <li class="nav-item">
-                            <p class="nav-link">1 - Vérification du Panier</p>
+                            <a href="verification.php" class="nav-link">1 - Vérification du Panier</a>
                         </li>
                         <li class="nav-item active">
                             <p class="nav-link">2 - Adresse livraison<span class="sr-only">(current)</span></p>
@@ -47,6 +47,7 @@
                             <form action="" method="POST">
                                 <section class="formulaire">     
                                     <section>
+                                        <h5>Adresse de facturation</h5>
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -66,17 +67,18 @@
                                         <input type="checkbox" id="meme_adresse" name="meme_adresse">
                                         <label for="meme_adresse">Choisir cette adresse</label>
                                     </section>                       
-                                    <section id="info_user">                                
+                                    <section id="info_user">         
+                                        <h5>Si adresse de livraison différente de l'adresse de facturation</h5>                       
                                         <section class="form-group">
-                                            <label for="adresse">Adresse (livraison / facturation): <span class="oblig">*</span></label>
+                                            <label for="adresse">Adresse: <span class="oblig">*</span></label>
                                             <input type="text" class="form-control" name="adresse" id="adresse" >
                                         </section>
                                         <section class="form-group">
-                                            <label for="ville">Ville (livraison / facturation): <span class="oblig">*</span></label>
+                                            <label for="ville">Ville: <span class="oblig">*</span></label>
                                             <input type="text" class="form-control" name="ville" id="ville" >
                                         </section>
                                         <section class="form-group">
-                                            <label for="cp">Code postal (livraison / facturation): <span class="oblig">*</span></label>
+                                            <label for="cp">Code postal: <span class="oblig">*</span></label>
                                             <input type="text" class="form-control" name="cp" id="cp" >
                                         </section>                
                                     </section>

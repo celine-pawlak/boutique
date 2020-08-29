@@ -8,16 +8,16 @@
    //Ajoute un produit au panier
     if(isset($_GET['id_utilisateur'], $_GET['id_produit'], $_GET['quantite']))
         {            
-            $id_user = $_GET['id_utilisateur'];
-            $id_produit = $_GET['id_produit'];
-            $quantite = $_GET['quantite'];
+        $id_user = $_GET['id_utilisateur'];
+        $id_produit = $_GET['id_produit'];
+        $quantite = $_GET['quantite'];           
            
             if(filter_var($id_produit, FILTER_VALIDATE_INT) && filter_var($quantite, FILTER_VALIDATE_INT))
                 {
                     if($id_user==$_SESSION['current_user']['id'])
-                        {
+                        {                           
                             $inStock = $bdd->query('SELECT stock, prix FROM produits WHERE id=?', [$id_produit])->fetch();                            
-                            $isInpanier = $bdd->query('SELECT id_produit, quantite FROM panier WHERE id_produit=?', [$id_produit])->fetch();                        
+                            $isInpanier = $bdd->query('SELECT id_produit, quantite FROM panier WHERE id_produit=? AND id_utilisateur=?', [$id_produit, $id_user])->fetch();                        
                             if($inStock->stock == 0)
                                 {
                                     Session::getInstance()->setFlash('danger', "Il n'y a plus de stock pour ce produit");                                    
@@ -36,8 +36,8 @@
                                             Session::getInstance()->setFlash('success', 'Produit ajouté au panier');                                            
                                         }
                                     else
-                                        {
-                                            $prix_total = $inStock->prix * $quantite;
+                                        {                                           
+                                            $prix_total = $inStock->prix * $quantite;                                            
                                             $addpanier = $bdd->query('INSERT INTO panier (id_utilisateur, id_produit, quantite, prix_total) VALUES (?,?,?,?)', [$id_user, $id_produit, $quantite, $prix_total]);                           
                                             Session::getInstance()->setFlash('success', 'Produit ajouté au panier');                                            
                                         }
@@ -58,7 +58,7 @@
             $quantite = $bdd->query('SELECT quantite FROM panier WHERE id=?', [$id_produit_panier])->fetch();            
             $prix = $bdd->query('SELECT prix FROM produits WHERE id=?', [$produit_id])->fetch();
             $majquantite = ($quantite->quantite) - 1;
-             echo $prix_total = $prix->prix * $majquantite;
+            $prix_total = $prix->prix * $majquantite;
             if($majquantite==0)
                 {
                     $supProduit = $bdd->query('DELETE FROM panier WHERE id=?', [$id_produit_panier]);

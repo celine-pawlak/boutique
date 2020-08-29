@@ -13,7 +13,9 @@
             $id =$_SESSION['current_user']['id'];
 
             $adresseLivraison = new Auth($bdd);
-            $adresseLivraison->update_livraison($adresse, $ville, $cp, $id);   
+            $adresseLivraison->update_livraison($adresse, $ville, $cp, $id);  
+            $isUser = $bdd->query('SELECT * FROM utilisateurs WHERE id=?', [$id])->fetch(PDO::FETCH_ASSOC);            
+            Session::getInstance()->setSession('current_user', $isUser); 
             Session::getInstance()->setSession('accesPaiement', true);
             Session::getInstance()->setFlash('success', "Adresse de livraison enregistrée"); 
             App::redirect('paiement.php');
@@ -27,6 +29,9 @@
             $id =$_SESSION['current_user']['id'];
             $adresseLivraison = new Auth($bdd);
             $adresseLivraison->update_livraison($adresse, $ville, $cp, $id); 
+            //Update les données de la sesion user
+            $isUser = $bdd->query('SELECT * FROM utilisateurs WHERE id=?', [$id])->fetch(PDO::FETCH_ASSOC);            
+            Session::getInstance()->setSession('current_user', $isUser);                         
             Session::getInstance()->setSession('accesPaiement', true);           
             Session::getInstance()->setFlash('success', "Adresse de livraison enregistrée"); 
             App::redirect('paiement.php');
@@ -52,7 +57,9 @@
                                     $ville = $_POST['ville'];
                                     $cp = $_POST['cp'];
                                     $register = new Auth($bdd);
-                                    $register->register_compte($login, $password, $email, $nom, $prenom, $adresse, $ville, $cp, $telephone, $adresse, $ville, $cp);
+                                    $register->register_compte($login, $password, $email, $nom, $prenom, $adresse, $ville, $cp, $telephone, $adresse, $ville, $cp);                                   
+                                    $isUser = $bdd->query('SELECT * FROM utilisateurs WHERE id=?', [$id])->fetch(PDO::FETCH_ASSOC);            
+                                    Session::getInstance()->setSession('current_user', $isUser);
                                     Session::getInstance()->setSession('accesPaiement', true);
                                     Session::getInstance()->setFlash('success', "Compte créer"); 
                                     App::redirect('paiement.php');

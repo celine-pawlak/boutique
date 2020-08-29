@@ -20,17 +20,23 @@
                                 {
                                     if(preg_match("#^[0-9]{3}?$#", $crypto))
                                         {
-                                            $n_commande = mt_rand();                                            
-                                            $panier_user = $bdd->query('SELECT * FROM panier WHERE id_utilisateur=?', [$id_user])->fetchAll();
-                                            var_dump($panier_user);
+                                            $n_commande = mt_rand(); 
+                                            $adresse = $_SESSION['current_user']['adresse_livraison'];
+                                            $ville = $_SESSION['current_user']['ville_livraison'];
+                                            $cp = $_SESSION['current_user']['code_postal_livraison'];
+                                            $id = $_SESSION['current_user']['id'];                                                                                   
+
+                                            $addCommande = $bdd->query('INSERT INTO commandes SET numero=?, prix_commande=?, adresse_livraison=?, ville_livraison=?, code_postal_livraison=?, id_utilisateurs=?', [$n_commande, $_SESSION['prixpanier'], $adresse, $ville, $cp, $id]);
+                                            $panier_user = $bdd->query('SELECT * FROM panier WHERE id_utilisateur=?', [$id_user])->fetchAll();                                          
                                             foreach($panier_user as $nombre => $produit)
-                                                {
-                                                    echo $produit->id;
-                                                }
-                                            //transferer les données du pannier dans commande et produit commandé
-                                            //Vider le panier de l'utilisateur
-                                            //rediriger vers la page confirmation
-                                            //décrémenter le stock des produits commandé
+                                                {                                                   
+                                                    $addproduitCo = $bdd->query('INSERT INTO produits_commandes SET id_produit=?, quantite=?, num_commande=?', [$produit->id_produit, $produit->quantite, $n_commande]);                                                    
+                                                    $stockP = $bdd->query('SELECT stock FROM produits WHERE id=?', [$produit->id_produit])->fetch();
+                                                    $majStock = ($stockP->stock) - ($produit->quantite);                                                   
+                                                    $decreProduit = $bdd->query('UPDATE produits SET stock=? WHERE id=?', [$majStock, $produit->id_produit]);
+                                                }   
+                                            $suppPanier = $bdd->query('DELETE FROM panier WHERE id_utilisateur=?', [$id]);
+                                            // App::redirect('confirmation.php');
                                         }
                                     else                                        
                                             Session::getInstance()->setFlash('danger', "Le cryptogramme n'est pas valide");                                        
