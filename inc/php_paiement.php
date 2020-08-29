@@ -42,7 +42,7 @@
                                                         }
                                                     else
                                                         {
-                                                            Session::getInstance()->setFlash('danger', "Désole, le stock pour . <?= $produit n'est plus bon, veuillez modifier votre commande");      
+                                                            Session::getInstance()->setFlash('danger', "Désole, le stock n'est plus bon, veuillez modifier votre commande");      
                                                             $retourpanier = true;                                                                                                                    
                                                         }
                                                 }   
