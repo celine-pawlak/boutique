@@ -16,7 +16,7 @@ $destock = $bdd->query('UPDATE produits SET quantite=? WHERE id=?', [$moinsStock
     <header>
         <?php include 'inc/header.php';?>
     </header>
-    <main>
+    <main>        
         <section class="nav_etape">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">                
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -37,6 +37,15 @@ $destock = $bdd->query('UPDATE produits SET quantite=? WHERE id=?', [$moinsStock
                 </div>
             </nav>
         </section>
+        <?php
+            if(isset($retourpanier) && $retourpanier==true)
+                {
+                    ?>
+                    <button class="btn bouton"><a href="panier.php">Modifier le panier</a></button>
+                    <?php
+                    $retourpanier = false;
+                }
+        ?>
         <form action="" method="POST">
             <section class="form-group">
                 <label for="carte">Numero de carte: <span class="oblig">*</span></label>
@@ -54,7 +63,7 @@ $destock = $bdd->query('UPDATE produits SET quantite=? WHERE id=?', [$moinsStock
                 <input type="submit" class="btn bouton" name="valid_pay" value="Payer">                              
                 <small><span class="oblig">*</span>Champs obligatoires</small>
             </section>    
-        </form>       
+        </form>            
     </main>
     <?php include 'inc/footer.php'; ?>
 </body>
