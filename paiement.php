@@ -22,10 +22,10 @@ $destock = $bdd->query('UPDATE produits SET quantite=? WHERE id=?', [$moinsStock
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="etape navbar-nav">
                         <li class="nav-item">
-                            <a href="verification.php" class="nav-link">1 - Vérification du Panier</a>                            
+                            <p class="nav-link">1 - Vérification du Panier</p>                                                      
                         </li>
                         <li class="nav-item">
-                            <a href="creer-compte.php" class="nav-link">2 - Adresse livraison</a>                            
+                            <a href="creer-compte.php" class="nav-link">2 - Adresse livraison</a>                                      
                         </li>
                         <li class="nav-item active">
                             <p class="nav-link">3 - Paiement<span class="sr-only">(current)</span></p>

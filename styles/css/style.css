@@ -68,13 +68,8 @@ h5
 .next 
     {
         /* meme class mais avec des formulaire */
-        display: flex;                
-        width: 100%;
-    }
-.next form
-    {
-        display: flex;
-        justify-content: space-around;
+        display: flex;      
+        justify-content: space-around;          
         width: 100%;
     }
 /* FIN STYLE GENERIQUE */
@@ -248,7 +243,7 @@ h5
 #form_paiement
     {
         display: flex;
-        flex-direction: column;
+        flex-direction: column;        
         text-align: center;
         width: 40vw;
         margin-top: 5vh;

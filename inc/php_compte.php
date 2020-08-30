@@ -2,6 +2,12 @@
      require_once 'inc/initialisation.php';    
      $bdd = App::getDatabase();    
      Session::getInstance(); 
+
+     if(isset($_POST['retour_panier']))
+        {
+            $_SESSION['retour_panier'] = $_POST['retour_panier'];
+            App::redirect('verification.php');
+        }
     
     // Si l'utilisateur choisi la même adresse que celle de facturation
     if(isset($_POST['valid_adresse'], $_POST['meme_adresse']) && empty($_POST['adresse']) && empty($_POST['ville']) && empty($_POST['cp']))

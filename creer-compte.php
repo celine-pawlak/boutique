@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="etape navbar-nav">
                         <li class="nav-item">
-                            <a href="verification.php" class="nav-link">1 - Vérification du Panier</a>
+                            <p class="nav-link">1 - Vérification du Panier</p>                           
                         </li>
                         <li class="nav-item active">
                             <p class="nav-link">2 - Adresse livraison<span class="sr-only">(current)</span></p>
@@ -79,13 +79,11 @@
                                     </section>                
                                 </section>
                             </section>    
+                            <section class="next">                                                          
+                                    <input type="submit" name="retour_panier" value="Retour" class="btn bouton">                               
+                                    <input type="submit" class="btn bouton" name="valid_adresse" value="Valider">                                                                                                                                                                                                  
+                            </section>
                         </form>
-                        <section class="next">           
-                            <form action="verification.php" method="POST">                       
-                                <input type="submit" name="valid_panier" value="Retour" class="btn bouton">                               
-                                <input type="submit" class="btn bouton" name="valid_adresse" value="Valider">                                                                                                                     
-                            </form>                                                        
-                        </section>
                     </section>
                     <?php
                 }

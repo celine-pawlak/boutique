@@ -3,7 +3,7 @@
     $bdd = App::getDatabase();    
     Session::getInstance(); 
     if(Session::getInstance()->hasSession('accesPaiement'))
-        {
+        {            
             $date_min = date('Y-m', strtotime('now'));
             $mois_min = date('m', strtotime('now'));
             if(isset($_POST['valid_pay']) && !empty($_POST['carte']) && !empty($_POST['date_p']) && !empty($_POST['crypto']))
