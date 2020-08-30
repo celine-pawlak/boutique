@@ -38,11 +38,12 @@
                                                             $majStock = ($stockProduit->stock) - ($produit->quantite);                                                   
                                                             $decreProduit = $bdd->query('UPDATE produits SET stock=? WHERE id=?', [$majStock, $produit->id_produit]);
                                                             $suppPanier = $bdd->query('DELETE FROM panier WHERE id_utilisateur=?', [$id]);
-                                                            // App::redirect('confirmation.php');
+                                                            App::redirect('confirmation.php');
                                                         }
                                                     else
                                                         {
-                                                            Session::getInstance()->setFlash('danger', "Désole, le stock n'est plus bon, veuillez modifier votre commande");      
+                                                            $nom = $bdd->query('SELECT nom FROM produits WHERE id=?', [$produit->id_produit])->fetch();                                                           
+                                                            Session::getInstance()->setFlash('danger', "il n'y a plus assez de stock pour : <b>$nom->nom</b>, veuillez modifier votre commande");      
                                                             $retourpanier = true;                                                                                                                    
                                                         }
                                                 }   

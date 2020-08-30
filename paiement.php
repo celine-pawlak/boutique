@@ -16,16 +16,16 @@ $destock = $bdd->query('UPDATE produits SET quantite=? WHERE id=?', [$moinsStock
     <header>
         <?php include 'inc/header.php';?>
     </header>
-    <main>        
+    <main id="main_paiement">        
         <section class="nav_etape">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">                
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="etape navbar-nav">
                         <li class="nav-item">
-                            <p class="nav-link">1 - Vérification du Panier</p>
+                            <a href="verification.php" class="nav-link">1 - Vérification du Panier</a>                            
                         </li>
                         <li class="nav-item">
-                            <p class="nav-link">2 - Adresse livraison</p>
+                            <a href="creer-compte.php" class="nav-link">2 - Adresse livraison</a>                            
                         </li>
                         <li class="nav-item active">
                             <p class="nav-link">3 - Paiement<span class="sr-only">(current)</span></p>
@@ -41,12 +41,13 @@ $destock = $bdd->query('UPDATE produits SET quantite=? WHERE id=?', [$moinsStock
             if(isset($retourpanier) && $retourpanier==true)
                 {
                     ?>
-                    <button class="btn bouton"><a href="panier.php">Modifier le panier</a></button>
+                    <button class="btn bouton modif_p"><a href="panier.php">Modifier le panier</a></button>
                     <?php
-                    $retourpanier = false;
+                    $retourpanier = false;                    
                 }
         ?>
-        <form action="" method="POST">
+        <h2>Valider le paiement</h2>
+        <form action="" method="POST" id="form_paiement">
             <section class="form-group">
                 <label for="carte">Numero de carte: <span class="oblig">*</span></label>
                 <input type="text" class="form-control" name="carte" id="carte" value="<?= $carte = (isset($_POST['carte'])?$_POST['carte']: '') ?>">

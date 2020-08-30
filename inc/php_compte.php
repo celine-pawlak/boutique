@@ -36,6 +36,10 @@
             Session::getInstance()->setFlash('success', "Adresse de livraison enregistrée"); 
             App::redirect('paiement.php');
         }
+    else if(isset($_POST['valid_adresse']) && (empty($_POST['adresse']) || empty($_POST['ville']) || empty($_POST['cp']) || isset($_POST['meme_adresse'])))
+        {
+            Session::getInstance()->setFlash('warning', "Veuilliez remplir tous les champs ogligatoires");
+        }
         // Si l'utilisateur n'avait pas encore de compte
     if(isset($_POST['valid_compte']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['telephone']) && !empty($_POST['password']) && !empty($_POST['password_confirm']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['cp']))
         {           

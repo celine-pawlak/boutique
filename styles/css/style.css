@@ -36,6 +36,14 @@ h5
     {
         margin-bottom: 5vh;
     }
+.alert
+    {
+        text-align: center !important;
+    }
+.active
+    {
+        font-weight: bold;
+    }
 .valid_form
     {
         display: flex;
@@ -56,6 +64,18 @@ h5
         display: flex;
         justify-content: space-between;
         width: 60vw;
+    }
+.next 
+    {
+        /* meme class mais avec des formulaire */
+        display: flex;                
+        width: 100%;
+    }
+.next form
+    {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
     }
 /* FIN STYLE GENERIQUE */
 /* DEBUT INSCRIPTION */
@@ -186,16 +206,64 @@ h5
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        width: 100% !important;
+        width: 100% !important;        
+    }
+.etape p
+    {
+        margin: 0;
     }
 /* FIN VERIFICATION */
 /* DEBUT COMPTE */
 #main_compte
     {
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 #main_compte p  
     {
         margin: 0 !important;
     }
+#adresse_L
+    {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+.form_adresse
+    {
+        width: 100%;
+        margin-bottom: 5vh;
+    }
 /* FIN COMPTE */
+/* DEBUT PAIEMENT */
+#main_paiement
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+#form_paiement
+    {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 40vw;
+        margin-top: 5vh;
+    }
+.modif_p
+    {
+        margin-top: 5vh;
+    }
+.modif_p a  
+    {
+        color: black;
+        text-decoration: none;
+    }
+.modif_p a:hover
+    {
+        color: white;
+    }
+/* FIN PAIEMENT */

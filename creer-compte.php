@@ -39,55 +39,53 @@
             if(isset($_SESSION['current_user']['id']))
                 {
                     ?>
-                    <section>
-                        <section>
-                            <form action="" method="POST">
-                                </form>
-                            </section>
-                            <form action="" method="POST">
-                                <section class="formulaire">     
-                                    <section>
-                                        <h5>Adresse de facturation</h5>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Adresse</th>
-                                                    <th>Ville</th>
-                                                    <th>Code Postal</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><?= $_SESSION['current_user']['adresse_facturation'] ?></td>                                        
-                                                    <td><?= $_SESSION['current_user']['ville_facturation'] ?></td>                                        
-                                                    <td><?= $_SESSION['current_user']['code_postal_facturation'] ?></td>                                        
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <input type="checkbox" id="meme_adresse" name="meme_adresse">
-                                        <label for="meme_adresse">Choisir cette adresse</label>
-                                    </section>                       
-                                    <section id="info_user">         
-                                        <h5>Si adresse de livraison différente de l'adresse de facturation</h5>                       
-                                        <section class="form-group">
-                                            <label for="adresse">Adresse: <span class="oblig">*</span></label>
-                                            <input type="text" class="form-control" name="adresse" id="adresse" >
-                                        </section>
-                                        <section class="form-group">
-                                            <label for="ville">Ville: <span class="oblig">*</span></label>
-                                            <input type="text" class="form-control" name="ville" id="ville" >
-                                        </section>
-                                        <section class="form-group">
-                                            <label for="cp">Code postal: <span class="oblig">*</span></label>
-                                            <input type="text" class="form-control" name="cp" id="cp" >
-                                        </section>                
+                    <section id="adresse_L">                        
+                        <form action="" method="POST" class="form_adresse">
+                            <section class="formulaire form_adresse">     
+                                <section>
+                                    <h5>Adresse de facturation</h5>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Adresse</th>
+                                                <th>Ville</th>
+                                                <th>Code Postal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><?= $_SESSION['current_user']['adresse_facturation'] ?></td>                                        
+                                                <td><?= $_SESSION['current_user']['ville_facturation'] ?></td>                                        
+                                                <td><?= $_SESSION['current_user']['code_postal_facturation'] ?></td>                                        
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <input type="checkbox" id="meme_adresse" name="meme_adresse">
+                                    <label for="meme_adresse">Choisir comme adresse de livraison</label>
+                                </section>                       
+                                <section id="info_user">         
+                                    <h5>Si adresse de livraison différente de l'adresse de facturation</h5>                       
+                                    <section class="form-group">
+                                        <label for="adresse">Adresse: <span class="oblig">*</span></label>
+                                        <input type="text" class="form-control" name="adresse" id="adresse" >
                                     </section>
+                                    <section class="form-group">
+                                        <label for="ville">Ville: <span class="oblig">*</span></label>
+                                        <input type="text" class="form-control" name="ville" id="ville" >
+                                    </section>
+                                    <section class="form-group">
+                                        <label for="cp">Code postal: <span class="oblig">*</span></label>
+                                        <input type="text" class="form-control" name="cp" id="cp" >
+                                    </section>                
+                                </section>
                             </section>    
-                            <section class="valid_form">
-                                <input type="submit" class="btn bouton" name="valid_adresse" value="Valider">                              
-                                <small><span class="oblig">*</span>Champs obligatoires</small>
-                            </section>                          
                         </form>
+                        <section class="next">           
+                            <form action="verification.php" method="POST">                       
+                                <input type="submit" name="valid_panier" value="Retour" class="btn bouton">                               
+                                <input type="submit" class="btn bouton" name="valid_adresse" value="Valider">                                                                                                                     
+                            </form>                                                        
+                        </section>
                     </section>
                     <?php
                 }
