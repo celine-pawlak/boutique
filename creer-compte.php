@@ -3,10 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">   
     <link rel="stylesheet" href="styles/css/style.css"/>
     <title>Adresse livraison</title>
 </head>
@@ -15,21 +12,21 @@
         <?php include 'inc/header.php'; ?>
     </header>
     <main id="main_compte">
-        <section class="nav_etape">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">                
-                <div class="collapse navbar-collapse" id="navbarNav">
+    <section class="nav_etape">
+            <nav class="green lighten-2">                
+                <div id="navbarNav">
                     <ul class="etape navbar-nav">
                         <li class="nav-item">
-                            <p class="nav-link">1 - Vérification du Panier</p>                           
+                            <a class="nav-link">1 - Vérification du Panier</a>
                         </li>
                         <li class="nav-item active">
-                            <p class="nav-link">2 - Adresse livraison<span class="sr-only">(current)</span></p>
+                            <a class="nav-link">2 - Adresse livraison</a>
                         </li>
                         <li class="nav-item">
-                            <p class="nav-link">3 - Paiement</p>
+                            <a class="nav-link">3 - Paiement</a>
                         </li>                        
                         <li class="nav-item">
-                            <p class="nav-link">4 - Confirmation</p>
+                            <a class="nav-link">4 - Confirmation</a>
                         </li>                        
                     </ul>
                 </div>
@@ -60,23 +57,33 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <input type="checkbox" id="meme_adresse" name="meme_adresse">
-                                    <label for="meme_adresse">Choisir comme adresse de livraison</label>
+                                    <p>
+                                        <label for="meme_adresse">
+                                            <input type="checkbox" id="meme_adresse" name="meme_adresse">
+                                            <span>Choisir comme adresse de livraison</span>
+                                        </label>
+                                    </p>                                    
                                 </section>                       
                                 <section id="info_user">         
-                                    <h5>Si adresse de livraison différente de l'adresse de facturation</h5>                       
-                                    <section class="form-group">
-                                        <label for="adresse">Adresse: <span class="oblig">*</span></label>
-                                        <input type="text" class="form-control" name="adresse" id="adresse" >
-                                    </section>
-                                    <section class="form-group">
-                                        <label for="ville">Ville: <span class="oblig">*</span></label>
-                                        <input type="text" class="form-control" name="ville" id="ville" >
-                                    </section>
-                                    <section class="form-group">
-                                        <label for="cp">Code postal: <span class="oblig">*</span></label>
-                                        <input type="text" class="form-control" name="cp" id="cp" >
-                                    </section>                
+                                    <h5>Si adresse de livraison différente de l'adresse de facturation</h5>                                                          
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label for="adresse">Adresse: <span class="oblig">*</span></label>
+                                            <input type="text" class="validate" name="adresse" id="adresse" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label for="ville">Ville: <span class="oblig">*</span></label>
+                                            <input type="text" class="validate" name="ville" id="ville" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label for="cp">Code postal: <span class="oblig">*</span></label>
+                                            <input type="text" class="validate" name="cp" id="cp" >
+                                        </div>
+                                    </div>                                                                              
                                 </section>
                             </section>    
                             <section class="next">                                                          
@@ -147,5 +154,6 @@
         ?>
     </main>
     <?php include 'inc/footer.php'; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
 </body>
 </html>

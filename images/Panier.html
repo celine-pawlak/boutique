@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://localhost/PoolProjet2/boutique/panier.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" href="./Panier_files/materialize.min.css">   
+    <link rel="stylesheet" href="./Panier_files/style.css">
+    <title>Panier</title>
+</head>
+<body>
+    <header>
+        <header>
+                            <section class="alert alert-danger">
+                            Il n'y a pas assez de stock sur ce produit                        </section>
+                        </header>    </header>
+    <main id="main_panier">  
+        <!-- A supprimer -->
+        <form action="http://localhost/PoolProjet2/boutique/inc/php_addpanier.php" method="GET">
+            <input type="text" name="id_utilisateur">
+            <input type="text" name="id_produit">
+            <input type="text" name="quantite">
+            <input type="submit">
+        </form>      
+        <!-- ------- -->
+        <h2>Votre panier</h2>                         
+        <form action="http://localhost/PoolProjet2/boutique/verification.php" method="POST" id="table_panier">
+            <table class="highlight centered">
+                <thead>
+                    <tr>
+                        <th colspan="2">Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Prix total</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                                            <tr>
+                                            <td><img src="./Panier_files/tshirt1.jpg" alt="T-shirt noir" class="img_panier"></td>
+                                            <td>T-shirt noir</td>
+                                            <td>30,00€</td>
+                                            <td><a href="http://localhost/PoolProjet2/boutique/inc/php_addpanier.php?moins&amp;id_produit_panier=62&amp;produit_id=2" class="btn-floating btn-small waves-effect waves-light">-</a>&nbsp;8                                            &nbsp;<a href="http://localhost/PoolProjet2/boutique/inc/php_addpanier.php?plus&amp;id_produit_panier=62&amp;produit_id=2" class="btn-floating btn-small waves-effect waves-light disabled">+</a></td>                                   
+                                            <td>240,00€</td>
+                                            <td><a href="http://localhost/PoolProjet2/boutique/inc/suppression.php?delPanier=62">supprimer</a></td>                                    
+                                        </tr>                                
+                                                                                <tr>
+                                            <td><img src="./Panier_files/tshirt2.jpg" alt="T-shirt blanc" class="img_panier"></td>
+                                            <td>T-shirt blanc</td>
+                                            <td>35,00€</td>
+                                            <td><a href="http://localhost/PoolProjet2/boutique/inc/php_addpanier.php?moins&amp;id_produit_panier=61&amp;produit_id=1" class="btn-floating btn-small waves-effect waves-light">-</a>&nbsp;1                                            &nbsp;<a href="http://localhost/PoolProjet2/boutique/inc/php_addpanier.php?plus&amp;id_produit_panier=61&amp;produit_id=1" class="btn-floating btn-small waves-effect waves-light">+</a></td>                                   
+                                            <td>35,00€</td>
+                                            <td><a href="http://localhost/PoolProjet2/boutique/inc/suppression.php?delPanier=61">supprimer</a></td>                                    
+                                        </tr>                                
+                                         
+                                    <tr>
+                                        <td colspan="6">Grand total : <b>275€</b></td>
+                                    </tr>                                 
+                                                               
+                </tbody>
+            </table>                                    
+                                        <input type="submit" name="valid_panier" value="Valider" class="btn bouton">                            
+                                </form>        
+    </main>
+    <footer>
+    <form action="http://localhost/PoolProjet2/boutique/panier.php" method="POST">
+        <input type="submit" value="Déconnexion" name="deco">
+    </form>
+</footer>    <script src="./Panier_files/materialize.min.js.téléchargement"></script>
+    <script src="./Panier_files/script_panier.js.téléchargement"></script>
+
+</body></html>

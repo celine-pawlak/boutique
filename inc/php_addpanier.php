@@ -1,10 +1,9 @@
 <?php
    require_once '../class/App.php';   
    require_once '../class/Database.php'; 
-   require_once '../class/session.php';
+   require_once '../class/session.php';   
    $bdd = App::getDatabase();  
-   Session::getInstance(); 
-       
+   Session::getInstance();     
    //Ajoute un produit au panier
     if(isset($_GET['id_utilisateur'], $_GET['id_produit'], $_GET['quantite']))
         {            

@@ -16,7 +16,7 @@
     <main id="main_connexion">
         <h2>Formulaire de Conenxion</h2>        
         <section class="row">
-            <form class="col s12">               
+            <form class="col s12" method="POST" action="">               
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="login">Login ou Email: <span class="oblig">*</span></label>

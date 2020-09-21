@@ -5,10 +5,7 @@ include 'inc/php_verification.php';
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">   
     <link rel="stylesheet" href="styles/css/style.css"/>
     <title>Vérification</title>
 </head>
@@ -18,11 +15,11 @@ include 'inc/php_verification.php';
     </header>
     <main id="main_verification">
         <section class="nav_etape">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">                
-                <div class="collapse navbar-collapse" id="navbarNav">
+            <nav class="green lighten-2">                
+                <div class="" id="navbarNav">
                     <ul class="etape navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link">1 - Vérification du Panier<span class="sr-only">(current)</span></a>
+                            <a class="nav-link">1 - Vérification du Panier</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">2 - Adresse livraison</a>
@@ -38,8 +35,8 @@ include 'inc/php_verification.php';
             </nav>
         </section>
         <h2>Récapitulatif du panier</h2>
-        <table class="table table_verification">
-            <thead class="thead-light">
+        <table class="table_verification">
+            <thead class="grey lighten-4">
                 <tr>
                     <th colspan="2">Produit</th>
                     <th>Prix</th>
@@ -53,7 +50,7 @@ include 'inc/php_verification.php';
                         {                                                                                         
                             ?>
                             <tr>
-                                <td><?= $produit->image_path ?></td>
+                                <td><img src="<?= $produit->image_path ?>" alt="<?= $produit->nom ?>" class="img_panier"></td>
                                 <td><?= $produit->nom ?></td>
                                 <td><?= number_format($produit->prix, 2, ',', '') ?>€</td>
                                 <td><?= $produit->quantite ?></td>
@@ -77,5 +74,6 @@ include 'inc/php_verification.php';
         </section>
     </main>
     <?php include 'inc/footer.php'; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

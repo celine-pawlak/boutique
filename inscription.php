@@ -17,7 +17,7 @@
         <h2>Forulaire d'inscription</h2>
         <!-- Nouveau form -->
         <div class="row">
-            <form class="col s12">
+            <form class="col s12" method="POST" action="">
                 <div class="row">
                     <div class="input-field col s12 m12 l6 xl6">
                         <input type="text" class="validate" name="username" id="username" value="<?php echo $username = (isset($_POST['username']))? $_POST['username'] : '' ?>" required>

@@ -5,7 +5,7 @@
                 foreach(Session::getInstance()->getFlashes() as $type => $message)
                     {
                         ?>
-                        <section class="alert alert-<?= $type ?>">
+                        <section class="alert-<?= $type ?>">
                             <?= $message ?>
                         </section>
                         <?php
