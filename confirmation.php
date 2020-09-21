@@ -77,7 +77,7 @@ include 'inc/php_confirmation.php';
                         </tr>                                                                                                       
             </tbody>
         </table>                                             
-            <form action="profil.php" method="POST">                       
+            <form action="index.php" method="POST">                       
                 <input type="submit" name="valid_panier" value="Retour boutique" class="btn bouton">
             </form>                       
     </main>
