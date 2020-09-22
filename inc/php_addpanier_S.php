@@ -21,7 +21,9 @@
                                     $_SESSION['panier'] = [];
                                     $_SESSION['panier']['id_produit'] = [];
                                     $_SESSION['panier']['quantite'] = [];                                                                
-                                    $_SESSION['panier']['prix'] = [];                                                                
+                                    $_SESSION['panier']['prix'] = [];    
+                                    $_SESSION['panier']['image'] = [];
+                                    $_SESSION['panier']['total_panier'] = [];
                                 }                                               
                             if($inStock->stock == 0)
                                 {
@@ -38,15 +40,10 @@
                                         {
                                             $taille = count($_SESSION['panier']['id_produit']);
                                             for($i=0; $i<$taille; $i++)
-                                                {
-                                                    echo $_SESSION['panier']['quantite'][$i];
-                                                    echo $_SESSION['panier']['prix'][$i];
+                                                {                                                  
                                                     if($id_produit==$_SESSION['panier']['id_produit'][$i])
                                                         {                                                                                                                  
-                                                            $_SESSION['panier']['quantite'][$i] = $_SESSION['panier']['quantite'][$i]+$quantite;                                                            
-                                                            $_SESSION['panier']['prix'][$i] = $inStock->prix *$_SESSION['panier']['quantite'][$i];
-                                                            echo $_SESSION['panier']['quantite'][$i];
-                                                    echo $_SESSION['panier']['prix'][$i];
+                                                            $_SESSION['panier']['quantite'][$i] = $_SESSION['panier']['quantite'][$i]+$quantite;                                                           
                                                         }
                                                 }                                            
                                         }
@@ -54,10 +51,12 @@
                                         {                                           
                                             $prix_total = $inStock->prix * $quantite;                                            
                                             array_push($_SESSION['panier']['id_produit'],$inStock->id);                                           
-                                            array_push($_SESSION['panier']['quantite'],$quantite);                                           
-                                            array_push($_SESSION['panier']['prix'],$prix_total);                                           
+                                            array_push($_SESSION['panier']['quantite'],$quantite);                                                                                                                                 
+                                            array_push($_SESSION['panier']['prix'],$inStock->prix); 
+                                            array_push($_SESSION['panier']['image'], $inStock->image_path);                                            
                                             Session::getInstance()->setFlash('success', 'Produit ajouté au panier');                                            
-                                        }
+                                        }                                    
+                                    // array_push($_SESSION['panier']['total_panier'], (array_sum($_SESSION['panier']['prix'])*array_sum($_SESSION['panier']['quantite'])));                                                                        
                                 }
                         }
                 }

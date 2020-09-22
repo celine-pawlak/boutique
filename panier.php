@@ -38,8 +38,7 @@
                 <tbody>
                     <?php 
                         if(empty($_SESSION['panier']))
-                            {var_dump($_SESSION);
-                                // unset($_SESSION['panier']);
+                            {                                
                                 ?>
                                 <tr>
                                     <td colspan="6">Vous n'avez pas encore de produit dans votre panier</td>
@@ -47,25 +46,27 @@
                                 <?php
                             }
                         else    
-                            {                   
-                                $taille = count($_SESSION['panier']['id_produit']);                                             
-                                for($i=0; $i>$taille; $i++)
-                                    {               
+                            {                                
+                                $taille = count($_SESSION['panier']['id_produit']);                                    
+                                for($i=0; $i<$taille; $i++)
+                                    {                                                 
                                         ?>
                                         <tr>
-                                            <td><img src="<?= $produit->image_path ?>" alt="<?= $produit->nom ?>" class="img_panier"></td>
-                                            <td><?= $produit->nom ?></td>
-                                            <td><?= number_format($produit->prix, 2, ',', '') ?>€</td>
-                                            <td><a href="inc/php_addpanier.php?moins&id_produit_panier=<?= $produit->id?>&produit_id=<?= $produit->id_produit ?>" class="btn-floating btn-small waves-effect waves-light">-</a>&nbsp<?= $produit->quantite ?>
-                                            &nbsp<a href="inc/php_addpanier.php?plus&id_produit_panier=<?= $produit->id?>&produit_id=<?= $produit->id_produit ?>" class="btn-floating btn-small waves-effect waves-light">+</a></td>                                   
-                                            <td><?= $prixtotal = number_format(($produit->prix * $produit->quantite), 2, ',', '') ?>€</td>
-                                            <td><a href="inc/suppression.php?delPanier=<?= $produit->id ?>">supprimer</a></td>                                    
+                                            <td><img src="<?= $_SESSION['panier']['image'][$i]?>" alt="nom" class="img_panier"></td>
+                                            <td>Nom</td>
+                                            <td><?= number_format($_SESSION['panier']['prix'][$i], 2, ',', '') ?>€</td>
+                                            <td><?= $_SESSION['panier']['quantite'][$i] ?></td>
+                                            <!-- <td><a href="inc/php_addpanier.php?moins&id_produit_panier= //$produit->id?>&produit_id=// $produit->id_produit ?>" class="btn-floating btn-small waves-effect waves-light">-</a>&nbsp //$_SESSION['panier']['quantite'][$i] ?>
+                                            &nbsp<a href="inc/php_addpanier.php?plus&id_produit_panier= //$produit->id?>&produit_id= //$produit->id_produit ?>" class="btn-floating btn-small waves-effect waves-light">+</a></td>                                    -->
+                                            <td><?= number_format(($_SESSION['panier']['prix'][$i]*$_SESSION['panier']['quantite'][$i]), 2, ',', '') ?>€</td>
+                                            <td><a href="inc/suppression.php?delPanier=<?= $_SESSION['panier']['id_produit'][$i] ?>">supprimer</a></td>                                    
                                         </tr>                                
-                                        <?php                             
-                                    }                                   
+                                        <?php                                                                                     
+                                        $_SESSION['panier']['total_panier'][$i] = ($_SESSION['panier']['prix'][$i]*$_SESSION['panier']['quantite'][$i]);                                        
+                                    }                                    
                                 ?> 
                                     <tr>
-                                        <td colspan="6">Grand total : <b><?= $totalPanier ?>€</b></td>
+                                        <td colspan="6">Grand total : <?= number_format(array_sum($_SESSION['panier']['total_panier']), 2,',','')?>€</b></td>
                                     </tr>                                 
                                 <?php                      
                             }
@@ -73,7 +74,7 @@
                 </tbody>
             </table>                                    
             <?php
-                if(!empty($produitPanier))
+                if(!empty($_SESSION['panier']))
                     {
                         ?>
                             <input type="submit" name="valid_panier" value="Valider" id="valid_panier" class="btn bouton">                            
