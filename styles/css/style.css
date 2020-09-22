@@ -36,10 +36,6 @@ h5
     {
         margin-bottom: 5vh;
     }
-.alert
-    {
-        text-align: center !important;
-    }
 .active
     {
         font-weight: bold;
@@ -75,20 +71,41 @@ h5
 .alert-danger
     {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 15vh;
-        background-color: #FB8484;
+        justify-content: center;        
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        position: relative;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
     }
 .alert-success
     {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 15vh;
-        background-color: #85FB84;
+        justify-content: center;        
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        position: relative;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+.alert-info
+    {
+        display: flex;
+        justify-content: center;        
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+        position: relative;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
     }
 /* FIN STYLE GENERIQUE */
 /* DEBUT INSCRIPTION */
@@ -270,9 +287,9 @@ h5
     {
         display: flex;
         flex-direction: column;        
-        text-align: center;
+        text-align: center;  
         width: 40vw;
-        margin-top: 5vh;
+        margin-top: 5vh;      
     }
 .modif_p
     {
@@ -288,6 +305,13 @@ h5
         color: white;
     }
 /* FIN PAIEMENT */
+/* DEBUT CONFIRMATION */
+#adresse_liv
+    {
+        border: 1px solid black;
+        border-radius: 0.25rem;
+    }
+/* FIN CONFIRMATION */
 /* DEBUT INDEX */
 #encart
     {    
