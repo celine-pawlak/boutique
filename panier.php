@@ -16,7 +16,7 @@
     </header>
     <main id="main_panier">  
         <!-- A supprimer -->
-        <form action="inc/php_addpanier.php" method="GET">
+        <form action="inc/php_addpanier_S.php" method="GET">
             <input type="text" name="id_utilisateur">
             <input type="text" name="id_produit">
             <input type="text" name="quantite">
@@ -37,8 +37,9 @@
                 </thead>
                 <tbody>
                     <?php 
-                        if(empty($produitPanier))
-                            {
+                        if(empty($_SESSION['panier']))
+                            {var_dump($_SESSION);
+                                // unset($_SESSION['panier']);
                                 ?>
                                 <tr>
                                     <td colspan="6">Vous n'avez pas encore de produit dans votre panier</td>
@@ -46,9 +47,10 @@
                                 <?php
                             }
                         else    
-                            {
-                                foreach($produitPanier as $nombre => $produit)
-                                    {                                                                              
+                            {                   
+                                $taille = count($_SESSION['panier']['id_produit']);                                             
+                                for($i=0; $i>$taille; $i++)
+                                    {               
                                         ?>
                                         <tr>
                                             <td><img src="<?= $produit->image_path ?>" alt="<?= $produit->nom ?>" class="img_panier"></td>
@@ -59,7 +61,7 @@
                                             <td><?= $prixtotal = number_format(($produit->prix * $produit->quantite), 2, ',', '') ?>€</td>
                                             <td><a href="inc/suppression.php?delPanier=<?= $produit->id ?>">supprimer</a></td>                                    
                                         </tr>                                
-                                        <?php                                         
+                                        <?php                             
                                     }                                   
                                 ?> 
                                     <tr>
