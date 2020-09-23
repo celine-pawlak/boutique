@@ -54,10 +54,10 @@
                                         <tr>
                                             <td><img src="<?= $_SESSION['panier']['image'][$i]?>" alt="nom" class="img_panier"></td>
                                             <td>Nom</td>
-                                            <td><?= number_format($_SESSION['panier']['prix'][$i], 2, ',', '') ?>€</td>
-                                            <td><?= $_SESSION['panier']['quantite'][$i] ?></td>
-                                            <!-- <td><a href="inc/php_addpanier.php?moins&id_produit_panier= //$produit->id?>&produit_id=// $produit->id_produit ?>" class="btn-floating btn-small waves-effect waves-light">-</a>&nbsp //$_SESSION['panier']['quantite'][$i] ?>
-                                            &nbsp<a href="inc/php_addpanier.php?plus&id_produit_panier= //$produit->id?>&produit_id= //$produit->id_produit ?>" class="btn-floating btn-small waves-effect waves-light">+</a></td>                                    -->
+                                            <td><?= number_format($_SESSION['panier']['prix'][$i], 2, ',', '') ?>€</td>   
+                                            <td><button class="moins" value="<?=$i?> - <?=$_SESSION['panier']['id_produit'][$i]?>">Moins</button></td>                                                                                 
+                                            <td><a href="inc/php_addpanier_S.php?moins&produit_id=<?= $_SESSION['panier']['id_produit'][$i] ?>&index=<?= $i ?>" class="moins<?=$i?> btn-floating btn-small waves-effect waves-light"  value="<?=$i ?>">-</a>&nbsp <?=$_SESSION['panier']['quantite'][$i] ?>
+                                            &nbsp<a href="inc/php_addpanier_S.php?plus&produit_id= <?=$_SESSION['panier']['id_produit'][$i] ?>&index=<?= $i ?>" class="btn-floating btn-small waves-effect waves-light" id="plus<?=$i?>">+</a></td>                                   
                                             <td><?= number_format(($_SESSION['panier']['prix'][$i]*$_SESSION['panier']['quantite'][$i]), 2, ',', '') ?>€</td>
                                             <td><a href="inc/suppression.php?delPanier=<?= $_SESSION['panier']['id_produit'][$i] ?>">supprimer</a></td>                                    
                                         </tr>                                
@@ -85,5 +85,7 @@
     </main>
     <?php include 'inc/footer.php';?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js/majquantite.js"></script>
 </body>
 </html>
