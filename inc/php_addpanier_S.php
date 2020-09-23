@@ -104,8 +104,5 @@
             else
                 $_SESSION['panier']['quantite'][$produit]++; 
         } 
-    // App::redirect('../panier.php');      
-    
-        
-    
+    // App::redirect('../panier.php');                      
 ?> 

@@ -1,14 +1,14 @@
-$("button[class^=moins]").click(function()
+$("button[class^=moins").click(function()
     {        
         var index = $(this).val();    
         $.ajax(
             {
-                url : 'js/majquantite.php',
+                url : 'js/moinsquantite.php',
                 method : 'GET',
                 data :{index_idP : index},
                 success : (data)=>
                     {
-                        console.log(data);
+                        console.log(data);                        
                     }
             });
     });

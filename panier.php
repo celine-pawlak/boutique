@@ -57,7 +57,7 @@
                                             <td><?= number_format($_SESSION['panier']['prix'][$i], 2, ',', '') ?>€</td>   
                                             <td><button class="moins" value="<?=$i?> - <?=$_SESSION['panier']['id_produit'][$i]?>">Moins</button></td>                                                                                 
                                             <td><a href="inc/php_addpanier_S.php?moins&produit_id=<?= $_SESSION['panier']['id_produit'][$i] ?>&index=<?= $i ?>" class="moins<?=$i?> btn-floating btn-small waves-effect waves-light"  value="<?=$i ?>">-</a>&nbsp <?=$_SESSION['panier']['quantite'][$i] ?>
-                                            &nbsp<a href="inc/php_addpanier_S.php?plus&produit_id= <?=$_SESSION['panier']['id_produit'][$i] ?>&index=<?= $i ?>" class="btn-floating btn-small waves-effect waves-light" id="plus<?=$i?>">+</a></td>                                   
+                                            &nbsp<a href="inc/php_addpanier_S.php?plus&produit_id= <?=$_SESSION['panier']['id_produit'][$i] ?>&index=<?= $i ?>" class="btn-floating btn-small waves-effect waves-light" id="plus<?=$i?>">+</a></td>     
                                             <td><?= number_format(($_SESSION['panier']['prix'][$i]*$_SESSION['panier']['quantite'][$i]), 2, ',', '') ?>€</td>
                                             <td><a href="inc/suppression.php?delPanier=<?= $_SESSION['panier']['id_produit'][$i] ?>">supprimer</a></td>                                    
                                         </tr>                                
