@@ -8,11 +8,15 @@ $("button[class^=moins").click(function()
                 data :{index_idP : index},
                 success : (data)=>
                     {
-                        console.log(data);                        
+                        $('#quantite_p').html(data);
+                        console.log(data);
                     }
             });
     });
-// $('button:regex(id, moins[0-9]+').click(function()
-//     {
-//         console.log('test');
-//     });
+                                            
+    <td><button class="moins" type="button" value="<?=$i?>-<?=$_SESSION['panier']['id_produit'][$i]?>">Moins</button></td>                 
+                                            
+                                            
+                                            
+                                            
+                                            
