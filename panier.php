@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
                     <?php 
-                        if(empty($_SESSION['panier']))
+                        if(empty($_SESSION['panier']['id_produit']))
                             {       var_dump($_SESSION);
                                 ?>
                                 <tr>
@@ -46,21 +46,21 @@
                                 <?php
                             }
                         else    
-                            { var_dump($_SESSION);
+                            { //var_dump($_SESSION);
                                 // unset($_SESSION['panier']);
-                                $taille = count($_SESSION['panier']['id_produit']);                                    
+                                $taille = count($_SESSION['panier']['id_produit']); 
+                                echo $taille;                                   
                                 for($i=0; $i<$taille; $i++)
-                                    {
+                                    {echo 'tutu';
                                         if(isset($_SESSION['panier']['id_produit'][$i]))                                            
-                                            {
+                                            {echo 'tata';
                                                 ?>
                                                 <tr>
                                                     <td><img src="<?= $_SESSION['panier']['image'][$i]?>" alt="nom" class="img_panier"></td>
                                                     <td>Nom</td>
-                                                    <td><?= number_format($_SESSION['panier']['prix'][$i], 2, ',', '') ?>€</td>   
-                                                    
-                                                    <td><a href="inc/php_addpanier_S.php?moins&produit_id=<?= $_SESSION['panier']['id_produit'][$i] ?>&index=<?= $i ?>" class="moins<?=$i?> btn-floating btn-small waves-effect waves-light"  value="<?=$i ?>">-</a>&nbsp<p id="quantite_p"><?=$_SESSION['panier']['quantite'][$i] ?></p>
-                                                    &nbsp<a href="inc/php_addpanier_S.php?plus&produit_id= <?=$_SESSION['panier']['id_produit'][$i] ?>&index=<?= $i ?>" class="btn-floating btn-small waves-effect waves-light" id="plus<?=$i?>">+</a></td>     
+                                                    <td><?= number_format($_SESSION['panier']['prix'][$i], 2, ',', '') ?>€</td>                                                       
+                                                    <td><a href="inc/php_addpanier_S.php?moins&produit_id=<?= $_SESSION['panier']['id_produit'][$i] ?>&index=<?= $i ?>" class="btn-floating btn-small waves-effect waves-light">-</a>&nbsp <?=$_SESSION['panier']['quantite'][$i] ?>
+                                                    &nbsp<a href="inc/php_addpanier_S.php?plus&produit_id= <?=$_SESSION['panier']['id_produit'][$i] ?>&index=<?= $i ?>" class="btn-floating btn-small waves-effect waves-light" id="plus<?=$i?>">+</a></td>
                                                     <td><?= number_format(($_SESSION['panier']['prix'][$i]*$_SESSION['panier']['quantite'][$i]), 2, ',', '') ?>€</td>
                                                     <td><a href="inc/suppression.php?delPanier=<?= $_SESSION['panier']['id_produit'][$i] ?>">supprimer</a></td>                                    
                                                 </tr>                                
@@ -78,7 +78,7 @@
                 </tbody>
             </table>                                    
             <?php
-                if(!empty($_SESSION['panier']))
+                if(!empty($_SESSION['panier']['id_produit']))
                     {
                         ?>
                             <input type="submit" name="valid_panier" value="Valider" id="valid_panier" class="btn bouton">                            

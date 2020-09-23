@@ -18,7 +18,7 @@
                             $inStock = $bdd->query('SELECT * FROM produits WHERE id=?', [$id_produit])->fetch(); 
                             //Si la session panier n'est pas créée
                             if(!isset($_SESSION['panier']['id_produit']))
-                                {
+                                {echo 'tu rentre pas la dedans';
                                     $_SESSION['panier'] = [];
                                     $_SESSION['panier']['id_produit'] = [];
                                     $_SESSION['panier']['quantite'] = [];                                                                
@@ -78,18 +78,27 @@
     if(isset($_GET['moins'], $_GET['index']))
         {                                       
             $produit = $_GET['index'];
-            $majquantite = ($_SESSION['panier']['quantite'][$produit]) - 1;            
+            echo $produit;
+            $majquantite = ($_SESSION['panier']['quantite'][$produit]) - 1;    
+            echo $majquantite;        
             if($majquantite==0)
-                {
+                {echo 'unset';
                     unset($_SESSION['panier']['quantite'][$produit]);
                     unset($_SESSION['panier']['prix'][$produit]);
                     unset($_SESSION['panier']['image'][$produit]);
                     unset($_SESSION['panier']['id_produit'][$produit]);
                     unset($_SESSION['panier']['total_panier'][$produit]);
+                    // if(empty($_SESSION['panier']['quantite'][$produit]))
+                    //     {
+                    //         unset($_SESSION['panier']);
+                    //     }
                     Session::getInstance()->setFlash('info', 'Produit supprimé du panier');
                 }
-            else                      
+            else         
+                {
+                    echo 'moins';
                     $_SESSION['panier']['quantite'][$produit]--;                                                          
+                }             
         }   
     if(isset($_GET['plus'], $_GET['produit_id'], $_GET['index']))
         {          
@@ -104,5 +113,5 @@
             else
                 $_SESSION['panier']['quantite'][$produit]++; 
         } 
-    // App::redirect('../panier.php');                      
+    App::redirect('../panier.php');                      
 ?> 
