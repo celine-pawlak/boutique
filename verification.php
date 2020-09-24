@@ -46,22 +46,25 @@ include 'inc/php_verification.php';
             </thead>
             <tbody>
                 <?php                                               
-                    foreach($produitPanier as $nombre => $produit)
-                        {                                                                                         
-                            ?>
-                            <tr>
-                                <td><img src="<?= $produit->image_path ?>" alt="<?= $produit->nom ?>" class="img_panier"></td>
-                                <td><?= $produit->nom ?></td>
-                                <td><?= number_format($produit->prix, 2, ',', '') ?>€</td>
-                                <td><?= $produit->quantite ?></td>
-                                <td><?= $prixtotal = number_format(($produit->prix * $produit->quantite), 2, ',', '') ?>€</td>                                                                  
-                            </tr>                                
-                            <?php                                         
-                        }                                   
-                    ?> 
+                    foreach($_SESSION['panier']['id_produit'] as $index => $Quant)
+                    {                                                                                              
+                        ?>
                         <tr>
-                            <td colspan="5">Grand total : <b><?= $totalPanier ?>€</b></td>
-                        </tr>                                                                                                       
+                            <?php                                                        
+                            ?>
+                            <td><img src="<?= $_SESSION['panier']['image'][$index]?>" alt="nom" class="img_panier"></td>
+                            <td>Nom</td>
+                            <td><?= number_format($_SESSION['panier']['prix'][$index], 2, ',', '') ?>€</td>                                                       
+                            <td><?=$_SESSION['panier']['quantite'][$index] ?></td>                           
+                            <td><?= number_format(($_SESSION['panier']['prix'][$index]*$_SESSION['panier']['quantite'][$index]), 2, ',', '') ?>€</td>                            
+                        </tr>                                
+                        <?php                                                                                     
+                        $_SESSION['panier']['total_panier'][$index] = ($_SESSION['panier']['prix'][$index]*$_SESSION['panier']['quantite'][$index]);                                                                                    
+                    }                                                             
+                ?> 
+                    <tr>
+                        <td colspan="6">Grand total : <?= number_format(array_sum($_SESSION['panier']['total_panier']), 2,',','')?>€</b></td>
+                    </tr>                                                                                                                                              
             </tbody>
         </table>     
         <section class="suivant">           
