@@ -2,7 +2,7 @@
     require_once 'inc/initialisation.php';        
     $bdd = App::getDatabase();    
     Session::getInstance(); 
-    
+    var_dump($_SESSION['panier']);
     if(Session::getInstance()->hasSession('accesPaiement'))
         {            
             $date_min = date('Y-m', strtotime('now'));
@@ -34,14 +34,13 @@
                                                     $stockProduit = $bdd->query('SELECT stock FROM produits WHERE id=?', [$id_produit])->fetch();
                                                     if($_SESSION['panier']['quantite'][$index] <= $stockProduit->stock)
                                                         {
-                                                            $quantite_P = $_SESSION['panier']['quantite'][$index];
+                                                            $quantite_P = $_SESSION['panier']['quantite'][$index];                                                            
                                                             $id_P = $_SESSION['panier']['id_produit'][$index];
-                                                            $addCommande = $bdd->query('INSERT INTO commandes SET numero=?, prix_commande=?, adresse_livraison=?, ville_livraison=?, code_postal_livraison=?, id_utilisateurs=?', [$n_commande, $_SESSION['panier']['total_panier'], $adresse, $ville, $cp, $id]);
-                                                            $addproduitCo = $bdd->query('INSERT INTO produits_commandes SET id_produit=?, quantite=?, num_commande=?', [$id_P, $quantite_P, $n_commande]);                                                    
+                                                            
+                                                            $addproduitCo = $bdd->query('INSERT INTO produits_commandes SET id_produit=?, quantite=?, num_commande=?', [$id_P, $quantite_P, $n_commande]);
+                                                                                                                        
                                                             $majStock = ($stockProduit->stock) - ($quantite_P);                                                   
-                                                            $decreProduit = $bdd->query('UPDATE produits SET stock=? WHERE id=?', [$majStock, $id_P]);                                                            
-                                                            unset($_SESSION['panier']);
-                                                            // App::redirect('confirmation.php');
+                                                            $decreProduit = $bdd->query('UPDATE produits SET stock=? WHERE id=?', [$majStock, $id_P]);                                                                                                                        
                                                         }
                                                     else
                                                         {
@@ -50,7 +49,11 @@
                                                             Session::getInstance()->setFlash('danger', "il n'y a plus assez de stock pour : <b>$nom->nom</b>, veuillez modifier votre commande");      
                                                             $retourpanier = true;                                                                                                                    
                                                         }
-                                                }   
+                                                }       
+                                            $total_P = array_sum($_SESSION['panier']['total_panier']);  
+                                            $addCommande = $bdd->query('INSERT INTO commandes SET numero=?, prix_commande=?, adresse_livraison=?, ville_livraison=?, code_postal_livraison=?, id_utilisateurs=?', [$n_commande, $total_P, $adresse, $ville, $cp, $id]);
+                                            unset($_SESSION['panier']);                                                            
+                                            App::redirect('confirmation.php');                                            
                                         }
                                     else                                        
                                             Session::getInstance()->setFlash('danger', "Le cryptogramme n'est pas valide");                                        

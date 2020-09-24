@@ -37,7 +37,7 @@
                 <tbody>
                     <?php 
                         if(empty($_SESSION['panier']['id_produit']))
-                            {       var_dump($_SESSION);
+                            {      
                                 ?>
                                 <tr>
                                     <td colspan="6">Vous n'avez pas encore de produit dans votre panier</td>

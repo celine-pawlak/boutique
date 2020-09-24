@@ -70,7 +70,7 @@ include 'inc/php_confirmation.php';
                         }                                   
                     ?> 
                         <tr>
-                            <td colspan="5">Grand total : <b><?= $commande->prix_commande ?>€</b></td>
+                            <td colspan="5" class="center">Grand total : <b><?= $commande->prix_commande ?>€</b></td>
                         </tr>                                                                                                       
             </tbody>
         </table>                                             

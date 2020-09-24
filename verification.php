@@ -1,5 +1,5 @@
 <?php
-include 'inc/php_verification.php';    
+include 'inc/php_verification.php';    var_dump($_SESSION['panier']);
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,4 +1,4 @@
-<?php include 'inc/php_paiement.php'; ?>
+<?php include 'inc/php_paiement.php'; var_dump($_SESSION['panier']); ?>
 <!-- $moinsStock = ($inStock->quantite - $quantite);
 $destock = $bdd->query('UPDATE produits SET quantite=? WHERE id=?', [$moinsStock, $id_produit]); -->
 <!DOCTYPE html>

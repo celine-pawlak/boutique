@@ -1,4 +1,4 @@
-<?php include 'inc/php_compte.php'; ?>
+<?php include 'inc/php_compte.php'; var_dump($_SESSION['panier']);?>
 <!DOCTYPE html>
 <html>
 <head>
