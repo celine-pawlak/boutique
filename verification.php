@@ -53,7 +53,7 @@ include 'inc/php_verification.php';
                             <?php                                                        
                             ?>
                             <td><img src="<?= $_SESSION['panier']['image'][$index]?>" alt="nom" class="img_panier"></td>
-                            <td>Nom</td>
+                            <td><?= $_SESSION['panier']['nom'][$index]?></td>
                             <td><?= number_format($_SESSION['panier']['prix'][$index], 2, ',', '') ?>€</td>                                                       
                             <td><?=$_SESSION['panier']['quantite'][$index] ?></td>                           
                             <td><?= number_format(($_SESSION['panier']['prix'][$index]*$_SESSION['panier']['quantite'][$index]), 2, ',', '') ?>€</td>                            
@@ -63,7 +63,7 @@ include 'inc/php_verification.php';
                     }                                                             
                 ?> 
                     <tr>
-                        <td colspan="6">Grand total : <?= number_format(array_sum($_SESSION['panier']['total_panier']), 2,',','')?>€</b></td>
+                        <td colspan="6" class="center">Grand total : <b><?= number_format(array_sum($_SESSION['panier']['total_panier']), 2,',','')?>€</b></td>
                     </tr>                                                                                                                                              
             </tbody>
         </table>     

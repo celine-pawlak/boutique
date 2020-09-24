@@ -2,6 +2,7 @@
     require_once 'inc/initialisation.php';        
     $bdd = App::getDatabase();    
     Session::getInstance(); 
+    
     if(Session::getInstance()->hasSession('accesPaiement'))
         {            
             $date_min = date('Y-m', strtotime('now'));
@@ -15,7 +16,7 @@
                     $id_user = $_SESSION['current_user']['id'];           
 
                     if(preg_match("#^[0-9]{4}[-/ ]?[0-9]{4}[-/ ]?[0-9]{4}[-/ ]?[0-9]{4}?$#", $carte))
-                        {                                              
+                        {                 
                             if(preg_match("#^[2]{1}?[0-9]{3}?#", $date_p) && ($date_p >= $date_min))
                                 {
                                     if(preg_match("#^[0-9]{3}?$#", $crypto))
@@ -26,23 +27,26 @@
                                             $ville = $_SESSION['current_user']['ville_livraison'];
                                             $cp = $_SESSION['current_user']['code_postal_livraison'];
                                             $id = $_SESSION['current_user']['id'];                                                                                   
-
-                                            $panier_user = $bdd->query('SELECT * FROM panier WHERE id_utilisateur=?', [$id_user])->fetchAll();                                          
-                                            foreach($panier_user as $nombre => $produit)
-                                            {                                                   
-                                                    $stockProduit = $bdd->query('SELECT stock FROM produits WHERE id=?', [$produit->id_produit])->fetch();
-                                                    if($produit->quantite <= $stockProduit->stock)
+                                            
+                                            foreach($_SESSION['panier']['id_produit'] as $index => $Quant)
+                                                {      
+                                                    $id_produit = $_SESSION['panier']['id_produit'][$index];                                                    
+                                                    $stockProduit = $bdd->query('SELECT stock FROM produits WHERE id=?', [$id_produit])->fetch();
+                                                    if($_SESSION['panier']['quantite'][$index] <= $stockProduit->stock)
                                                         {
-                                                            $addCommande = $bdd->query('INSERT INTO commandes SET numero=?, prix_commande=?, adresse_livraison=?, ville_livraison=?, code_postal_livraison=?, id_utilisateurs=?', [$n_commande, $_SESSION['prixpanier'], $adresse, $ville, $cp, $id]);
-                                                            $addproduitCo = $bdd->query('INSERT INTO produits_commandes SET id_produit=?, quantite=?, num_commande=?', [$produit->id_produit, $produit->quantite, $n_commande]);                                                    
-                                                            $majStock = ($stockProduit->stock) - ($produit->quantite);                                                   
-                                                            $decreProduit = $bdd->query('UPDATE produits SET stock=? WHERE id=?', [$majStock, $produit->id_produit]);
-                                                            $suppPanier = $bdd->query('DELETE FROM panier WHERE id_utilisateur=?', [$id]);
-                                                            App::redirect('confirmation.php');
+                                                            $quantite_P = $_SESSION['panier']['quantite'][$index];
+                                                            $id_P = $_SESSION['panier']['id_produit'][$index];
+                                                            $addCommande = $bdd->query('INSERT INTO commandes SET numero=?, prix_commande=?, adresse_livraison=?, ville_livraison=?, code_postal_livraison=?, id_utilisateurs=?', [$n_commande, $_SESSION['panier']['total_panier'], $adresse, $ville, $cp, $id]);
+                                                            $addproduitCo = $bdd->query('INSERT INTO produits_commandes SET id_produit=?, quantite=?, num_commande=?', [$id_P, $quantite_P, $n_commande]);                                                    
+                                                            $majStock = ($stockProduit->stock) - ($quantite_P);                                                   
+                                                            $decreProduit = $bdd->query('UPDATE produits SET stock=? WHERE id=?', [$majStock, $id_P]);                                                            
+                                                            unset($_SESSION['panier']);
+                                                            // App::redirect('confirmation.php');
                                                         }
                                                     else
                                                         {
-                                                            $nom = $bdd->query('SELECT nom FROM produits WHERE id=?', [$produit->id_produit])->fetch();                                                           
+                                                            $id_P = $_SESSION['panier']['id_produit'][$index];
+                                                            $nom = $bdd->query('SELECT nom FROM produits WHERE id=?', [$id_P])->fetch();                                                           
                                                             Session::getInstance()->setFlash('danger', "il n'y a plus assez de stock pour : <b>$nom->nom</b>, veuillez modifier votre commande");      
                                                             $retourpanier = true;                                                                                                                    
                                                         }

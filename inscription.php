@@ -15,6 +15,7 @@
     </header>
     <main id="main_inscription">
         <h2>Forulaire d'inscription</h2>
+        <p class="flow-text">Inscrivez-vous et connectez-vous pour valider votre panier</p>
         <!-- Nouveau form -->
         <div class="row">
             <form class="col s12" method="POST" action="">

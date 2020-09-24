@@ -1,7 +1,7 @@
 <?php
     if(isset($_POST['deco']))
         {
-            unset($_SESSION['current_user']);
+            session_destroy();
             App::redirect('index.php');
         }
 ?>

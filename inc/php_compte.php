@@ -3,6 +3,11 @@
      $bdd = App::getDatabase();    
      Session::getInstance(); 
 
+     if(!isset($_SESSION['current_user']))
+        {
+            App::redirect('connexion.php');
+        }
+
      if(isset($_POST['retour_panier']))
         {
             $_SESSION['retour_panier'] = $_POST['retour_panier'];

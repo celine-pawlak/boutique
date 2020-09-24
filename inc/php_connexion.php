@@ -19,8 +19,15 @@
                             if(password_verify($password, $isUser['password']))
                                 {                                                                                                         
                                     Session::getInstance()->setFlash('success', "Vous êtes maintenant connecté"); 
-                                    Session::getInstance()->setSession('current_user', $isUser);                                                                                                        
-                                    App::redirect('index.php');                                                                        
+                                    Session::getInstance()->setSession('current_user', $isUser);     
+                                    if(isset($_SESSION['panier']))                                                                                                   
+                                        {
+                                            App::redirect('panier.php');                                                                        
+                                        }
+                                    else    
+                                        {
+                                            App::redirect('index.php');
+                                        }
                                 }
                             else
                                 Session::getInstance()->setFlash('danger', "Ce n'est pas le bon mot de passe"); 

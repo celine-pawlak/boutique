@@ -14,7 +14,8 @@
         <?php include 'inc/header.php';?>
     </header>
     <main id="main_connexion">
-        <h2>Formulaire de Conenxion</h2>        
+        <h2>Formulaire de Conenxion</h2>      
+        <p class="flow-text">Inscrivez-vous et connectez-vous pour valider votre panier</p>  
         <section class="row">
             <form class="col s12" method="POST" action="">               
                 <div class="row">
