@@ -1,6 +1,7 @@
 <?php    
     include 'inc/initialisation.php';   
     include 'inc/php_panier.php';  
+    require_once 'fonctions/checkstock.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,7 +48,13 @@
                         else    
                             {                                                                                                                                                       
                                 foreach($_SESSION['panier']['id_produit'] as $index => $Quant)
-                                    {                                                                                              
+                                    {   
+                                        if(checkstock($bdd, $_SESSION['panier']['id_produit'][$index], $index)==true)
+                                            {
+                                                $disable = 'disabled';
+                                            }     
+                                        else    
+                                            $disable ='';
                                         ?>
                                         <tr>
                                             <?php                                                        
@@ -56,7 +63,7 @@
                                             <td><?= $_SESSION['panier']['nom'][$index]?></td>
                                             <td><?= number_format($_SESSION['panier']['prix'][$index], 2, ',', '') ?>€</td>                                                       
                                             <td><a href="inc/php_addpanier_S.php?moins&produit_id=<?= $_SESSION['panier']['id_produit'][$index] ?>&index=<?= $index ?>" class="btn-floating btn-small waves-effect waves-light">-</a>&nbsp <?=$_SESSION['panier']['quantite'][$index] ?>
-                                            &nbsp<a href="inc/php_addpanier_S.php?plus&produit_id= <?=$_SESSION['panier']['id_produit'][$index] ?>&index=<?= $index ?>" class="btn-floating btn-small waves-effect waves-light <?= $disable = (($_SESSION['stop'][$index]==true))?'disabled':null;?>" id="plus<?=$index?>">+</a></td>
+                                            &nbsp<a href="inc/php_addpanier_S.php?plus&produit_id= <?=$_SESSION['panier']['id_produit'][$index] ?>&index=<?= $index ?>" class="btn-floating btn-small waves-effect waves-light <?= $disable?>" id="plus<?=$index?>">+</a></td>
                                             <td><?= number_format(($_SESSION['panier']['prix'][$index]*$_SESSION['panier']['quantite'][$index]), 2, ',', '') ?>€</td>
                                             <td><a href="inc/suppression.php?delPanier=<?= $_SESSION['panier']['id_produit'][$index] ?>">supprimer</a></td>                                    
                                         </tr>                                

@@ -3,8 +3,7 @@
    require_once '../class/Database.php'; 
    require_once '../class/session.php';   
    $bdd = App::getDatabase();  
-   Session::getInstance();     
-   session_start();
+   Session::getInstance();        
    //Ajoute un produit au panier
     if(isset( $_GET['id_produit'], $_GET['quantite']))
         {                    
@@ -23,7 +22,7 @@
                             $_SESSION['panier']['prix'] = [];    
                             $_SESSION['panier']['image'] = [];
                             $_SESSION['panier']['nom'] = [];
-                            $_SESSION['panier']['total_panier'] = [];
+                            $_SESSION['panier']['total_panier'] = [];                                                                                    
                         }                                               
                     if($inStock->stock == 0)
                         {
@@ -100,15 +99,12 @@
             $produit_id = $_GET['produit_id'];
             $index = $_GET['index'];
             $inStock = $bdd->query('SELECT stock FROM produits WHERE id=?', [$produit_id])->fetch();
-            $majquantite = ($_SESSION['panier']['quantite'][$index]) + 1;                       
-            if($majquantite==$inStock->stock)          
+            $majquantite = ($_SESSION['panier']['quantite'][$index]) + 1;  
+            echo $majquantite;                                         
+            if($majquantite>$inStock->stock)          
                 {
-                    $_SESSION['stop'][$index] = true;
                     Session::getInstance()->setFlash('info', "Vous ne pouvez plus rajouter de quantités sur ce produit");                                                
-                }              
-            if($majquantite > $inStock->stock)
-                {
-                }
+                }             
             else
                 $_SESSION['panier']['quantite'][$index]++; 
         } 
