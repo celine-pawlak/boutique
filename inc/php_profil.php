@@ -1,6 +1,6 @@
 <?php
     require_once 'inc/initialisation.php';
-    require_once 'inc/fonction_pagination.php';
+    require_once 'fonctions/fonction_pagination.php';
 
     if(Session::getInstance()->hasSession('current_user'))
         {           
@@ -90,7 +90,7 @@
             // Partie Historique des achats
                 // Récupère les commandes de l'utilisateur et prépare pour la pagination                
                 $get_page = (isset($_GET["commande"])? $_GET["commande"] : 1);
-                $infos_commandes = prepaPagination(5, 'commandes', $get_page, 'date_commande', $bdd, 'id_utilisateurs', $id);                
+                $infos_commandes = prepaPagination(5, 'commandes', $get_page, 'date_commande', $bdd, 'id_utilisateurs', $id);                                
                 $pp = $infos_commandes['par_page'];
                 $nb_total = $infos_commandes['nb_total'];
                 $nb_page = $infos_commandes['nb_page'];
@@ -98,6 +98,6 @@
         }
     else
         {
-            App::redirect('index.php');
+            // App::redirect('index.php');
         }
 ?>

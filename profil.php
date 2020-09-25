@@ -5,10 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">  
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">   
     <link rel="stylesheet" href="styles/css/style.css"/>  
     <title>Mon compte</title>
 </head>
@@ -71,7 +68,7 @@
                         </section>    
                     </section>
                     <section class="valid_form">
-                        <input type="submit" class="btn bouton" name="valid_modif" value="Inscription">
+                        <input type="submit" class="btn bouton" name="valid_modif" value="Modifier">
                         <small><span class="oblig">*</span> Champs obligatoires</small>
                     </section>                          
                 </form>                
@@ -92,14 +89,14 @@
                         <tbody>
                             <?php
                                 for($i = 0; $i< $infos_commandes['compte'] ; $i++)
-                                    {
-                                        $count_produit = $bdd->query('SELECT COUNT(id) as nb_produit_com FROM produits_commandes WHERE id_commandes = ?' , [$infos_commandes['recup'][$i]['id']])->fetch(PDO::FETCH_ASSOC);                                    
+                                    {                                        
+                                        $count_produit = $bdd->query('SELECT COUNT(id) as nb_produit_com FROM produits_commandes WHERE num_commande = ?' , [$infos_commandes['recup'][$i]['numero']])->fetch(PDO::FETCH_ASSOC);
                                         ?>
                                         <tr>
                                             <td><?= $infos_commandes['recup'][$i]['date_commande'] = date('d-m-Y') ?></td>
                                             <td><a href="detail.php?id=<?= $infos_commandes['recup'][$i]['id'] ?>"><?= $infos_commandes['recup'][$i]['numero'] ?></a></td>
                                             <td><?= $count_produit['nb_produit_com'] ?></td>
-                                            <td><?= $infos_commandes['recup'][$i]['prix_commande'] ?></td>
+                                            <td><?= number_format($infos_commandes['recup'][$i]['prix_commande'], 2, ',', '') ?> €</td>
                                         </tr>
                                         <?php
                                     }
@@ -111,5 +108,6 @@
         </section>
     </main>
     <?php include 'inc/footer.php'; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
