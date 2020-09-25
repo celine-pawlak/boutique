@@ -25,8 +25,9 @@
                     <?php
                         if(isset($_SESSION['current_user']))
                             {
-                                ?>
-                                <li><a  href="profil.php">Mon compte</a></li>                                
+                                ?>                                
+                                <li><a href="profil.php#formulaire_profil">Modifier mon profil</a></li>
+                                <li><a href="profil.php#historique">Historique des commandes</a></li>                                                           
                                 <?php
                             }
                         else
