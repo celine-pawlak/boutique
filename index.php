@@ -14,7 +14,7 @@ require_once 'inc/php_index.php';
     <main>
         <section id="encart" class="row">  
             <div id="titre" class="col-sm12 col-lg12 col-xl12">
-                <h1>Coq Etique</h1>
+                <h1>Coqu'Etique</h1>
             </div>          
         </section>
         <h2 class="center display-3">Nouveautés</h2>     
