@@ -348,3 +348,13 @@ h5
         background-position: top;
     }
 /* FIN INDEX */
+/* DEBUT FOOTER */
+footer a    
+    {
+        color: white;
+    }
+footer a:hover  
+    {
+        color: #FFCC2D;
+    }
+/* FIN FOOTER */
