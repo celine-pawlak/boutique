@@ -98,6 +98,6 @@
         }
     else
         {
-            // App::redirect('index.php');
+            App::redirect('index.php');
         }
 ?>

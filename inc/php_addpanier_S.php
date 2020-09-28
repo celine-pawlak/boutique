@@ -65,12 +65,7 @@
                 {
                     Session::getInstance()->setFlash('danger', 'Les valeurs ne sont pas correctes');                    
                 }
-        } 
-
-    if(isset($_GET['index_idP']))
-        {
-            echo $_GET['index_idP'];
-        }
+        }     
     
     //Mets à jour les quantités des produits dans le panier
     if(isset($_GET['moins'], $_GET['index']))
@@ -88,8 +83,7 @@
                     Session::getInstance()->setFlash('info', 'Produit supprimé du panier');
                 }
             else         
-                {
-                    echo 'moins';
+                {                
                     $_SESSION['panier']['quantite'][$index]--;    
                     $_SESSION['stop'][$index] = false;                                                      
                 }             
@@ -99,8 +93,7 @@
             $produit_id = $_GET['produit_id'];
             $index = $_GET['index'];
             $inStock = $bdd->query('SELECT stock FROM produits WHERE id=?', [$produit_id])->fetch();
-            $majquantite = ($_SESSION['panier']['quantite'][$index]) + 1;  
-            echo $majquantite;                                         
+            $majquantite = ($_SESSION['panier']['quantite'][$index]) + 1;                                                  
             if($majquantite>$inStock->stock)          
                 {
                     Session::getInstance()->setFlash('info', "Vous ne pouvez plus rajouter de quantités sur ce produit");                                                

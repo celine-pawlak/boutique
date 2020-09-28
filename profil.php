@@ -91,7 +91,7 @@
                                         ?>
                                         <tr>
                                             <td><?= $infos_commandes['recup'][$i]['date_commande'] = date('d-m-Y') ?></td>
-                                            <td><a href="detail.php?id=<?= $infos_commandes['recup'][$i]['id'] ?>"><?= $infos_commandes['recup'][$i]['numero'] ?></a></td>
+                                            <td><a href="detail.php?id_commande=<?= $infos_commandes['recup'][$i]['id'] ?>"><?= $infos_commandes['recup'][$i]['numero'] ?></a></td>
                                             <td><?= $count_produit['nb_produit_com'] ?></td>
                                             <td><?= number_format($infos_commandes['recup'][$i]['prix_commande'], 2, ',', '') ?> €</td>
                                         </tr>
