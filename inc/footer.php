@@ -15,7 +15,10 @@
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text"><a  href="index.php">Coq Etique</a></h5>
-                <p class="grey-text text-lighten-4">Boutique de vêtements 100% Made in France</p>                
+                <p class="grey-text text-lighten-4">Boutique de vêtements 100% Made in France</p>  
+                <form action="" method="POST">
+        <input type="submit" value="Déconnexion" name="deco">
+    </form>              
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Liens</h5>

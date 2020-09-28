@@ -17,7 +17,7 @@
     </header>
     <main id="main_panier">  
         <!-- A supprimer -->
-        <form action="inc/php_addpanier_S.php" method="GET">            
+        <form action="inc/php_addpanier_S.php" method="POST">            
             <input type="text" name="id_produit">
             <input type="text" name="quantite">
             <input type="submit">

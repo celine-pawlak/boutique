@@ -20,8 +20,8 @@
             <form class="col s12" method="POST" action="">               
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="login">Login ou Email: <span class="oblig">*</span></label>
-                        <input type="text" class="validate" name="login" id="login" required>
+                        <label for="login">Email: <span class="oblig">*</span></label>
+                        <input type="email" class="validate" name="login" id="login" required>
                     </div>
                 </div>
                 <div class="row">

@@ -5,10 +5,10 @@
    $bdd = App::getDatabase();  
    Session::getInstance();        
    //Ajoute un produit au panier
-    if(isset( $_GET['id_produit'], $_GET['quantite']))
+    if(isset($_POST['id_produit'], $_POST['quantite']))
         {                    
-        $id_produit = $_GET['id_produit'];
-        $quantite = $_GET['quantite'];               
+        $id_produit = $_POST['id_produit'];
+        $quantite = $_POST['quantite'];               
            
             if(filter_var($id_produit, FILTER_VALIDATE_INT) && filter_var($quantite, FILTER_VALIDATE_INT))
                 {                                             

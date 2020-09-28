@@ -12,7 +12,7 @@
                     $login = $_POST['login'];
                     $password = $_POST['password'];
 
-                    $isUser = $bdd->query('SELECT * FROM utilisateurs WHERE username = ? OR email = ?', [$login, $login])->fetch(PDO::FETCH_ASSOC);
+                    $isUser = $bdd->query('SELECT * FROM utilisateurs WHERE email = ?', [$login])->fetch(PDO::FETCH_ASSOC);
                     
                     if(!empty($isUser))
                         {                                                       
