@@ -41,8 +41,7 @@
                     if(isset($_SESSION[$cle]))
                         {
                             return $_SESSION[$cle];
-                        }
-                    
+                        }                    
                 }
                         
                 
