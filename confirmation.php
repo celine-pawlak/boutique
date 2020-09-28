@@ -37,7 +37,7 @@ include 'inc/php_confirmation.php';
         <h2>Confirmation de la commande n°<?= $commande->numero ?></h2>
         <section>
             <article class="alert-info">En raion du Covid-19, nous avons prit du retard sur nos livraisons. Merci de votre compréhension</article>
-            <div id="adresse_liv" class="grey lighten-5">
+            <div class="adresse_liv" class="grey lighten-5">
                 <h4>Adresse de livraison</h4>
                     <div>
                         <p>Chez <?= $_SESSION['current_user']['nom']. ' '. $_SESSION['current_user']['prenom']?></p>

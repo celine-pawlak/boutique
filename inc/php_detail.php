@@ -11,13 +11,13 @@ if(Session::getInstance()->hasSession('current_user'))
                          {
                               $commande = $bdd->query('SELECT * FROM produits_commandes INNER JOIN commandes ON commandes.numero = produits_commandes.num_commande WHERE commandes.id=?', [$id_commande])->fetchAll();                                                                                                              
                               $id_user = $commande[0]->id_utilisateurs;;
-                              $user = $bdd->query('SELECT nom, prenom, email FROM utilisateurs WHERE id=?', [$id_user])->fetch();                                                                                                                
+                              $user = $bdd->query('SELECT nom, prenom, email FROM utilisateurs WHERE id=?', [$id_user])->fetch();                                                                                                                                                                            
                          }
                     else
-                         App::redirect('profil.php');//Créer page erreur ? 
+                         App::redirect('profil.php');//Créer page erreur ?                    
                }
           else
-               App::redirect('profil.php');
+               App::redirect('profil.php');//Créer page erreur ?
      }
 else     
      App::redirect('index.php');     

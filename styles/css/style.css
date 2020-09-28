@@ -307,7 +307,7 @@ h5
     }
 /* FIN PAIEMENT */
 /* DEBUT CONFIRMATION */
-#adresse_liv
+.adresse_liv
     {
         border: 1px solid black;
         border-radius: 0.25rem;
@@ -349,7 +349,30 @@ h5
         background-position: top;
     }
 /* FIN INDEX */
+/* DEBUT DETAIL */
+#main_detail
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+#main_detail table
+    {
+        margin-bottom: 5vh;
+        margin-top: 5vh;
+    }
+#livraison_d
+    {
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+/* FIN DETAIL */
 /* DEBUT FOOTER */
+footer
+    {
+        margin-top: 5vh;
+    }
 footer a    
     {
         color: white;
