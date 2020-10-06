@@ -1,23 +1,26 @@
 <div class="row p-1">
+    <form method="post" action="index.php?p=products.search" class="col s12">
+        <div class="row">
+            <div class="input-field col s12 m6 offset-m6">
+                <input name="searchbox" type="text" id="autocomplete-input" class="autocomplete">
+                <label for="autocomplete-input">Rechercher l'article</label>
+            </div>
+            <button class="right"><i class="material-icons">search</i></button>
+        </div>
+    </form>
+</div>
+<div class="row p-1">
     <div class="col s12">
         <span>
             <a class="disabled">
             <?= $product->getGender($subcategories, $categories); ?>
             </a>
             >
-<<<<<<< HEAD
-            <a href="index.php?p=products.category&id=<?=$product->getCategory($subcategories, $categories)[1]?>">
-                <?= $product->getCategory($subcategories, $categories)[0]; ?>
-            </a>
-            >
-            <a href="index.php?p=products.subcategory&id=<?=$product->id_sous_categories?>" >
-=======
             <a href="index.php?p=products.category&id=<?= $product->getCategory($subcategories, $categories)[1] ?>">
                 <?= $product->getCategory($subcategories, $categories)[0]; ?>
             </a>
             >
             <a href="index.php?p=products.subcategory&id=<?= $product->id_sous_categories ?>">
->>>>>>> test
                 <?= $product->sous_categorie ?>
             </a>
             >
@@ -36,14 +39,6 @@
             <br>
             <?= $product->description ?>
         </p>
-<<<<<<< HEAD
-        <!-- input + et - -->
-        <?php  var_dump($_POST); ?>
-        <form action="" method="POST">
-            <input name="id_produit" value="<?= $product->id ?>" hidden>
-            <button type="submit" class="btn" name="quantite" value="1">Ajouter au panier</button>
-        </form>
-=======
         <?php
         if ($product->stock == 0): ?>
             <button type="submit" class="btn" name="add_to_basket" disabled>Ajouter au panier</button>
@@ -56,6 +51,5 @@
             </form>
         <?php
         endif; ?>
->>>>>>> test
     </div>
 </div>

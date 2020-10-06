@@ -2,11 +2,6 @@
 
 namespace App\Controller;
 
-<<<<<<< HEAD
-use Core\Controller\Controller;
-
-class ProductsController extends AppController{
-=======
 use Core\Alert\Alert;
 use Core\Controller\Controller;
 use Core\HTML\BootstrapForm;
@@ -16,7 +11,6 @@ class ProductsController extends AppController
 
     private $errors = [];
     private $success = [];
->>>>>>> test
 
     public function __construct()
     {
@@ -26,24 +20,16 @@ class ProductsController extends AppController
         $this->loadModel('Category');
     }
 
-<<<<<<< HEAD
-    public function index(){
-=======
     public function index()
     {
->>>>>>> test
         $products = $this->Product->last();
         $subcategories = $this->Subcategory->all();
         $categories = $this->Category->all();
         $this->render('products.index', compact('products', 'subcategories', 'categories'));
     }
 
-<<<<<<< HEAD
-    public function subcategory(){
-=======
     public function subcategory()
     {
->>>>>>> test
         $subcategory = $this->Subcategory->find($_GET['id']);
         if ($subcategory === false) {
             $this->notFound();
@@ -66,13 +52,26 @@ class ProductsController extends AppController
         $this->render('products.category', compact('products', 'categories', 'category', 'subcategories'));
     }
 
-<<<<<<< HEAD
-    public function show(){
-        $product = $this->Product->findWithSubcategory($_GET['id']);
-        $categories = $this->Category->all();
+    public function search(){
+        $products = $this->Product->all();
+        if(isset($_POST['searchbox'])){
+            $recherche = $_POST['searchbox'];
+            $match_products = [];
+            foreach ($products as $product) {
+                if (preg_match("/$recherche/i", $product->nom)){
+                    $match_products[] = $product;
+                }
+            }
+            $products = $match_products;
+        }
+        else{
+            $products = $this->Product->all();
+        }
         $subcategories = $this->Subcategory->all();
-        $this->render('products.show', compact('product','categories', 'subcategories'));
-=======
+        $categories = $this->Category->all();
+        $this->render('products.search', compact('products', 'categories', 'subcategories'));
+    }
+
     public function show()
     {
         $product = $this->Product->findWithSubcategory($_GET['id']);
@@ -154,6 +153,5 @@ class ProductsController extends AppController
                 'meilleurs'
             )
         );
->>>>>>> test
     }
 }

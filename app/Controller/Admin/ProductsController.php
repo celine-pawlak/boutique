@@ -3,10 +3,6 @@
 namespace App\Controller\Admin;
 
 use Core\HTML\BootstrapForm;
-<<<<<<< HEAD
-use Core\Img;
-=======
->>>>>>> test
 
 class ProductsController extends AppController
 {
@@ -43,12 +39,8 @@ class ProductsController extends AppController
                             'id_sous_categories' => $_POST['id_sous_categories'],
                             'description' => $_POST['description'],
                             'image_path' => $img['name'],
-<<<<<<< HEAD
-                            'prix' => $_POST['prix']
-=======
                             'prix' => $_POST['prix'],
                             'stock' => $_POST['stock']
->>>>>>> test
                         ]
                     );
                     $_FILES['image_path'] = '';
@@ -66,14 +58,10 @@ class ProductsController extends AppController
         $productsgender = $this->Category->extract('id', 'gender');
         $categories = $this->Category->all();
         $form = new BootstrapForm($_POST);
-<<<<<<< HEAD
-        $this->render('admin.products.edit', compact('subcategories_name', 'subcategories', 'form', 'erreur', 'productsgender', 'categories'));
-=======
         $this->render(
             'admin.products.edit',
             compact('subcategories_name', 'subcategories', 'form', 'erreur', 'productsgender', 'categories')
         );
->>>>>>> test
     }
 
     public
@@ -94,12 +82,8 @@ class ProductsController extends AppController
                         'id_sous_categories' => $_POST['id_sous_categories'],
                         'description' => $_POST['description'],
                         'image_path' => $img['name'],
-<<<<<<< HEAD
-                        'prix' => $_POST['prix']
-=======
                         'prix' => $_POST['prix'],
                         'stock' => $_POST['stock']
->>>>>>> test
                     ]
                 );
                 $_FILES['image_path'] = '';
@@ -117,12 +101,8 @@ class ProductsController extends AppController
                         'nom' => $_POST['nom'],
                         'id_sous_categories' => $_POST['id_sous_categories'],
                         'description' => $_POST['description'],
-<<<<<<< HEAD
-                        'prix' => $_POST['prix']
-=======
                         'prix' => $_POST['prix'],
                         'stock' => $_POST['stock']
->>>>>>> test
                     ]
                 );
                 if ($result) {
@@ -140,9 +120,6 @@ class ProductsController extends AppController
         $subcategoriesgender = $this->Category->extract('id', 'gender');
         $this->render(
             'admin.products.edit',
-<<<<<<< HEAD
-            compact('subcategories_name', 'form', 'subcategoriesgender', 'categories', 'erreur', 'product', 'subcategories')
-=======
             compact(
                 'subcategories_name',
                 'form',
@@ -152,7 +129,6 @@ class ProductsController extends AppController
                 'product',
                 'subcategories'
             )
->>>>>>> test
         );
     }
 

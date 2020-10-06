@@ -17,11 +17,7 @@ class ProductTable extends Table
     {
         return $this->query(
             "
-<<<<<<< HEAD
-        SELECT produits.id, produits.nom, produits.image_path, produits.description, produits.prix, sous_categories.nom as sous_categorie, categories.nom as categorie
-=======
         SELECT produits.stock, produits.id, produits.nom, produits.image_path, produits.description, produits.prix, sous_categories.nom as sous_categorie, categories.nom as categorie
->>>>>>> test
         FROM produits
         LEFT JOIN sous_categories ON id_sous_categories = sous_categories.id
         LEFT JOIN categories ON id_categories = categories.id
@@ -38,11 +34,7 @@ class ProductTable extends Table
     {
         return $this->query(
             "
-<<<<<<< HEAD
-        SELECT produits.id, produits.nom, produits.image_path, produits.description, produits.prix, sous_categories.nom as sous_categorie
-=======
         SELECT produits.stock, produits.id, produits.nom, produits.image_path, produits.description, produits.prix, sous_categories.nom as sous_categorie
->>>>>>> test
         FROM produits
         LEFT JOIN sous_categories ON id_sous_categories = sous_categories.id
         WHERE produits.id_sous_categories = ?",
@@ -59,11 +51,7 @@ class ProductTable extends Table
     {
         return $this->query(
             "
-<<<<<<< HEAD
-        SELECT produits.id, produits.nom, produits.image_path, produits.description, produits.prix, categories.gender, sous_categories.nom as sous_categorie, categories.nom as categorie
-=======
         SELECT produits.stock, produits.id, produits.nom, produits.image_path, produits.description, produits.prix, categories.gender, sous_categories.nom as sous_categorie, categories.nom as categorie
->>>>>>> test
         FROM produits 
         LEFT JOIN sous_categories ON id_sous_categories = sous_categories.id
         LEFT JOIN categories ON id_categories = categories.id
@@ -81,11 +69,7 @@ class ProductTable extends Table
     {
         return $this->query(
             "
-<<<<<<< HEAD
-        SELECT produits.id, produits.nom, produits.image_path, produits.description, produits.prix, produits.id_sous_categories, sous_categories.nom as sous_categorie
-=======
         SELECT produits.stock, produits.id, produits.nom, produits.image_path, produits.description, produits.prix, produits.id_sous_categories, sous_categories.nom as sous_categorie
->>>>>>> test
         FROM produits
         LEFT JOIN sous_categories ON id_sous_categories = sous_categories.id
         WHERE produits.id = ?",
@@ -94,8 +78,6 @@ class ProductTable extends Table
         );
     }
 
-<<<<<<< HEAD
-=======
     public function isAvailableForThisQuantity($id_produit, $quantite){
         $stockavailable = $this->query("
         SELECT stock
@@ -117,6 +99,5 @@ class ProductTable extends Table
     public function meilleur(){
         return $this->query("SELECT * FROM produits_commandes INNER JOIN produits ON produits_commandes.id_produit=produits.id ORDER BY quantite DESC LIMIT 3");
     }
->>>>>>> test
 
 }

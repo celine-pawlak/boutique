@@ -54,11 +54,7 @@ class MysqlDatabase extends Database
     }
 
     public function prepare($statement, $attributes, $class_name = null, $one = false){
-<<<<<<< HEAD
-        $req = $this->getPDO()->prepare($statement);
-=======
                 $req = $this->getPDO()->prepare($statement);
->>>>>>> test
         $res = $req->execute($attributes);
         if(
             strpos($statement, 'UPDATE') === 0 ||

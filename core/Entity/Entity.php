@@ -9,8 +9,5 @@ class Entity
         $this->$key = $this->$method();
         return $this->$key;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> test
 }

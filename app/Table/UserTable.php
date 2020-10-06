@@ -8,8 +8,6 @@ class UserTable extends Table
 {
     protected $table = "utilisateurs";
 
-<<<<<<< HEAD
-=======
     public function lastCommande($id_user)
     {
         return $this->query(
@@ -99,5 +97,4 @@ class UserTable extends Table
         }
         return false;
     }
->>>>>>> test
 }

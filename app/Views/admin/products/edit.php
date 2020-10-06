@@ -29,12 +29,8 @@
             <?= $form->input('nom', 'Nom du produit'); ?>
             <?= $form->selectSendId('id_sous_categories', 'Sous-catégorie', $subcategories_name, $gender); ?>
             <?= $form->input('description', 'Description', ['type' => 'textarea']); ?>
-<<<<<<< HEAD
-            <?= $form->input('prix', 'Prix', ['type' => 'number']); ?>
-=======
             <?= $form->input('prix', '<i class="material-icons left">euro_symbol</i> Prix', ['type' => 'number']); ?>
             <?= $form->input('stock', 'Stock restant', ['type' => 'number']); ?>
->>>>>>> test
             <div class="center">
                 <button class="btn waves-effect waves-light">Sauvegarder</button>
             </div>
