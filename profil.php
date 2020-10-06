@@ -1,5 +1,5 @@
 <?php
-    include 'inc/php_profil.php';
+    include 'inc/php_profil.php';  
 ?>
 <!DOCTYPE html>
 <html>

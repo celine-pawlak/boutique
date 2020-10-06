@@ -15,15 +15,10 @@
     </header>
     <main id="main_inscription">
         <h2>Forulaire d'inscription</h2>
-        <p class="flow-text">Inscrivez-vous et connectez-vous pour valider votre panier</p>
-        <!-- Nouveau form -->
+        <p class="flow-text">Inscrivez-vous et connectez-vous pour valider votre panier</p>        
         <div class="row">
             <form class="col s12" method="POST" action="">
-                <div class="row">
-                    <div class="input-field col s12 m12 l6 xl6">
-                        <input type="text" class="validate" name="username" id="username" value="<?php echo $username = (isset($_POST['username']))? $_POST['username'] : '' ?>" required>
-                        <label for="username">Login <span class="oblig">*</span></label>
-                    </div>                                                  
+                <div class="row">                                                                    
                     <div class="input-field col s12 m12 l6 xl6">
                         <input type="text" class="validate" name="email" id="email" value="<?php echo $email = (isset($_POST['email']))? $_POST['email'] : '' ?>" required>
                         <label for="email">Email <span class="oblig">*</span></label>

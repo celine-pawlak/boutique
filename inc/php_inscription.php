@@ -9,11 +9,10 @@
         {
             $bdd = App::getDatabase(); //pour créer une connection à la bdd
 
-                if(isset($_POST['valid_insc']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_confirm']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['cp']))
+                if(isset($_POST['valid_insc']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_confirm']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['cp']))
                     {           
-                        $login = $_POST['username'];
-                        $islogin = $bdd->query("SELECT * FROM utilisateurs WHERE username = ?", [$login])->fetch();
-                        
+                        $login = $_POST['email'];
+                        $islogin = $bdd->query("SELECT * FROM utilisateurs WHERE email = ?", [$login])->fetch() ;                    
                         if(empty($islogin))
                             {
                                 if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))

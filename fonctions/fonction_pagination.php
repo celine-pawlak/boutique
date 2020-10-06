@@ -1,7 +1,7 @@
 <?php    
     function prepaPagination($p, $t, $g, $o, $bdd, $champ, $id)//nombre par page, table choisie, numero de la page, colonne pour le tri, colonne pour le where, id utilisateur
         {                                                                                              
-            $count = $bdd->query("SELECT COUNT(id) as count_ FROM $t")->fetch(PDO::FETCH_ASSOC);
+            $count = $bdd->query("SELECT COUNT(id) as count_ FROM $t WHERE $champ =?", [$id])->fetch(PDO::FETCH_ASSOC);
             
            $nb_total = $count["count_"];                     
            $nb_page = ceil($nb_total/$p);
@@ -29,6 +29,9 @@
             $infos['page'] = $page;            
             return $infos;
         }
+        /**
+         * Affiche la pagination
+         */
     function pagination($pp ,$nt, $n, $p, $get, $redirect, $a='')//Par page, nombre total, nombre de page, page, get dans l'url, page vers laquelle revenir, ancrage si besoin
         {            
             if($nt>$pp)

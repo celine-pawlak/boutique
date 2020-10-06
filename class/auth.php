@@ -8,14 +8,12 @@
                 }
             public function register($username, $password, $email, $nom, $prenom, $adresse, $ville, $cp, $telephone=null)
                 {
-                    $password = password_hash($password, PASSWORD_BCRYPT);
-                    $token = Str::random(60);
-                    $this->bdd->query("INSERT INTO utilisateurs SET username = ?, password = ?, email = ?, remember_token = ?, nom = ?, prenom = ?, adresse_facturation = ?, ville_facturation = ?, code_postal_facturation = ?, telephone=?", 
+                    $password = password_hash($password, PASSWORD_BCRYPT);                    
+                    $this->bdd->query("INSERT INTO utilisateurs SET username = ?, password = ?, email = ?, nom = ?, prenom = ?, adresse_facturation = ?, ville_facturation = ?, code_postal_facturation = ?, telephone=?", 
                     [
                         $username,
                         $password,
-                        $email,
-                        $token,
+                        $email,                        
                         $nom, 
                         $prenom,
                         $adresse, 

@@ -15,7 +15,7 @@
                     $inStock = $bdd->query('SELECT * FROM produits WHERE id=?', [$id_produit])->fetch(); 
                     //Si la session panier n'est pas créée
                     if(!isset($_SESSION['panier']['id_produit']))
-                        {echo 'créer panier';
+                        {
                             $_SESSION['panier'] = [];
                             $_SESSION['panier']['id_produit'] = [];
                             $_SESSION['panier']['quantite'] = [];                                                                
@@ -23,7 +23,7 @@
                             $_SESSION['panier']['image'] = [];
                             $_SESSION['panier']['nom'] = [];
                             $_SESSION['panier']['total_panier'] = [];                                                                                    
-                        }                                               
+                        }                                           
                     if($inStock->stock == 0)
                         {
                             Session::getInstance()->setFlash('danger', "Il n'y a plus de stock pour ce produit");                                    
@@ -50,7 +50,7 @@
                                 }
                             //Si le produit n'est pas encore dans le panier
                             else
-                                {     echo 'push';
+                                {    
                                     $prix_total = $inStock->prix * $quantite;                                            
                                     array_push($_SESSION['panier']['id_produit'],$inStock->id);                                           
                                     array_push($_SESSION['panier']['quantite'],$quantite);                                                                                                                                 

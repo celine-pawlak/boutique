@@ -57,8 +57,8 @@
                                                     $_SESSION['current_user']['prenom'] = $new_prenom;
                                                     Session::getInstance()->setFlash('success', "Modification des informations prise en compte");
                                                 }
-                                                    else                                                        
-                                                            Session::getInstance()->setFlash('danger', "Code postal: mauvais format");                                                                                                                                                                                                                                                              
+                                            else                                                        
+                                                    Session::getInstance()->setFlash('danger', "Code postal: mauvais format");                                                                                                                                                                                                                                                              
                                         }
                                     else
                                         Session::getInstance()->setFlash('danger', "Cet email correspond à un autre compte");

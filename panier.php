@@ -2,6 +2,7 @@
     include 'inc/initialisation.php';   
     include 'inc/php_panier.php';  
     require_once 'fonctions/checkstock.php';
+    var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,8 +49,8 @@
                         else    
                             {                                                                                                                                                       
                                 foreach($_SESSION['panier']['id_produit'] as $index => $Quant)
-                                    {   
-                                        if(checkstock($bdd, $_SESSION['panier']['id_produit'][$index], $index)==true)
+                                    {                                           
+                                        if(checkstock($bdd, $_SESSION['panier']['id_produit'][$index], $index))
                                             {
                                                 $disable = 'disabled';
                                             }     
