@@ -13,7 +13,12 @@
         <td>Sous-catégorie</td>
         <td>Image</td>
         <td>Produit</td>
+<<<<<<< HEAD
         <td>Prix</td>
+=======
+        <td><i class="material-icons">euro_symbol</i></td>
+        <td>En stock</td>
+>>>>>>> test
         <td>Actions</td>
     </tr>
     </thead>
@@ -37,8 +42,14 @@
                 }
             } ?>
             <td><img class="image_admin" src="../app/src/images/<?= $product->image_path ?>"></td>
+<<<<<<< HEAD
             <td><?= $product->nom ?></td>
             <td class="centered"><?= $product->prix ?> €</td>
+=======
+            <td class="center"><?= $product->nom ?></td>
+            <td class="center"><?= $product->prix ?> €</td>
+            <td class="center"><?= $product->stock ?></td>
+>>>>>>> test
             <td>
                 <div class="center">
                     <a class="btn btn-small waves-effect waves-light teal"

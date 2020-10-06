@@ -13,8 +13,12 @@ class AppController extends \App\Controller\AppController
         parent::__construct();
         $app = App::getInstance();
 
+<<<<<<< HEAD
         $auth = new DBAuth($app->getDb());
         if (!$auth->logged()) {
+=======
+        if (!App\Entity\UserEntity::isAdmin()) {
+>>>>>>> test
             $this->forbidden();
         }
     }

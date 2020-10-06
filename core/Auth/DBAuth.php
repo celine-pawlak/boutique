@@ -22,6 +22,7 @@ class DBAuth
     }
 
     /**
+<<<<<<< HEAD
      * @param $username
      * @param $password
      * @return boolean
@@ -29,6 +30,14 @@ class DBAuth
     public function login($username, $password)
     {
         $user = $this->db->prepare("SELECT * FROM utilisateurs WHERE username = ?", [$username], null, true);
+=======
+     * @param $password
+     * @return boolean
+     */
+    public function login($email, $password)
+    {
+        $user = $this->db->prepare("SELECT * FROM utilisateurs WHERE email = ?", [$email], null, true);
+>>>>>>> test
         if ($user) {
             if (password_verify($password, $user->password)){
                 $_SESSION['auth'] = $user;

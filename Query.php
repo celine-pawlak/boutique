@@ -6,7 +6,10 @@ class Query{
     {
        $query = new \Core\Database\QueryBuilder();
        return call_user_func_array([$query, $method],$arguments);
+<<<<<<< HEAD
        var_dump($name, $arguments);
+=======
+>>>>>>> test
     }
 
 }

@@ -20,7 +20,11 @@ class BootstrapForm extends Form
      * @param array $options
      * @return string
      */
+<<<<<<< HEAD
     public function input($name, $label, $options = [])
+=======
+    public function input($name, $label, $options = [], $class='s6')
+>>>>>>> test
     {
         $input = '';
         $type = isset($options['type']) ? $options['type'] : 'text';
@@ -41,10 +45,14 @@ class BootstrapForm extends Form
             return $input . $label;
         } else {
             $label = '<label for="'.$name .'">' . $label . '</label></div>';
+<<<<<<< HEAD
             $input = '<div class="input-field col s6">';
             if ($type === 'number') {
                 $input .= '<i class="material-icons prefix">euro_symbol</i>';
             }
+=======
+            $input = '<div class="input-field col '.$class.'">';
+>>>>>>> test
             $input .= '<input step="any" type="' . $type . '" name="' . $name . '" value = "' . $this->getValue(
                     $name
                 ) . '" class="form-control" >';

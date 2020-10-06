@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+=======
+h1,h2,h3,h4,h5,h6, .navbar-brand{
+    font-family: 'Indie Flower', cursive;
+}
+main{
+    position: relative;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+#encart{
+    background-image: url("../../app/src/images/background-index.jpg");
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.display-3{
+    padding-top: 92vh;
+}
+
+>>>>>>> test
 .d-none{
     display: none;
 }
@@ -65,6 +95,70 @@ button{
 .justify{
     text-align: justify;
 }
+<<<<<<< HEAD
 .description{
     font-size: 80%;
+=======
+table{
+    font-size: 90%;
+}
+
+.error{
+    background-color: #ef9a9a ;
+    padding: 0.5rem !important;
+    border-radius: 10px;
+}
+.success{
+    background-color: #80cbc4  ;
+    padding: 0.5rem !important;
+    border-radius: 10px;
+}
+.between{
+    display: flex;
+    justify-content: space-between;
+}
+.w-100{
+    width: 100%;
+}
+.p-0{
+    padding: 0 !important;
+}
+.m-1{
+    margin: 1rem;
+}
+.flex-around{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.round-corner{
+    border-radius: 20px;
+}
+.round-corner-left{
+    border-radius: 20px 0 0 20px;
+}
+.round-corner-right{
+    border-radius: 0 20px 20px 0;
+}
+
+@media screen and (max-width: 1100px) {
+    .disappear1150{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .flex-row{
+        display: flex;
+        flex-direction: column;
+    }
+    .flex-row > *{
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    .height_auto_750{
+        height: auto !important;
+    }
+>>>>>>> test
 }

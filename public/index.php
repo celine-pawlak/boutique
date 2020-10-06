@@ -7,7 +7,11 @@ App::load();
 if (isset($_GET['p'])) {
     $page = $_GET['p'];
 } else {
+<<<<<<< HEAD
     $page = 'products.index';
+=======
+    $page = 'products.home';
+>>>>>>> test
 }
 
 $page = explode('.', $page);
