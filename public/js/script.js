@@ -5,16 +5,17 @@ $(document).ready(function () {
     
     $.ajax(
         {
-            // url : 'js/json.php',
-            // method : 'GET',
-            // success : (data)=>
-            //     {             //console.log(data);
-            //         let taille = data.length                
-            //         for(var i = 0; i<taille ; i++)
-            //             {
-            //                 console.log(data);
-            //             }
-            //     }
+            url : 'js/json.php',
+            method : 'GET',
+            dataType : 'json',
+            success : (data)=>
+                {             //console.log(data);
+                    let taille = data.length                
+                    for(var i = 0; i<taille ; i++)
+                        {
+                            console.log(data[i]['nom']);
+                        }
+                }
         }
     );
     // $('input.autocomplete').autocomplete( function(){
