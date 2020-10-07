@@ -179,7 +179,7 @@ $isAdmin = \App\Entity\UserEntity::isAdmin();
             <a class="navbar-brand dropdown-trigger" href="#!" data-target="dropdown3">Catégories<i
                         class="material-icons right">arrow_drop_down</i></a>
         <li class="<?= $isLogged && $isAdmin ? '' : 'd-none' ?>">
-            <a class="dropdown-trigger" href="#!"
+            <a class="navbar-brand dropdown-trigger" href="#!"
                data-target="dropdown4">Espace administrateur<i
                         class="material-icons right">arrow_drop_down</i></a>
         </li>
