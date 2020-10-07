@@ -12,11 +12,11 @@
                          alt="<?= $dernier->nom ?>">
                 </div>
                 <div class="card-content">
-                    <span class="card-title"><?= $dernier->nom ?></span>
-                    <p class="btn-floating btn-large teal"><?= $dernier->prix ?> €</p>
+                    <span class="card-title"><?= $dernier->nom ?></span>                    
                 </div>
                 <div class="card-action">
                     <a href="produits.php?id=<?= $dernier->id ?>">Voir le Produit</a>
+                    <p class="btn-floating btn-large teal"><?= $dernier->prix ?> €</p>
                 </div>
             </div>
         </div>
@@ -35,11 +35,11 @@
                          alt="<?= $meilleur->nom ?>">
                 </div>
                 <div class="card-content">
-                    <span class="card-title"><?= $meilleur->nom ?></span>
-                    <p class="btn-floating btn-large teal"><?= $meilleur->prix ?> €</p>
+                    <span class="card-title"><?= $meilleur->nom ?></span>                    
                 </div>
                 <div class="card-action">
                     <a href="produits.php?id=<?= $meilleur->id ?>">Voir le Produit</a>
+                    <p class="btn-floating btn-large teal"><?= $meilleur->prix ?> €</p>
                 </div>
             </div>
         </div>
