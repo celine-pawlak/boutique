@@ -194,3 +194,11 @@ footer
 .m-0{
     margin: 0 !important;
 }
+.disappear600{
+    display: none;
+}
+@media screen and (max-width: 600px){
+    .disappear600{
+        display: block;
+    }
+}

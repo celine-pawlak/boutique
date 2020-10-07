@@ -37,9 +37,11 @@
         <button class="btn waves-effect waves-light" name="submit_profil" value="1">Envoyer</button>
     </div>
 </form>
-<!-- Rajouter visibilité du panier -->
-<section id="historique">
+<section id="historique" class="m-1">
     <h4>Historique des achats</h4>
+    <?php if (empty($user_commandes)): ?>
+    <p>Vous n'avez pas encore effectué de commande</p>
+    <?php else : ?>
     <section id="tableau_historique">
         <table class=" histo">
             <thead class="grey lighten-4">
@@ -79,4 +81,5 @@
             </tbody>
         </table>
     </section>
+    <?php endif; ?>
 </section>

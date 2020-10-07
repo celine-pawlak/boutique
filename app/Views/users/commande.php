@@ -1,4 +1,4 @@
-<section>
+<section class="m-1">
     <h4>Votre commande n°<?= $commande->numero ?></h4>
     <p>Commandée le <?= date("d/m/y", strtotime($commande->date_commande)) ?> à <?= date(
             "H:i",

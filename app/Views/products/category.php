@@ -14,6 +14,7 @@
             </div>
         </form>
     </div>
+    <a id="button_see_categories" class="disappear600 btn waves-effect waves-light m-1"><i class="material-icons left">arrow_downward</i>Voir les catégories<i class="material-icons right">arrow_downward</i></a>
     <h4 class="m-0 center"><?= $category->gender ?> | <?= $category->nom ?></h4>
     <div class="row">
         <div class="col s12 m9">
@@ -43,7 +44,7 @@
             </div>
         </div>
 
-        <div class="col s12 m3">
+        <div id="categories" class="col s12 m3">
             <ul class="collection with-header">
                 <li class="collection-header center">Femme</li>
                 <?php

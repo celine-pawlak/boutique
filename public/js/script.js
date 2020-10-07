@@ -2,6 +2,12 @@ $(document).ready(function () {
     $(".dropdown-trigger").dropdown({hover: false, constrainWidth: false});
     $('.sidenav').sidenav();
     $('select').formSelect({constrainWidth: false});
+    $('#button_see_categories').click(function () {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#categories").offset().top
+        }, 1000);
+    })
+
 
     $.ajax(
         {

@@ -1,5 +1,4 @@
 <div class="m-0 row p-1">
-
     <div class="m-0 row p-1">
         <form method="post" action="index.php?p=products.search" class="col s12">
             <div class="m-0 row">
@@ -14,6 +13,7 @@
             </div>
         </form>
     </div>
+    <a id="button_see_categories" class="disappear600 btn waves-effect waves-light m-1"><i class="material-icons left">arrow_downward</i>Voir les catégories<i class="material-icons right">arrow_downward</i></a>
     <h4 class="m-0 center"><?= $subcategory->nom ?></h4>
     <div class="row">
         <div class="col s12 m9">
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="col s12 m3">
+        <div id="categories" class="col s12 m3">
             <ul class="collection with-header">
                 <li class="collection-header center">Femme</li>
                 <?php

@@ -16,6 +16,7 @@ $isAdmin = \App\Entity\UserEntity::isAdmin();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= App::getInstance()->title; ?></title>
+    <link rel="icon" type="image/png" href="../app/src/images/CoqEthiqueLogo.png" />
     <!--Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <!-- Materialize icons -->
@@ -119,61 +120,64 @@ $isAdmin = \App\Entity\UserEntity::isAdmin();
         <li><a href="index.php?p=admin.products.index">Produits</a></li>
     </ul>
     <!-- nav -->
-    <nav class="teal lighten-5">
-        <div class="nav-wrapper container teal lighten-5">
-            <a href="index.php" id="link_logo_header" class="brand-logo"><img class="logo_header"
-                                                                       src="../app/src/images/CoqEthiqueLogo.png"></a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li class="text-darken-3">
-                    <a class="navbar-brand text-darken-3 dropdown-trigger" href="#!" data-target="dropdown1">Catégories
-                        <i class="material-icons right">arrow_drop_down</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="navbar-brand dropdown-trigger darken-3-text <?= $isLogged && $isAdmin ? '' : 'd-none' ?>"
-                       href="#!"
-                       data-target="dropdown2">Espace administrateur
-                        <i class="material-icons right">arrow_drop_down</i>
-                    </a>
-                </li>
-                <li>
-                    <a href="index.php?p=users.profil"
-                       class="navbar-brand <?= $isLogged ? '' : 'd-none' ?> align-items-center">
-                        Mon compte
-                    </a>
-                </li>
-                <li>
-                    <a href="index.php?p=users.panier"
-                       class="navbar-brand align-items-center">
-                        <i class="material-icons left">shopping_cart</i><span class="disappear1150">Panier</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="index.php?p=users.connexion"
-                       class="navbar-brand <?= $isLogged ? 'd-none' : '' ?> align-items-center">
-                        Se connecter
-                    </a>
-                </li>
-                <li>
-                    <a href="index.php?p=users.inscription"
-                       class="navbar-brand <?= $isLogged ? 'd-none' : '' ?> align-items-center">
-                        S'inscrire
-                    </a>
-                </li>
-                <li>
-                    <a href="index.php?p=users.disconnect"
-                       class="navbar-brand <?= $isLogged ? '' : 'd-none' ?> align-items-center">
-                        <i class="material-icons left">exit_to_app</i>
-                        <span class="disappear1150">Se déconnecter</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="navbar-fixed">
+        <nav class="teal lighten-5">
+            <div class="nav-wrapper container teal lighten-5">
+                <a href="index.php" id="link_logo_header" class="brand-logo"><img class="logo_header"
+                                                                                  src="../app/src/images/CoqEthiqueLogo.png"></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="text-darken-3">
+                        <a class="navbar-brand text-darken-3 dropdown-trigger" href="#!" data-target="dropdown1">Catégories
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="navbar-brand dropdown-trigger darken-3-text <?= $isLogged && $isAdmin ? '' : 'd-none' ?>"
+                           href="#!"
+                           data-target="dropdown2">Espace administrateur
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?p=users.profil"
+                           class="navbar-brand <?= $isLogged ? '' : 'd-none' ?> align-items-center">
+                            Mon compte
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?p=users.panier"
+                           class="navbar-brand align-items-center">
+                            <i class="material-icons left">shopping_cart</i><span class="disappear1150">Panier</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?p=users.connexion"
+                           class="navbar-brand <?= $isLogged ? 'd-none' : '' ?> align-items-center">
+                            Se connecter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?p=users.inscription"
+                           class="navbar-brand <?= $isLogged ? 'd-none' : '' ?> align-items-center">
+                            S'inscrire
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?p=users.disconnect"
+                           class="navbar-brand <?= $isLogged ? '' : 'd-none' ?> align-items-center">
+                            <i class="material-icons left">exit_to_app</i>
+                            <span class="disappear1150">Se déconnecter</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <!-- nav mobile -->
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="index.php" class="brand-logo center"><img class="logo_header2" src="../app/src/images/CoqEthiqueLogo.png"></a>
+        <li><a href="index.php" class="brand-logo center"><img class="logo_header2"
+                                                               src="../app/src/images/CoqEthiqueLogo.png"></a>
         </li>
         <li>
             <a class="navbar-brand dropdown-trigger" href="#!" data-target="dropdown3">Catégories<i
@@ -227,42 +231,39 @@ $isAdmin = \App\Entity\UserEntity::isAdmin();
 
 </main>
 </body>
-    <footer class="page-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5><a class="teal-text hover_footer" href="index.php">Coq Etique</a></h5>
-                    <p class="teal-text">Boutique de vêtements 100% Made in France</p>                
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="teal-text">Liens</h5>
-                    <ul>
-                        <li><a class="teal-text hover_footer" href="index.php?p=categories.index">Categories</a></li>
-                        <li><a class="teal-text hover_footer" href="index.php?p=users.panier">Panier</a></li>
-                        <?php
-                            if(isset($_SESSION['current_user']))
-                                {
-                                    ?>
-                                    <li><a class="teal-text hover_footer" href="index.php?p=users.profil">Mon compte</a></li>                                
-                                    <?php
-                                }
-                            else
-                                {
-                                    ?>
-                                    <li><a class="teal-text hover_footer" href="index.php?p=users.inscription">Inscription</a></li>
-                                    <li><a class="teal-text hover_footer" href="index.php?p=users.connexion">Connexion</a></li>
-                                    <?php
-                                }
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5><a class="teal-text hover_footer" href="index.php">Coq Etique</a></h5>
+                <p class="teal-text">Boutique de vêtements 100% Made in France</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="teal-text">Liens</h5>
+                <ul>
+                    <li><a class="teal-text hover_footer" href="index.php?p=categories.index">Categories</a></li>
+                    <li><a class="teal-text hover_footer" href="index.php?p=users.panier">Panier</a></li>
+                    <?php
+                    if (isset($_SESSION['current_user'])) {
                         ?>
+                        <li><a class="teal-text hover_footer" href="index.php?p=users.profil">Mon compte</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a class="teal-text hover_footer" href="index.php?p=users.inscription">Inscription</a></li>
+                        <li><a class="teal-text hover_footer" href="index.php?p=users.connexion">Connexion</a></li>
+                        <?php
+                    }
+                    ?>
 
-                    </ul>
-                </div>
+                </ul>
             </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container center ">
-                <p class="black-text">© 2020 Copyright Céline Pawlak - Martin Bozon</p>
-            </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container center ">
+            <p class="black-text">© 2020 Copyright Céline Pawlak - Martin Bozon</p>
         </div>
-    </footer> 
+    </div>
+</footer>
 </html>

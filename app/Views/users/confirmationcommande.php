@@ -39,7 +39,7 @@
         Merci de votre compréhension
     </article>
     <div class="adresse_liv" class="grey lighten-5">
-        <h5>Adresse de livraison</h5>
+        <h5 class="center">Adresse de livraison</h5>
         <ul class="adresse center">
             <li><?= ucfirst($user->prenom). ' ' . strtoupper($user->nom) ?></li>
             <li><?= $commande->adresse_livraison ?></li>
