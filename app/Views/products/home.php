@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-content">
                     <span class="card-title"><?= $dernier->nom ?></span>
-                    <p><?= $dernier->prix ?> €</p>
+                    <p class="btn-floating btn-large teal"><?= $dernier->prix ?> €</p>
                 </div>
                 <div class="card-action">
                     <a href="produits.php?id=<?= $dernier->id ?>">Voir le Produit</a>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-content">
                     <span class="card-title"><?= $meilleur->nom ?></span>
-                    <p><?= $meilleur->prix ?> €</p>
+                    <p class="btn-floating btn-large teal"><?= $meilleur->prix ?> €</p>
                 </div>
                 <div class="card-action">
                     <a href="produits.php?id=<?= $meilleur->id ?>">Voir le Produit</a>

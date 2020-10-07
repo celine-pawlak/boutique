@@ -142,7 +142,7 @@ table{
     {
         display: flex;
         flex-direction: column;
-        min-height: 100vh !important;
+        min-height: 105vh !important;
         justify-content: space-between !important;        
     }
 .card-action a
