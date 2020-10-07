@@ -55,9 +55,9 @@
                 echo $cp = (isset($_POST['cp'])) ? $_POST['cp'] : '' ?>" required>
             </div>
         </div>
-        <div class="valid_form">
+        <div class="valid_form center">
             <input type="submit" class="btn bouton" name="valid_insc" value="Inscription">
-            <small><span class="oblig">*</span>Champs obligatoires</small>
         </div>
+        <small><span class="oblig">*</span>Champs obligatoires</small>
     </form>
 </div>

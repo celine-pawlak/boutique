@@ -15,7 +15,7 @@
                     <input type="password" class="validate" name="password" id="password" required>
                 </div>
             </div>
-            <div class="valid_form">
+            <div class="valid_form center">
                 <input type="submit" class="btn bouton" name="valid_con" value="Connexion">
             </div>
         </form>
