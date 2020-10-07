@@ -52,6 +52,26 @@ class ProductsController extends AppController
         $this->render('products.category', compact('products', 'categories', 'category', 'subcategories'));
     }
 
+    public function search(){
+        $products = $this->Product->all();
+        if(isset($_POST['searchbox'])){
+            $recherche = $_POST['searchbox'];
+            $match_products = [];
+            foreach ($products as $product) {
+                if (preg_match("/$recherche/i", $product->nom)){
+                    $match_products[] = $product;
+                }
+            }
+            $products = $match_products;
+        }
+        else{
+            $products = $this->Product->all();
+        }
+        $subcategories = $this->Subcategory->all();
+        $categories = $this->Category->all();
+        $this->render('products.search', compact('products', 'categories', 'subcategories'));
+    }
+
     public function show()
     {
         $product = $this->Product->findWithSubcategory($_GET['id']);

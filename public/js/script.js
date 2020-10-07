@@ -1,38 +1,29 @@
 $(document).ready(function () {
-    $(".dropdown-trigger").dropdown({ hover: false, constrainWidth: false });
+    $(".dropdown-trigger").dropdown({hover: false, constrainWidth: false});
     $('.sidenav').sidenav();
-    $('select').formSelect({constrainWidth: false });  
-    
+    $('select').formSelect({constrainWidth: false});
+
     $.ajax(
         {
-            url : 'js/json.php',
-            method : 'GET',
-            dataType : 'json',
-            success : (data)=>
-                {             //console.log(data);
-                    let taille = data.length                
-                    for(var i = 0; i<taille ; i++)
-                        {
-                            console.log(data[i]['nom']);
-                        }
+            url: 'js/json.php',
+            method: 'post',
+            dataType: 'json',
+            success: function( response ){
+                var dimensions = response;
+                var dataDim = {};
+                for (var i = 0; i < dimensions.length; i++) {
+                    dataDim += dimensions[i].nom; //countryArray[i].flag or null
                 }
+                console.log(dataDim);
+
+                $('.autocomplete').autocomplete({
+                    data: dataDim,
+                    minLength: 2,
+                });
+            }
         }
-    );
-    // $('input.autocomplete').autocomplete( function(){
-    //     $.ajax(
-    //         {
-    //             url : 'js/json.php',
-    //             method : 'post',
-    //             success : (data)=>
-    //                 {
-    //                     console.log(data);
-    //                     for(var i = 0; length(data); i++)
-    //                         {
-    //                             console.log(data.i);
-    //                         }
-    //                 }
-    //         }
-    //     );
-    //   });
+    )
+
+
 });
 

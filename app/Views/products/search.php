@@ -14,20 +14,24 @@
     <div class="col s12 m9">
         <div class="row">
             <?php
-                foreach ($products as $product): ?>
-                    <div class="col s12 m4">
-                        <div class="card">
-                            <div class="card-image">
-                                <a class="link_card_hover" href="<?= $product->url ?>">
-                                    <img src="../app/src/images/<?= $product->image_path ?>" alt="<?= $product->nom ?>">
-                                    <span class="card-title card_hover"><?= $product->nom ?></span>
-                                    <button class="btn-floating btn-large halfway-fab"><?= $product->prix ?> €</button>
-                                </a>
-                            </div>
+            if (empty($products)): ?>
+            <p>Aucun produit ne correspond à cette recherche :(</p>
+            <?php else:
+            foreach ($products as $product): ?>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <a class="link_card_hover" href="<?= $product->url ?>">
+                                <img src="../app/src/images/<?= $product->image_path ?>" alt="<?= $product->nom ?>">
+                                <span class="card-title card_hover"><?= $product->nom ?></span>
+                                <button class="btn-floating btn-large halfway-fab"><?= $product->prix ?> €</button>
+                            </a>
                         </div>
                     </div>
-                <?php
-                endforeach; ?>
+                </div>
+            <?php
+            endforeach;
+            endif;  ?>
         </div>
     </div>
 
