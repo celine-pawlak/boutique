@@ -1,11 +1,14 @@
 <div class="row p-1">
     <form method="post" action="index.php?p=products.search" class="col s12">
         <div class="row">
-            <div class="input-field col s12 m6 offset-m6">
+            <div class="input-field col s11 m5 offset-m6">
                 <input name="searchbox" type="text" id="autocomplete-input" class="autocomplete">
                 <label for="autocomplete-input">Rechercher l'article</label>
             </div>
-            <button class="right"><i class="material-icons">search</i></button>
+            <div class="input-field col s1 m1">
+                <button class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">search</i>
+                </button>
+            </div>
         </div>
     </form>
 </div>

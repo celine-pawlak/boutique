@@ -2,11 +2,14 @@
     <div class="row">
         <form method="post" action="index.php?p=products.search" class="col s12">
             <div class="row">
-                <div class="input-field col s12 m6 offset-m6">
+                <div class="input-field col s11 m5 offset-m6">
                     <input name="searchbox" type="text" id="autocomplete-input" class="autocomplete">
                     <label for="autocomplete-input">Rechercher l'article</label>
                 </div>
-                <button class="right"><i class="material-icons">search</i></button>
+                <div class="input-field col s1 m1">
+                    <button class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">search</i>
+                    </button>
+                </div>
             </div>
         </form>
     </div>
@@ -15,23 +18,24 @@
         <div class="row">
             <?php
             if (empty($products)): ?>
-            <p>Aucun produit ne correspond à cette recherche :(</p>
-            <?php else:
-            foreach ($products as $product): ?>
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-image">
-                            <a class="link_card_hover" href="<?= $product->url ?>">
-                                <img src="../app/src/images/<?= $product->image_path ?>" alt="<?= $product->nom ?>">
-                                <span class="card-title card_hover"><?= $product->nom ?></span>
-                                <button class="btn-floating btn-large halfway-fab"><?= $product->prix ?> €</button>
-                            </a>
+                <p>Aucun produit ne correspond à cette recherche :(</p>
+            <?php
+            else:
+                foreach ($products as $product): ?>
+                    <div class="col s12 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <a class="link_card_hover" href="<?= $product->url ?>">
+                                    <img src="../app/src/images/<?= $product->image_path ?>" alt="<?= $product->nom ?>">
+                                    <span class="card-title card_hover"><?= $product->nom ?></span>
+                                    <button class="btn-floating btn-large halfway-fab"><?= $product->prix ?> €</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php
-            endforeach;
-            endif;  ?>
+                <?php
+                endforeach;
+            endif; ?>
         </div>
     </div>
 

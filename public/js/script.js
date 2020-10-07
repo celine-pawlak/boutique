@@ -9,17 +9,17 @@ $(document).ready(function () {
             url: 'js/json.php',
             method: 'post',
             dataType: 'json',
-            success: function( response ){
-                var dimensions = response;
-                var dataDim = {};
-                for (var i = 0; i < dimensions.length; i++) {
-                    dataDim += dimensions[i].nom; //countryArray[i].flag or null
+            success: function (response) {
+                console.log(response);
+                var products = response;
+                var dataProducts = {};
+                for (var i = 0; i < products.length; i++) {
+                    dataProducts[products[i].nom] = '../app/src/images/'+products[i].image_path;
                 }
-                console.log(dataDim);
-
+                console.log(dataProducts);
                 $('.autocomplete').autocomplete({
-                    data: dataDim,
-                    minLength: 2,
+                    data: dataProducts,
+                    limit: 5,
                 });
             }
         }
