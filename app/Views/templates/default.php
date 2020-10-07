@@ -111,16 +111,12 @@ $isAdmin = \App\Entity\UserEntity::isAdmin();
         <li><a href="index.php?p=admin.categories.index">Catégories</a></li>
         <li><a href="index.php?p=admin.subcategories.index">Sous-catégories</a></li>
         <li><a href="index.php?p=admin.products.index">Produits</a></li>
-        <li class="divider"></li>
-        <li><a href="index.php?p=admin.users.index">Utilisateurs</a></li>
     </ul>
     <!-- Dropdown Administrateur MOBILE -->
     <ul id="dropdown4" class="dropdown-content darken-3-text">
         <li><a href="index.php?p=admin.categories.index">Catégories</a></li>
         <li><a href="index.php?p=admin.subcategories.index">Sous-catégories</a></li>
         <li><a href="index.php?p=admin.products.index">Produits</a></li>
-        <li class="divider"></li>
-        <li><a href="index.php?p=admin.users.index">Utilisateurs</a></li>
     </ul>
     <!-- nav -->
     <nav class="teal lighten-5">

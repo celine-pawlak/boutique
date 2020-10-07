@@ -25,6 +25,21 @@ class UsersController extends AppController
         $this->loadModel('ProductCommande');
     }
 
+    public function commande()
+    {
+        $user = $this->User->find($_SESSION['current_user']['id']);
+        $commande = $this->Commande->find($_GET['id']);
+        if ($commande === false) {
+            $this->notFound();
+        }
+        if ($commande->id_utilisateurs != $user->id){
+            $this->forbidden();
+        }
+        $products = $this->ProductCommande->productsFromCommande($commande->numero);
+        $categories = $this->Category->all();
+        $this->render('users.commande', compact('products', 'categories','commande', 'user'));
+    }
+
     public function disconnect()
     {
         session_destroy();
@@ -225,7 +240,7 @@ class UsersController extends AppController
         } else {
             //session current user en cours
             $usersession = $_SESSION['current_user'];
-            $user = $this->User->current($usersession['id']);
+            $user = $this->User->find($usersession['id']);
             //si envoi du form
             if (!empty($_POST['submit_profil'])) {
                 //Traitement password
@@ -285,7 +300,7 @@ class UsersController extends AppController
                 }
             }
             $categories = $this->Category->all();
-            $user_commandes = $this->User->commandes_user($user->id);
+            $user_commandes = $this->Commande->findWithUser($user->id);
             $form = new BootstrapForm($user);
             if (!empty($this->errors)) {
                 $messages = $this->errors;
