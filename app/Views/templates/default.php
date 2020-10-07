@@ -210,7 +210,7 @@ $isAdmin = \App\Entity\UserEntity::isAdmin();
             <a href="index.php?p=users.inscription"
                class="navbar-brand align-items-center">
                 S'inscrire
-            </a
+            </a>
         </li>
         <li class="<?= $isLogged ? '' : 'd-none' ?>">
             <a href="index.php?p=users.disconnect"
@@ -231,6 +231,42 @@ $isAdmin = \App\Entity\UserEntity::isAdmin();
 
 </main>
 </body>
-<footer class="text-muted">
-</footer>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5><a class="teal-text hover_footer" href="index.php">Coq Etique</a></h5>
+                    <p class="teal-text">Boutique de vêtements 100% Made in France</p>                
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="teal-text">Liens</h5>
+                    <ul>
+                        <li><a class="teal-text hover_footer" href="categories.php">Categories</a></li>
+                        <li><a class="teal-text hover_footer" href="panier.php">Panier</a></li>
+                        <?php
+                            if(isset($_SESSION['current_user']))
+                                {
+                                    ?>
+                                    <li><a class="teal-text hover_footer" href="profil.php">Mon compte</a></li>                                
+                                    <?php
+                                }
+                            else
+                                {
+                                    ?>
+                                    <li><a class="teal-text hover_footer" href="inscription.php">Inscription</a></li>
+                                    <li><a class="teal-text hover_footer" href="connexion.php">Connexion</a></li>
+                                    <?php
+                                }
+                        ?>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container center ">
+                <p class="black-text">© 2020 Copyright Céline Pawlak - Martin Bozon</p>
+            </div>
+        </div>
+    </footer> 
 </html>
