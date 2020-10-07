@@ -58,7 +58,7 @@
                         <?= $user_commande->date_commande = date('d-m-Y') ?>
                     </td>
                     <td>
-                        <a href="detail.php?id_commande=<?= $user_commande->id ?>"><?= $user_commande->numero ?></a>
+                        <a href="<?= $user_commande->url ?>"><?= $user_commande->numero ?></a>
                     </td>
                     <td>
                         <?php

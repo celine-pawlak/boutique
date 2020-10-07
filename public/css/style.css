@@ -157,3 +157,9 @@ table{
         height: auto !important;
     }
 }
+.adresse{
+    line-height: normal !important;
+}
+.m-0{
+    margin: 0 !important;
+}

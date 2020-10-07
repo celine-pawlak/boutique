@@ -40,11 +40,12 @@
     </article>
     <div class="adresse_liv" class="grey lighten-5">
         <h5>Adresse de livraison</h5>
-        <div>
-            <p>Chez <?= ucfirst($user->prenom). ' ' . strtoupper($user->nom) ?></p>
-            <p><?= $commande->adresse_livraison ?>&nbsp;<?= $commande->ville_livraison ?>
-                &nbsp;<?= $commande->code_postal_livraison ?></p>
-        </div>
+        <ul class="adresse center">
+            <li><?= ucfirst($user->prenom). ' ' . strtoupper($user->nom) ?></li>
+            <li><?= $commande->adresse_livraison ?></li>
+            <li><?= $commande->code_postal_livraison ?> <?= $commande->ville_livraison ?></li>
+            <li>France</li>
+        </ul>
     </div>
 </section>
 <table class="table_verification">
@@ -71,7 +72,7 @@
     }
     ?>
     <tr>
-        <td colspan="5" class="center">Grand total : <b><?= $commande->prix_commande ?>€</b></td>
+        <td colspan="5" class="center">Prix de la commande : <b><?= $commande->prix_commande ?>€</b></td>
     </tr>
     </tbody>
 </table>
