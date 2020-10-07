@@ -34,8 +34,9 @@ class SubcategoriesController extends AppController
         }
         $categories = $this->Category->extract('id', 'nom');
         $form = new BootstrapForm($_POST);
+        $categories_names = $this->Category->extract('id', 'nom');
         $categoriesgender = $this->Category->extract('id', 'gender');
-        $this->render('admin.subcategories.edit', compact('form', 'categories', 'categoriesgender'));
+        $this->render('admin.subcategories.edit', compact('form', 'categories', 'categoriesgender', 'categories_names'));
     }
 
     public function edit()
