@@ -1,3 +1,16 @@
+
+<div class="row">
+    <div class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">textsms</i>
+                <input type="text" id="autocomplete-input" class="autocomplete">
+                <label for="autocomplete-input">Autocomplete</label>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
 <div class="row p-1">
     <form method="post" action="index.php?p=products.search" class="col s12">
         <div class="row">
@@ -8,7 +21,7 @@
             <button class="right"><i class="material-icons">search</i></button>
         </div>
     </form>
-</div>
+</div>-->
 <h4 class="center"><?= $category->gender ?> | <?= $category->nom ?></h4>
 <div class="row">
     <div class="col s12 m9">
