@@ -146,16 +146,16 @@ table{
         min-height: 105vh !important;
         justify-content: space-between !important;        
     }
-.card-action
+.card-home
     {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
-.card-action a
+.card-home a
     {
         color: #00695c !important;        
     }
-.card-action a:hover
+.card-home a:hover
     {
         color: #acece9 !important;
     }
