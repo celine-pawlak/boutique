@@ -5,7 +5,7 @@
 <section class="row produit_index">
     <?php
     foreach ($derniers as $dernier): ?>
-        <div class="col s12 m7 l3 xl3">
+        <div class="col s12 m6 l4 xl4">
             <div class="card">
                 <div class="card-image">
                     <img class="image_admin" src="../app/src/images/<?= $dernier->image_path ?>"
@@ -28,7 +28,7 @@
 <section class="row produit_index">
     <?php
     foreach ($meilleurs as $meilleur) : ?>
-        <div class="col s12 m7 l3 xl3">
+        <div class="col s12 m6 l4 xl4">
             <div class="card">
                 <div class="card-image">
                     <img class="image_admin" src="../app/src/images/<?= $meilleur->image_path ?>"

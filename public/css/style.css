@@ -138,6 +138,22 @@ table{
     font-size: 12px !important;
 }
 
+.card
+    {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh !important;
+        justify-content: space-between !important;        
+    }
+.card-action a
+    {
+        color: #00695c !important;
+    }
+.card-action a:hover
+    {
+        color: #acece9 !important;
+    }
+
 @media screen and (max-width: 1100px) {
     .disappear1150{
         display: none;
