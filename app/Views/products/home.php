@@ -5,18 +5,18 @@
 <section class="row produit_index">
     <?php
     foreach ($derniers as $dernier): ?>
-        <div class="col s12 m7 l3 xl3">
-            <div class="card">
+        <div class="col s12 m6 l4 xl4">
+            <div class="card card-index">
                 <div class="card-image">
                     <img class="image_admin" src="../app/src/images/<?= $dernier->image_path ?>"
                          alt="<?= $dernier->nom ?>">
                 </div>
                 <div class="card-content">
-                    <span class="card-title"><?= $dernier->nom ?></span>
-                    <p><?= $dernier->prix ?> €</p>
+                    <span class="card-title"><?= $dernier->nom ?></span>                    
                 </div>
                 <div class="card-action">
                     <a href="produits.php?id=<?= $dernier->id ?>">Voir le Produit</a>
+                    <p class="btn-floating btn-large teal"><?= $dernier->prix ?> €</p>
                 </div>
             </div>
         </div>
@@ -28,18 +28,18 @@
 <section class="row produit_index">
     <?php
     foreach ($meilleurs as $meilleur) : ?>
-        <div class="col s12 m7 l3 xl3">
-            <div class="card">
+        <div class="col s12 m6 l4 xl4">
+            <div class="card card-index">
                 <div class="card-image">
                     <img class="image_admin" src="../app/src/images/<?= $meilleur->image_path ?>"
                          alt="<?= $meilleur->nom ?>">
                 </div>
                 <div class="card-content">
-                    <span class="card-title"><?= $meilleur->nom ?></span>
-                    <p><?= $meilleur->prix ?> €</p>
+                    <span class="card-title"><?= $meilleur->nom ?></span>                    
                 </div>
                 <div class="card-action">
                     <a href="produits.php?id=<?= $meilleur->id ?>">Voir le Produit</a>
+                    <p class="btn-floating btn-large teal"><?= $meilleur->prix ?> €</p>
                 </div>
             </div>
         </div>

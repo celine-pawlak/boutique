@@ -3,7 +3,6 @@ $(document).ready(function () {
     $('.sidenav').sidenav();
     $('select').formSelect({constrainWidth: false});
 
-
     $.ajax(
         {
             url: 'js/json.php',
