@@ -237,20 +237,20 @@ $isAdmin = \App\Entity\UserEntity::isAdmin();
                 <div class="col l4 offset-l2 s12">
                     <h5 class="teal-text">Liens</h5>
                     <ul>
-                        <li><a class="teal-text hover_footer" href="categories.php">Categories</a></li>
-                        <li><a class="teal-text hover_footer" href="panier.php">Panier</a></li>
+                        <li><a class="teal-text hover_footer" href="index.php?p=categories.index">Categories</a></li>
+                        <li><a class="teal-text hover_footer" href="index.php?p=users.panier">Panier</a></li>
                         <?php
                             if(isset($_SESSION['current_user']))
                                 {
                                     ?>
-                                    <li><a class="teal-text hover_footer" href="profil.php">Mon compte</a></li>                                
+                                    <li><a class="teal-text hover_footer" href="index.php?p=users.profil">Mon compte</a></li>                                
                                     <?php
                                 }
                             else
                                 {
                                     ?>
-                                    <li><a class="teal-text hover_footer" href="inscription.php">Inscription</a></li>
-                                    <li><a class="teal-text hover_footer" href="connexion.php">Connexion</a></li>
+                                    <li><a class="teal-text hover_footer" href="index.php?p=users.inscription">Inscription</a></li>
+                                    <li><a class="teal-text hover_footer" href="index.php?p=users.connexion">Connexion</a></li>
                                     <?php
                                 }
                         ?>
