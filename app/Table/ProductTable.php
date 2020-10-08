@@ -69,7 +69,7 @@ class ProductTable extends Table
     {
         return $this->query(
             "
-        SELECT produits.stock, produits.id, produits.nom, produits.image_path, produits.description, produits.prix, produits.id_sous_categories, sous_categories.nom as sous_categorie
+        SELECT produits.stock, produits.id, produits.nom, produits.image_path, produits.description, produits.prix, produits.id_sous_categories, sous_categories.nom as sous_categorie, sous_categories.id_categories as id_categorie
         FROM produits
         LEFT JOIN sous_categories ON id_sous_categories = sous_categories.id
         WHERE produits.id = ?",

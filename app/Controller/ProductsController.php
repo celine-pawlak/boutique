@@ -23,6 +23,11 @@ class ProductsController extends AppController
     public function index()
     {
         $products = $this->Product->last();
+        foreach ($products as $key => $product) {
+            if ($product->categorie == null or $product->sous_categorie == null) {
+                unset($products[$key]);
+            }
+        }
         $subcategories = $this->Subcategory->all();
         $categories = $this->Category->all();
         $this->render('products.index', compact('products', 'subcategories', 'categories'));
@@ -35,6 +40,11 @@ class ProductsController extends AppController
             $this->notFound();
         }
         $products = $this->Product->lastBySubcategory($_GET['id']);
+        foreach ($products as $key => $product) {
+            if ($product->sous_categorie == null) {
+                unset($products[$key]);
+            }
+        }
         $subcategories = $this->Subcategory->all();
         $categories = $this->Category->all();
         $this->render('products.subcategory', compact('products', 'subcategories', 'subcategory', 'categories'));
@@ -47,25 +57,35 @@ class ProductsController extends AppController
             $this->notFound();
         }
         $products = $this->Product->lastByCategory($_GET['id']);
+        foreach ($products as $key => $product) {
+            if ($product->categorie == null or $product->sous_categorie == null) {
+                unset($products[$key]);
+            }
+        }
         $categories = $this->Category->all();
         $subcategories = $this->Subcategory->all();
         $this->render('products.category', compact('products', 'categories', 'category', 'subcategories'));
     }
 
-    public function search(){
-        $products = $this->Product->all();
-        if(isset($_POST['searchbox'])){
+    public function search()
+    {
+        $products = $this->Product->last();
+        if (isset($_POST['searchbox'])) {
             $recherche = $_POST['searchbox'];
             $match_products = [];
             foreach ($products as $product) {
-                if (preg_match("/$recherche/i", $product->nom)){
+                if (preg_match("/$recherche/i", $product->nom)) {
                     $match_products[] = $product;
                 }
             }
             $products = $match_products;
+        } else {
+            $products = $this->Product->last();
         }
-        else{
-            $products = $this->Product->all();
+        foreach ($products as $key => $product) {
+            if ($product->categorie == null or $product->sous_categorie == null) {
+                unset($products[$key]);
+            }
         }
         $subcategories = $this->Subcategory->all();
         $categories = $this->Category->all();
@@ -75,6 +95,14 @@ class ProductsController extends AppController
     public function show()
     {
         $product = $this->Product->findWithSubcategory($_GET['id']);
+        if($product->id_categorie == null or $product->id_sous_categories == null){
+            $this->notFound();
+        }
+
+        $categories = $this->Category->all();
+        $subcategories = $this->Subcategory->all();
+
+
         if (isset($_POST['add_to_basket'])) {
             $total_quantity = $_POST['quantity'];
             //vérification si le produit existe déjà dans le panier
@@ -134,8 +162,6 @@ class ProductsController extends AppController
             }
         }
         $form = new BootstrapForm($_POST);
-        $categories = $this->Category->all();
-        $subcategories = $this->Subcategory->all();
         $this->render('products.show', compact('product', 'categories', 'subcategories', 'form'));
     }
 

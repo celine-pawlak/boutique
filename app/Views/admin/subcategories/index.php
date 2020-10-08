@@ -30,13 +30,17 @@ endif;
         <tr>
             <td><?= $i ?></td>
             <?php
+            $category_exist = false;
             foreach ($categories as $category) : ?>
                 <?php
                 if ($category->id == $subcategory->id_categories) : ?>
                     <td>(<?= $category->gender ?>) | <?= $category->nom ?></td>
-                <?php
+                <?php $category_exist = true;
                 endif;
             endforeach; ?>
+            <?php if (!$category_exist) : ?>
+            <td><i class="material-icons left">warning</i>Veuillez éditer la catégorie</td>
+            <?php endif; ?>
             <td><?= $subcategory->nom ?></td>
             <td><a class="btn btn-small waves-effect waves-light teal"
                    href="?p=admin.subcategories.edit&id=<?= $subcategory->id ?>">Editer</a>

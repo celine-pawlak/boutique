@@ -26,17 +26,30 @@
         <tr>
             <td><?= $i ?></td>
             <?php
+            $subcategory_exist = false;
+            $category_exist = false;
             foreach ($subcategories as $subcategory) {
                 if ($subcategory->id == $product->id_sous_categories) {
+                    $subcategory_exist = true;
                     foreach ($categories as $category) {
                         if ($category->id == $subcategory->id_categories) { ?>
+                            <?php $category_exist = true; ?>
                             <td><?= $category->gender ?> / <?= $category->nom ?></td>
+                            <?php $subcategory_exist_without_category = $subcategory->nom ?>
                             <td><?= $subcategory->nom ?></td>
                             <?php
                         }
                     }
                 }
             } ?>
+            <?php if (!$category_exist): ?>
+            <td><i class="material-icons left red-text">warning</i> La catégorie n'existe plus, veuillez éditer !</td>
+            <?php endif ?>
+            <?php if (!$subcategory_exist): ?>
+            <td><i class="material-icons left red-text">warning</i> La sous-catégorie n'existe plus, veuillez éditer !</td>
+            <?php elseif (!$category_exist AND $subcategory_exist) : ?>
+                <td><?= $subcategory_exist_without_category ?></td>
+            <?php endif ?>
             <td><img class="image_admin" src="../app/src/images/<?= $product->image_path ?>"></td>
             <td class="center"><?= $product->nom ?></td>
             <td class="center"><?= $product->prix ?> €</td>
