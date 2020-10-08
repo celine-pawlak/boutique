@@ -20,5 +20,5 @@
             </div>
         </form>
     </section>
-    <small>Si vous n'avez pas encore de compte => <a href="inscription.php">inscription</a></small>
+    <small>Si vous n'avez pas encore de compte => <a href="index.php?p=users.inscription">inscription</a></small>
 </section>
